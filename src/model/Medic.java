@@ -8,8 +8,9 @@ public class Medic extends Person{
 
     protected Medic(Long proNumCard, Long id, String firstMiddleName, String lastName, String telephoneNumber, String email, String address) {
         super(id, firstMiddleName, lastName, telephoneNumber, email, address);
-        if(proNumCard==null){
-            throw new NullPointerException("professional number card is null");
+        if(proNumCard==null
+                ||proNumCard<999999){
+            throw new NullPointerException("professional number card not valid");
         }
     }
 
