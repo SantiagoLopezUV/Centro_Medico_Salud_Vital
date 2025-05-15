@@ -3,14 +3,14 @@ package model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Factura {
+public class Invoice {
 
     private int invoiceNumber;  //   refFactura
     private LocalDate date; //  fecha
     private LocalTime time; //  hora
     private double total;   //  valorTotal
 
-    public Factura(int invoiceNumber, LocalDate date, LocalTime time, double total) {
+    public Invoice(int invoiceNumber, LocalDate date, LocalTime time, double total) {
         this.invoiceNumber = invoiceNumber;
         this.date = date;
         this.time = time;
