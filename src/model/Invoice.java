@@ -1,5 +1,5 @@
 package model;
-
+//  Clase de la entidad 'Factura'
 import java.time.LocalDate;
 import java.time.LocalTime;
 
