@@ -3,9 +3,9 @@ package model;
 import java.util.Objects;
 
 public class ConsultationType {
-    private int idConsultationType;
-    private String consultationTypeName;
-    private double consultationPrice;
+    private final int idConsultationType; //codTipoCons
+    private String consultationTypeName; //nomTipoCons
+    private double consultationPrice; //costoConsulta
 
     public ConsultationType(int idConsultationType,
                             String consultationTypeName,

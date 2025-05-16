@@ -1,9 +1,11 @@
 package model;
 
+import java.util.Objects;
+
 public class MedicalSpeciality {
 
-    private int specialtyCode;
-    private String title;
+    private final int specialtyCode; //codEspecialidad
+    private String title; //titulo
 
     public MedicalSpeciality(int specialtyCode,
                              String title){
@@ -20,15 +22,23 @@ public class MedicalSpeciality {
         return specialtyCode;
     }
 
-    public void setSpecialtyCode(int specialtyCode) {
-        this.specialtyCode = specialtyCode;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MedicalSpeciality that)) return false;
+        return specialtyCode == that.specialtyCode;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(specialtyCode);
     }
 }

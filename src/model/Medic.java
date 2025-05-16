@@ -2,12 +2,18 @@ package model;
 
 public class Medic extends Person{
 
-    private Long professionalNumCard;
-    private MedicalSpeciality medicalSpeciality;
+    private Long professionalNumCard; //tajetaProfesional
+    private MedicalSpeciality medicalSpeciality; //codEspecialidad
 
-
-    protected Medic(Long proNumCard, Long id, String firstMiddleName, String lastName, String telephoneNumber, String email, String address) {
-        super(id, firstMiddleName, lastName, telephoneNumber, email, address);
+    protected Medic(Long proNumCard,
+                    Long id,
+                    String firstMiddleName,
+                    String lastName,
+                    String telephoneNumber,
+                    String email,
+                    String address,
+                    SexType sex) {
+        super(id, firstMiddleName, lastName, telephoneNumber, email, address, sex);
         if(proNumCard==null
                 ||proNumCard<999999){
             throw new NullPointerException("professional number card not valid");

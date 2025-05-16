@@ -7,7 +7,8 @@ public class Patient extends Person{
                    String lastName,
                    String telephoneNumber,
                    String email,
-                   String address) {
-        super(id, firstMiddleName, lastName, telephoneNumber, email, address);
+                   String address,
+                   SexType sex) {
+        super(id, firstMiddleName, lastName, telephoneNumber, email, address, sex);
     }
 }

@@ -3,13 +3,13 @@ package model;
 import java.util.Objects;
 
 public class Arrangement {
-    private int codConvenio;
-    private String corpName;
-    private float percentage;
-    private boolean valid;
+    private final int ArrangementCode; //codConvenio
+    private final String corpName; //nomEmpresa
+    private float percentage; //porcentaje
+    private boolean valid; //vigente
 
-    public Arrangement(int codConvenio, String corpName, float percentage, boolean valid) {
-        if(codConvenio < 0
+    public Arrangement(int ArrangementCode, String corpName, float percentage, boolean valid) {
+        if(ArrangementCode < 0
                 || corpName == null
                 || corpName.isEmpty()
                 || percentage < 0
@@ -17,14 +17,14 @@ public class Arrangement {
             throw new NullPointerException("Some Arrangement parameters are invalid");
         }
 
-        this.codConvenio = codConvenio;
+        this.ArrangementCode = ArrangementCode;
         this.corpName = corpName;
         this.percentage = percentage;
         this.valid = valid;
     }
 
-    public int getCodConvenio() {
-        return codConvenio;
+    public int getArrangementCode() {
+        return ArrangementCode;
     }
 
     public String getCorpName() {
@@ -51,11 +51,11 @@ public class Arrangement {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Arrangement that)) return false;
-        return codConvenio == that.codConvenio && Objects.equals(corpName, that.corpName);
+        return ArrangementCode == that.ArrangementCode && Objects.equals(corpName, that.corpName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codConvenio, corpName);
+        return Objects.hash(ArrangementCode, corpName);
     }
 }

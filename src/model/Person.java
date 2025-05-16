@@ -3,21 +3,44 @@ package model;
 import java.util.Objects;
 
 abstract class Person {
-    protected Long Id;
-    protected String firstMiddleName;
-    protected String lastName;
-    protected String telephoneNumber;
-    protected String email;
-    protected String address;
+    protected final Long Id; //docIdentidad
+    protected final String firstMiddleName; //nombres
+    protected final String lastName; //apellidos
+    protected String telephoneNumber; //telefono
+    protected final SexType sex; //sexo
+    protected String email; //email
+    protected String address; //dirResidencia
 
-    protected Person(Long id, String firstMiddleName, String lastName, String telephoneNumber, String email, String address) {
+    public enum SexType{
+        MALE("Male"),
+        FEMALE("Female"),
+        OTHER("Other");
+
+        final String value;
+
+        SexType(String value) {
+            this.value = value;
+        }
+        public String getValue() {
+            return value;
+        }
+    }
+
+    protected Person (Long id,
+                     String firstMiddleName,
+                     String lastName,
+                     String telephoneNumber,
+                     String email,
+                     String address,
+                     SexType sexType) {
         if(id == null
                 || id <= 99999
                 || firstMiddleName == null
                 || lastName == null
                 || telephoneNumber == null
                 || email == null
-                || address == null){
+                || address == null
+                || sexType == null){
             throw new NullPointerException("Some basic parameters were null!");
         }
 
@@ -27,6 +50,7 @@ abstract class Person {
         this.telephoneNumber = telephoneNumber;
         this.email = email;
         this.address = address;
+        this.sex = sexType;
     }
 
     public Long getId() {
@@ -51,6 +75,10 @@ abstract class Person {
 
     public String getAddress() {
         return address;
+    }
+
+    public SexType getSex() {
+        return sex;
     }
 
     public void setTelephoneNumber(String telephoneNumber) {

@@ -2,12 +2,13 @@ package model;
 //  Clase de la entidad 'Factura'
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Objects;
 
 public class Invoice {
 
-    private int invoiceNumber;  //   refFactura
-    private LocalDate date; //  fecha
-    private LocalTime time; //  hora
+    private final int invoiceNumber;  //   refFactura
+    private final LocalDate date; //  fecha
+    private final LocalTime time; //  hora
     private double total;   //  valorTotal
 
     public Invoice(int invoiceNumber, LocalDate date, LocalTime time, double total) {
@@ -21,24 +22,12 @@ public class Invoice {
         return invoiceNumber;
     }
 
-    public void setInvoiceNumber(int invoiceNumber) {
-        this.invoiceNumber = invoiceNumber;
-    }
-
     public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public LocalTime getTime() {
         return time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
     }
 
     public double getTotal() {
@@ -46,7 +35,18 @@ public class Invoice {
     }
 
     public void setTotal(double total) {
-        this.total += total;
+        this.total = total;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Invoice invoice)) return false;
+        return invoiceNumber == invoice.invoiceNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(invoiceNumber);
+    }
 }
