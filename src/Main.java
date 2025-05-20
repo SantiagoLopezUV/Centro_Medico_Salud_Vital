@@ -20,7 +20,9 @@ public class Main{
         AccessPanel.changeContent("Welcome");
 
     }
-
+// icon credits
+    //Designed by macrovector / Freepik
+    //Designed by macrovector_official / Freepik"
 
 
 }
