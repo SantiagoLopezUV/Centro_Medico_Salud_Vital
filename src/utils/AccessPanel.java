@@ -1,6 +1,5 @@
 package utils;
 
-import view.InitPanel;
 import view.MainPanel;
 
 import javax.swing.*;
@@ -28,6 +27,12 @@ public interface AccessPanel {
             System.err.println(panelName + " - change content\n");
             e.printStackTrace();
         }
+    }
+
+    static ImageIcon scaleImage(ImageIcon icon, int height, int with ){
+        Image image = icon.getImage();
+        Image scaledImage = image.getScaledInstance(with, height, Image.SCALE_FAST);
+        return new ImageIcon(scaledImage);
     }
 
 }

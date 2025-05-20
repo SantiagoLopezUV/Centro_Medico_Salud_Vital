@@ -1,13 +1,14 @@
 package utils;
 
 import view.InitPanel;
+import view.LogInPanel;
 
 import javax.swing.JPanel;
 
 enum PanelsMap {
 
     WELCOME("Welcome", new InitPanel().getPanel()),
-
+    LOGIN("Login", new LogInPanel().getPanel()),
 
     ;
 
