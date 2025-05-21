@@ -17,7 +17,8 @@ public class Main{
                 UIManager.put (key, f);
         }
         //AccessPanel.changeContent("Welcome");
-        AccessPanel.changeContent("M_Update_Costs");
+        //AccessPanel.changeContent("M_Update_Costs");
+        AccessPanel.changeContent("M_Discounts_Benefits");
 
     }
 // icon credits

@@ -1,9 +1,6 @@
 package utils;
 
-import view.InitPanel;
-import view.LogInPanel;
-import view.M_Menu;
-import view.M_UpdateCosts;
+import view.*;
 
 import javax.swing.JPanel;
 
@@ -13,7 +10,7 @@ enum PanelsMap {
     LOGIN("Login", new LogInPanel().getPanel()),
     M_MENU("M_Menu", new M_Menu().getPanel()),
     M_UPDATE_COSTS("M_Update_Costs", new M_UpdateCosts().getPanel()),
-    //M_DISCOUNTS_BENEFITS("M_Discounts_Benefits", new ().getPanel()),
+    M_DISCOUNTS_BENEFITS("M_Discounts_Benefits", new M_DiscountsBenefits().getPanel()),
 
     ;
 
