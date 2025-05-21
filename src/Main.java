@@ -16,7 +16,6 @@ public class Main{
             if (value instanceof javax.swing.plaf.FontUIResource)
                 UIManager.put (key, f);
         }
-
         AccessPanel.changeContent("Welcome");
 
     }
