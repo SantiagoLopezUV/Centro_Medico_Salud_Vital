@@ -40,4 +40,8 @@ public class M_Menu implements AccessPanel {
     public JPanel getPanel() {
         return M_MenuPanel;
     }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }
