@@ -2,6 +2,7 @@ package utils;
 
 import view.InitPanel;
 import view.LogInPanel;
+import view.R_Menu_Citas;
 
 import javax.swing.JPanel;
 
@@ -9,7 +10,7 @@ enum PanelsMap {
 
     WELCOME("Welcome", new InitPanel().getPanel()),
     LOGIN("Login", new LogInPanel().getPanel()),
-
+    R_MENU_CITAS("R_Menu_Citas", new R_Menu_Citas().getPanel()),
     ;
 
 
