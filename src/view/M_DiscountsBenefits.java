@@ -18,6 +18,7 @@ public class M_DiscountsBenefits implements AccessPanel {
     private JLabel M_DiscountsBenefits_TitleActualDiscount;
     private JLabel M_DiscountBenefits_TitleNewDiscount;
     private JLabel M_DiscountsBenefits_NotesIcon;
+    private JLabel M_DiscountsBenefits_SubTitleAdmDiscountsBenefits;
 
     public M_DiscountsBenefits() {
         M_DiscountsBenefits_ReturnBttn.addActionListener(new ActionListener() {

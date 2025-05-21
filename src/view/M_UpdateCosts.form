@@ -3,10 +3,11 @@
   <grid id="27dc6" binding="M_UpdateCostsPanel" layout-manager="GridLayoutManager" row-count="13" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="697" height="400"/>
+      <xy x="20" y="20" width="697" height="454"/>
     </constraints>
     <properties>
       <background color="-4529432"/>
+      <foreground color="-12303033"/>
     </properties>
     <border type="none"/>
     <children>
@@ -21,41 +22,6 @@
           <text value="Administrador"/>
         </properties>
       </component>
-      <vspacer id="a2ffe">
-        <constraints>
-          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <vspacer id="37748">
-        <constraints>
-          <grid row="12" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <vspacer id="e9997">
-        <constraints>
-          <grid row="9" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <vspacer id="1513b">
-        <constraints>
-          <grid row="11" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <vspacer id="7eb52">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <hspacer id="f33e0">
-        <constraints>
-          <grid row="7" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
-      <hspacer id="d1781">
-        <constraints>
-          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
       <component id="b07d6" class="javax.swing.JButton" binding="M_UpdateCosts_SaveBttn">
         <constraints>
           <grid row="10" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -74,16 +40,6 @@
           <text value="Regresar"/>
         </properties>
       </component>
-      <vspacer id="3b727">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <vspacer id="5bf26">
-        <constraints>
-          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
       <component id="8e41b" class="javax.swing.JFormattedTextField" binding="M_UpdateCosts_CostField">
         <constraints>
           <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -109,6 +65,7 @@
         </constraints>
         <properties>
           <font name="Arial Black" size="18" style="1"/>
+          <foreground color="-12303033"/>
           <text value="Nuevo Valor"/>
         </properties>
       </component>
@@ -118,6 +75,7 @@
         </constraints>
         <properties>
           <font name="Arial Black" size="18" style="1"/>
+          <foreground color="-12303033"/>
           <text value="Valor"/>
         </properties>
       </component>
@@ -135,10 +93,31 @@
         </constraints>
         <properties>
           <font name="Arial Black" size="18" style="1"/>
+          <foreground color="-12303033"/>
           <text value="Servicio"/>
         </properties>
       </component>
-      <component id="c3566" class="javax.swing.JLabel" binding="M_UpdateCosts_NotesIcon">
+      <component id="66534" class="javax.swing.JLabel" binding="M_UpdateCosts_SubTitleAdmUpdateCosts">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Arial Black" size="12" style="2"/>
+          <foreground color="-12303033"/>
+          <text value="User: Administrador/Modificar Costos"/>
+        </properties>
+      </component>
+      <vspacer id="7eb52">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="e7438">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="cc01a" class="javax.swing.JLabel" binding="M_UpdateCosts_NotesIcon">
         <constraints>
           <grid row="3" column="4" row-span="3" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -147,6 +126,46 @@
           <text value=""/>
         </properties>
       </component>
+      <vspacer id="1513b">
+        <constraints>
+          <grid row="9" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="37748">
+        <constraints>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="e9997">
+        <constraints>
+          <grid row="11" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="70e10">
+        <constraints>
+          <grid row="12" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="f33e0">
+        <constraints>
+          <grid row="10" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="26be1">
+        <constraints>
+          <grid row="10" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="974af">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="d1781">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
     </children>
   </grid>
 </form>

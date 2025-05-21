@@ -16,10 +16,7 @@ public class Main{
             if (value instanceof javax.swing.plaf.FontUIResource)
                 UIManager.put (key, f);
         }
-        //AccessPanel.changeContent("Welcome");
-        //AccessPanel.changeContent("M_Update_Costs");
-        AccessPanel.changeContent("M_Discounts_Benefits");
-
+        AccessPanel.changeContent("Welcome");
     }
 // icon credits
     //Designed by macrovector / Freepik

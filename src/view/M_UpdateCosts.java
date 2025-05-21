@@ -17,6 +17,7 @@ public class M_UpdateCosts implements AccessPanel{
     private JFormattedTextField M_UpdateCosts_CostField;
     private JLabel M_UpdateCosts_TitleService;
     private JComboBox M_UpdateCosts_comboBoxService;
+    private JLabel M_UpdateCosts_SubTitleAdmUpdateCosts;
     private JLabel M_UpdateCosts_NotesIcon;
 
     public M_UpdateCosts() {
