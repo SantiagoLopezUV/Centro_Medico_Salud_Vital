@@ -11,8 +11,9 @@ public class R_Menu implements AccessPanel {
     private JPanel R_MenuPanel;
     private JButton R_Menu_MedicAppointmentBttn;
     private JButton R_Menu_BillingBttn;
-    private JLabel R_MedicCenter;
     private JLabel R_GroupICON;
+    private JLabel R_Menu_SubTitleRecep;
+    private JButton R_returnBttn;
 
     public R_Menu() {
         R_Menu_AppointmentBttn.addActionListener(new ActionListener() {
