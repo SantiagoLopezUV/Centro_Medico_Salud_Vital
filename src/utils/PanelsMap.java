@@ -1,7 +1,6 @@
 package utils;
 
-import view.InitPanel;
-import view.LogInPanel;
+import view.*;
 
 import javax.swing.JPanel;
 
@@ -9,7 +8,9 @@ enum PanelsMap {
 
     WELCOME("Welcome", new InitPanel().getPanel()),
     LOGIN("Login", new LogInPanel().getPanel()),
-
+    R_MENU_APPOINTMENT("R_Menu_Appointment", new R_Menu_Appointment().getPanel()),
+    R_SCHEDULEAPPOINTMENT("R_ScheduleAppointment", new R_ScheduleAppointment().getPanel()),
+    R_APPOINTMENTFULFILLMENT("R_AppointmentFulfillment", new R_AppointmentFulfillment().getPanel()),
     ;
 
 
