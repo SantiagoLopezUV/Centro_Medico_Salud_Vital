@@ -12,7 +12,9 @@ enum PanelsMap {
     R_MENU_APPOINTMENT("R_Menu_Appointment", new R_Menu_Appointment().getPanel()),
     R_SCHEDULEAPPOINTMENT("R_ScheduleAppointment", new R_ScheduleAppointment().getPanel()),
     R_APPOINTMENTFULFILLMENT("R_AppointmentFulfillment", new R_AppointmentFulfillment().getPanel()),
+    R_FULFILLMENT_STATUSAPPOINTMENT("R_Fulfillment_StatusAppointment", new R_Fulfillment_StatusAppointment().getPanel()),
     R_MENU_CONSULTATION("R_Menu_Consultation", new R_Menu_Consultation().getPanel()),
+
     ;
 
 
