@@ -8,14 +8,14 @@ import java.awt.event.ActionListener;
 
 public class R_DiscountCostService implements AccessPanel {
     private JPanel R_DiscountCostServicePanel;
-    private JComboBox R_AgreementComboBox;
-    private JComboBox R_ServiceComboBox;
-    private JFormattedTextField R_ValueFormattedTextField;
-    private JLabel R_Menu_ConsultationRecepcionistTitle;
-    private JLabel R_Menu_Consultation_SubTitleRecep;
-    private JLabel R_DiscountCostService_ServiceLabel;
-    private JLabel R_DiscountCostService_AgreementLabel;
-    private JLabel R_DiscountCostService_ValueLabel;
+    private JComboBox R_DiscountCostService_comboBoxAgreement;
+    private JComboBox R_DiscountCostService_comboBoxService;
+    private JFormattedTextField R_DiscountCostService_ValueField;
+    private JLabel R_DiscountCostServiceRecepcionistTitle;
+    private JLabel R_DiscountCostServiceSubTitleRecep;
+    private JLabel R_DiscountCostService_lblService;
+    private JLabel R_DiscountCostService_lblAgreement;
+    private JLabel R_DiscountCostService_lblValue;
     private JButton R_DiscountServiceReturnBttn;
 
     public R_DiscountCostService() {
