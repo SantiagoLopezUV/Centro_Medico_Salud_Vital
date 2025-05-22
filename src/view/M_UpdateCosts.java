@@ -12,10 +12,10 @@ public class M_UpdateCosts implements AccessPanel{
     private JButton M_UpdateCosts_ReturnBttn;
     private JLabel M_UpdateCosts_ManagerTitle;
     private JFormattedTextField M_UpdateCosts_NewCostField;
-    private JLabel M_UpdateCosts_TitleNewCost;
-    private JLabel M_UpdateCosts_TilteCost;
+    private JLabel M_UpdateCosts_lblNewCost;
+    private JLabel M_UpdateCosts_lblCost;
     private JFormattedTextField M_UpdateCosts_CostField;
-    private JLabel M_UpdateCosts_TitleService;
+    private JLabel M_UpdateCosts_lblService;
     private JComboBox M_UpdateCosts_comboBoxService;
     private JLabel M_UpdateCosts_SubTitleAdmUpdateCosts;
     private JLabel M_UpdateCosts_NotesIcon;

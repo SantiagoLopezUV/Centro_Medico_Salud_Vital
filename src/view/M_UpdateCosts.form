@@ -63,7 +63,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="57121" class="javax.swing.JLabel" binding="M_UpdateCosts_TitleNewCost">
+      <component id="57121" class="javax.swing.JLabel" binding="M_UpdateCosts_lblNewCost">
         <constraints>
           <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -73,7 +73,7 @@
           <text value="Nuevo Valor"/>
         </properties>
       </component>
-      <component id="995eb" class="javax.swing.JLabel" binding="M_UpdateCosts_TilteCost">
+      <component id="995eb" class="javax.swing.JLabel" binding="M_UpdateCosts_lblCost">
         <constraints>
           <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -91,7 +91,7 @@
           <font name="Arial Black"/>
         </properties>
       </component>
-      <component id="4df7d" class="javax.swing.JLabel" binding="M_UpdateCosts_TitleService">
+      <component id="4df7d" class="javax.swing.JLabel" binding="M_UpdateCosts_lblService">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

@@ -44,7 +44,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="2cef5" class="javax.swing.JLabel" binding="M_DiscountsBenefits_TitleAgreement">
+      <component id="2cef5" class="javax.swing.JLabel" binding="M_DiscountsBenefits_lblAgreement">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -54,7 +54,7 @@
           <text value="Convenio"/>
         </properties>
       </component>
-      <component id="b3318" class="javax.swing.JLabel" binding="M_DiscountsBenefits_TitleActualDiscount">
+      <component id="b3318" class="javax.swing.JLabel" binding="M_DiscountsBenefits_lblActualDiscount">
         <constraints>
           <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -65,7 +65,7 @@
           <text value="Descuento Actual"/>
         </properties>
       </component>
-      <component id="bea6a" class="javax.swing.JLabel" binding="M_DiscountBenefits_TitleNewDiscount">
+      <component id="bea6a" class="javax.swing.JLabel" binding="M_DiscountBenefits_lblNewDiscount">
         <constraints>
           <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>

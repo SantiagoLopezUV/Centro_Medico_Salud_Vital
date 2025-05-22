@@ -14,9 +14,9 @@ public class M_DiscountsBenefits implements AccessPanel {
     private JFormattedTextField M_DiscountsBenefits_NewCostDiscountField;
     private JFormattedTextField M_DiscountsBenefits_CostDiscountField;
     private JComboBox M_DiscountsBenefits_comboBoxAgreement;
-    private JLabel M_DiscountsBenefits_TitleAgreement;
-    private JLabel M_DiscountsBenefits_TitleActualDiscount;
-    private JLabel M_DiscountBenefits_TitleNewDiscount;
+    private JLabel M_DiscountsBenefits_lblAgreement;
+    private JLabel M_DiscountsBenefits_lblActualDiscount;
+    private JLabel M_DiscountBenefits_lblNewDiscount;
     private JLabel M_DiscountsBenefits_NotesIcon;
     private JLabel M_DiscountsBenefits_SubTitleAdmDiscountsBenefits;
 
