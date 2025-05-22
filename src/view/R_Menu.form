@@ -110,7 +110,7 @@
         <properties>
           <horizontalTextPosition value="0"/>
           <icon value="resources/group_icon.png"/>
-          <text value="Label"/>
+          <text value=""/>
         </properties>
       </component>
     </children>
