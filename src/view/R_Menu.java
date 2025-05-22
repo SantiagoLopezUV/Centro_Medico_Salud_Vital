@@ -9,17 +9,30 @@ import java.awt.event.ActionListener;
 public class R_Menu implements AccessPanel {
     private JButton R_Menu_AppointmentBttn;
     private JPanel R_MenuPanel;
-    private JButton R_Menu_MedicAppointmentBttn;
-    private JButton R_Menu_BillingBttn;
-    private JLabel R_GroupICON;
+    private JButton R_Menu_ConsultationBttn;
+    private JButton R_Menu_InvoiceBttn;
+    private JLabel R_Menu_GroupICON;
     private JLabel R_Menu_SubTitleRecep;
-    private JButton R_returnBttn;
+    private JButton R_Menu_ReturnBttn;
+    private JLabel R_Menu_RecepcionistTitle;
 
     public R_Menu() {
         R_Menu_AppointmentBttn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AccessPanel.changeContent("R_Menu_Appointment");
+            }
+        });
+        R_Menu_ConsultationBttn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AccessPanel.changeContent(("R_Menu_Consultation"));
+            }
+        });
+        R_Menu_ReturnBttn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AccessPanel.changeContent("Login");
             }
         });
     }
