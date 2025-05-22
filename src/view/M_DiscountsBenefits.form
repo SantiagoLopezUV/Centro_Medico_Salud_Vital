@@ -158,7 +158,7 @@
         <properties>
           <font name="Arial Black" size="12" style="2"/>
           <foreground color="-16777216"/>
-          <text value="User: Administrador/Modificar Descuentos y Convenios"/>
+          <text value="User:Administrador/Modificar-Descuentos-y-Convenios"/>
         </properties>
       </component>
       <vspacer id="e41a2">

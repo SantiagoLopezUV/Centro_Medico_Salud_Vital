@@ -16,7 +16,7 @@ public class Main{
             if (value instanceof javax.swing.plaf.FontUIResource)
                 UIManager.put (key, f);
         }
-        AccessPanel.changeContent("Welcome");
+        AccessPanel.changeContent("M_Menu");
     }
 // icon credits
     //Designed by macrovector / Freepik
