@@ -22,6 +22,13 @@ public class R_Menu_Consultation implements AccessPanel {
                 AccessPanel.changeContent("R_Menu");
             }
         });
+
+        R_Menu_Consultation_ServiceConsultationBttn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AccessPanel.changeContent("R_CostService");
+            }
+        });
     }
 
     @Override
