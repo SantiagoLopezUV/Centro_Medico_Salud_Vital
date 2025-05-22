@@ -17,7 +17,7 @@
         <properties>
           <font name="Arial Black" size="12" style="2"/>
           <foreground color="-16777216"/>
-          <text value="User:Recepcionista"/>
+          <text value="User:Recepcionista/Citas "/>
         </properties>
       </component>
       <component id="ecde0" class="javax.swing.JLabel" binding="R_Menu_AppointmentRecepcionistTitle">

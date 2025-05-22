@@ -74,7 +74,7 @@
         <properties>
           <font name="Arial Black" size="12" style="2"/>
           <foreground color="-16777216"/>
-          <text value="User:Recepcionista"/>
+          <text value="User:Recepcionista "/>
         </properties>
       </component>
       <component id="d57a1" class="javax.swing.JButton" binding="R_Menu_ReturnBttn">
