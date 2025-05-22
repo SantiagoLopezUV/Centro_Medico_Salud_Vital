@@ -17,7 +17,7 @@ public class Main{
                 UIManager.put (key, f);
         }
 
-        AccessPanel.changeContent("R_Menu_Citas");
+        AccessPanel.changeContent("Welcome");
 
     }
 // icon credits
