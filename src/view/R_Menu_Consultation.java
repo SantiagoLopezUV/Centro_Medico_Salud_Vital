@@ -29,6 +29,11 @@ public class R_Menu_Consultation implements AccessPanel {
                 AccessPanel.changeContent("R_CostService");
             }
         });
+        R_Menu_Consultation_DiscountsBenefitsConsultationBttn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {AccessPanel.changeContent("R_DiscountCostService");
+            }
+        });
     }
 
     @Override
