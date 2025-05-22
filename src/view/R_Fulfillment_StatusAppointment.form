@@ -51,7 +51,7 @@
         <properties>
           <font name="Arial Black" size="18" style="1"/>
           <foreground color="-16777216"/>
-          <text value="Estado de la Cita:"/>
+          <text value="Estado de la Cita"/>
         </properties>
       </component>
       <component id="b6f48" class="javax.swing.JFormattedTextField" binding="R_Fulfillment_StatusAppointment_StatusAppointmentField">

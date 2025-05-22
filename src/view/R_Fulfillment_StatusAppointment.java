@@ -24,6 +24,10 @@ public class R_Fulfillment_StatusAppointment implements AccessPanel {
                 AccessPanel.changeContent("R_AppointmentFulfillment");
             }
         });
+        R_Fulfillment_StatusAppointment_NewAppointmentBttn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {AccessPanel.changeContent("R_AddService");}
+        });
     }
 
     @Override
