@@ -15,6 +15,8 @@ public class R_AddService implements AccessPanel {
     private JLabel R_AddServiceSubTitleRecep;
     private JLabel R_AddService_ScheduleIcon;
     private JLabel R_AddService_lblServices;
+    private JLabel R_AddService_lblHour;
+    private JComboBox R_AddService_comboBoxHour;
 
     public R_AddService() {
         R_AddService_ReturnBttn.addActionListener(new ActionListener() {
