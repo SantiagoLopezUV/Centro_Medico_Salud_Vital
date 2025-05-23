@@ -35,9 +35,11 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
         //----reemplazar por las listas obtenias por las respectivas consultas
         //----para cada tabla
         Object[][] dataPatientPerArrangement= {
-                {0, "Rayos X", 50_000.},
-                {1, "Examen de sangre", 40_000.},
-                {2, "Conteo de defensas", 40_000.}
+                {"2025-05-10", "general", "Camila Ríos", "Pagado", 120000, 0.10},
+                {"2025-04-28", "urgencias", "Juan Martínez", "En curso", 5600000, 0.40},
+                {"2025-03-15", "odontología", "Laura Gómez", "Anulado", 350000, 0.0},
+                {"2025-05-05", "especializada", "Andrés Pérez", "Pendiente por pago", 220000, 0.20},
+                {"2025-02-20", "general", "Silvia Torres", "Pagado", 150000, 0.15}
         };
 
         //----

@@ -20,6 +20,7 @@ public class ResizeColumnsTable implements ComponentListener {
     public void componentResized(ComponentEvent e) {
         int colCount = table.getColumnCount();
         int colWidth = totalPanelWidth / colCount;
+        System.out.println(colWidth + " " + colCount);
         for (int i = 0; i < colCount; i++) {
             TableColumn column = table.getColumnModel().getColumn(i);
             column.setPreferredWidth(colWidth);
