@@ -1,14 +1,10 @@
 package view;
 
 import utils.AccessPanel;
-import utils.ResizeColumnsTable;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
     private JPanel D_MedicAdiServiAndSpecialtiesBG;
@@ -71,13 +67,9 @@ public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
         servAddiScrollPanel.setMaximumSize(new Dimension(maxPanelWidth, maxPanelHeight));
         specialtiesScrollPanel.setMaximumSize(new Dimension(maxPanelWidth, maxPanelHeight));
 
-        System.out.println();
+        resizeColumnsTable(this.servAddiTable, maxPanelWidth);
+        resizeColumnsTable(this.specialtiesTable, maxPanelWidth);
 
-        servAddiTable.addComponentListener(new ResizeColumnsTable(this.servAddiTable,
-                maxPanelWidth));
-
-        specialtiesTable.addComponentListener(new ResizeColumnsTable(this.specialtiesTable,
-                maxPanelWidth));
 
 
     }

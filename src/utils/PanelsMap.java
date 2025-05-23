@@ -13,8 +13,17 @@ enum PanelsMap {
     D_MENU("Director Menu", new D_MenuPanel().getPanel()),
     D_MED_ADDITIONAL_SERVICES_AND_SPECIALTIES( "Medic Additional Service and Specialties",
             new D_MedicAdditionalServsAndEspecialtiesPanel().getPanel()),
-    D_ARRANGEMENT_PATIENT_INFO("Arrangement patent inform", new D_ArrangementPatientInfoPanel().getPanel()),
-    D_MONTHLY_ADD_SERVS_INCOME("Monthly additional services income", new D_MonthlyAddServIncome().getPanel())
+    D_ARRANGEMENT_PATIENT_INFO("Arrangement patient inform",
+            new D_ArrangementPatientInfoPanel().getPanel()),
+    D_MONTHLY_ADD_SERVICES_INCOME("Monthly additional services income",
+            new D_MonthlyAddServIncome().getPanel()),
+    D_STATISTICS("Statistics", new D_Statistics().getPanel()),
+    D_STATISTICS_MEDIC_OCCUPATION_PERCENTAGE("Medic ocupation percentage",
+            new D_Statistics_MedicOccupationPercentage().getPanel()),
+    D_STATISTICS_ADD_SERV_PERCENTAGE("Additional service percentage",
+            new D_Statistics_AddServsUsePercentage().getPanel()),
+    D_STATISTICS_ARRANGEMENT_ANNULLED_RATE("Arrangement annulled rate",
+            new D_Statistics_ArrangementAnnulledRate().getPanel())
     ;
 
 

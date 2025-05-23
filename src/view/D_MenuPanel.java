@@ -3,10 +3,6 @@ package view;
 import utils.AccessPanel;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Objects;
 
 public class D_MenuPanel implements AccessPanel {
     private JPanel D_menuBG;
@@ -14,7 +10,7 @@ public class D_MenuPanel implements AccessPanel {
     private JButton statisticsBttn;
     private JButton monthlyIncomeBttn;
     private JButton medicServiceAndSpecialitiesBttn;
-    private JLabel CEOMenuTitle;
+    private JLabel directorMenuTitle;
     private JLabel CeoMenuIcon;
     private JButton logOutBttn;
 
@@ -30,11 +26,11 @@ public class D_MenuPanel implements AccessPanel {
 
         this.monthlyIncomeBttn
                 .addActionListener(e ->
-                        AccessPanel.changeContent("D_MONTHLY_ADD_SERVS_INCOME"));
+                        AccessPanel.changeContent("D_MONTHLY_ADD_SERVICES_INCOME"));
 
         this.statisticsBttn
                 .addActionListener(e ->
-                        AccessPanel.changeContent("Login"));
+                        AccessPanel.changeContent("D_STATISTICS"));
     }
 
 

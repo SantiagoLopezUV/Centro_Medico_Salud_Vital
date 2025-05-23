@@ -3,8 +3,9 @@ package utils;
 import view.MainPanel;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import java.awt.*;
-import java.util.Arrays;
+import java.awt.event.ComponentEvent;
 
 public interface AccessPanel {
 
@@ -30,10 +31,15 @@ public interface AccessPanel {
         }
     }
 
-    static ImageIcon scaleImage(ImageIcon icon, int height, int with ){
-        Image image = icon.getImage();
-        Image scaledImage = image.getScaledInstance(with, height, Image.SCALE_FAST);
-        return new ImageIcon(scaledImage);
+    default void resizeColumnsTable(JTable table, int totalPanelWidth){
+            int colCount = table.getColumnCount();
+            int colWidth = totalPanelWidth / colCount;
+            for (int i = 0; i < colCount; i++) {
+                TableColumn column = table.getColumnModel().getColumn(i);
+                column.setPreferredWidth(colWidth);
+                column.setMinWidth(colWidth);
+            }
     }
+
 
 }

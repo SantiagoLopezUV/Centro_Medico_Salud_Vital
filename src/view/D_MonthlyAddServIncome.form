@@ -84,6 +84,7 @@
               </grid>
             </constraints>
             <properties>
+              <background color="-5646621"/>
               <editable value="false"/>
             </properties>
           </component>

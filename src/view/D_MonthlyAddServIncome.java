@@ -2,15 +2,11 @@ package view;
 
 import utils.AccessPanel;
 import utils.InitComboBoxes;
-import utils.ResizeColumnsTable;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.lang.reflect.Array;
-import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.TextStyle;
-import java.util.ArrayList;
 import java.util.Locale;
 
 public class D_MonthlyAddServIncome implements AccessPanel {
@@ -57,7 +53,7 @@ public class D_MonthlyAddServIncome implements AccessPanel {
 
         //----reemplazar por las listas obtenias por las respectivas consultas
         //----para cada tabla
-        Object[][] dataPatientPerArrangement= {
+        Object[][] data= {
                 {"2025-04-11", "Rayos X", "FAC-00125", 85000},
                 {"2025-04-09", "Pruebas de sangre", "FAC-00112", 45000},
                 {"2025-04-30", "Ortopedia", "FAC-00098", 120000},
@@ -67,19 +63,17 @@ public class D_MonthlyAddServIncome implements AccessPanel {
 
         int income = 0;
 
-        for(int i=0; i<dataPatientPerArrangement.length; i++){
-            income += Integer.parseInt(dataPatientPerArrangement[i][3].toString());
+        for(int i=0; i<data.length; i++){
+            income += Integer.parseInt(data[i][3].toString());
         }
         this.totalIncome.setText(String.valueOf(income));
         //----
         // table heads
-        String[] columnNamePatientsPerArrangement = {"Fecha", "Servicio", "Ref Factura",
-                "Valor facturado"};
+        String[] columnNames = {"Fecha", "Servicio", "Ref Factura", "Valor facturado"};
         // adding into to table
-        DefaultTableModel tableModelPatientArrang = new DefaultTableModel(dataPatientPerArrangement,
-                columnNamePatientsPerArrangement);
-        this.monthlyIncomeTable.setModel(tableModelPatientArrang);
-        monthlyIncomeTable.addComponentListener(new ResizeColumnsTable(this.monthlyIncomeTable, MAIN_PANEL.getWidth()*2/3));
+        DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
+        this.monthlyIncomeTable.setModel(tableModel);
+        resizeColumnsTable(this.monthlyIncomeTable, MAIN_PANEL.getWidth()*2/3);
 
 
     }

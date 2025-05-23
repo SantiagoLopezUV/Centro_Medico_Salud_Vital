@@ -34,7 +34,7 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
 
         //----reemplazar por las listas obtenias por las respectivas consultas
         //----para cada tabla
-        Object[][] dataPatientPerArrangement= {
+        Object[][] data= {
                 {"2025-05-10", "general", "Camila Ríos", "Pagado", 120000, 0.10},
                 {"2025-04-28", "urgencias", "Juan Martínez", "En curso", 5600000, 0.40},
                 {"2025-03-15", "odontología", "Laura Gómez", "Anulado", 350000, 0.0},
@@ -47,12 +47,11 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
         this.patientNamesLbl.setText("Jhon Doe");
         this.patientNamesLbl.setVisible(true);
         // table heads
-        String[] columnNamePatientsPerArrangement = {"Fecha", "Tipo", "Médico",
-                "Estado", "Valor factura", "% convenio"};
+        String[] columnNames = {"Fecha", "Tipo", "Médico", "Estado", "Valor factura", "% convenio"};
         // adding into to table
-        DefaultTableModel tableModelPatientArrang = new DefaultTableModel(dataPatientPerArrangement,
-                columnNamePatientsPerArrangement);
-        this.patientsArrangementTable.setModel(tableModelPatientArrang);
+        DefaultTableModel tableModel = new DefaultTableModel(data,
+                columnNames);
+        this.patientsArrangementTable.setModel(tableModel);
 
 
 
