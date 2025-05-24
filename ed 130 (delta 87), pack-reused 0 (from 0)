@@ -1,0 +1,225 @@
+[33mcommit 992b8f99caffa126b96de1c14a4f795aee57cf05[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mreceptionist[m[33m, [m[1;31morigin/recepcionist[m[33m)[m
+Author: Juan David Cifuentes Florez <juan-12_91@hotmail.com>
+Date:   Fri May 23 20:21:26 2025 -0500
+
+    Changes on cached files in .idea folder
+
+[33mcommit cb985343c3bd2eb3ae76293648e41b1d652b512a[m
+Author: Juan David Cifuentes Florez <juan-12_91@hotmail.com>
+Date:   Fri May 23 20:14:04 2025 -0500
+
+    gitignore modified
+
+[33mcommit 4b0acdb2f6304cb2a870f396171d80034b4bb075[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 22 18:14:11 2025 -0500
+
+    update details of forms Recepcionist
+
+[33mcommit b69db3d814bb1f53b4e7d4d370a9762b92d06677[m
+Author: juanjo380 <juan.bolanos.serna@correounivalle.edu.co>
+Date:   Thu May 22 17:21:19 2025 -0500
+
+    The last one form was added with his buttons
+
+[33mcommit 6183ebbf9d0845ef15d1850b727c34493a331f6e[m
+Author: juanjo380 <juan.bolanos.serna@correounivalle.edu.co>
+Date:   Thu May 22 17:11:50 2025 -0500
+
+    The last one form was added
+
+[33mcommit f8dec30418a8e3956b77fb358b38a16c8374e7c6[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 22 16:48:39 2025 -0500
+
+    Details on Form
+
+[33mcommit 83ecc88ad7a6c501acc3d97dcc724c9ab0ce97a5[m
+Author: juanjo380 <juan.bolanos.serna@correounivalle.edu.co>
+Date:   Thu May 22 16:20:43 2025 -0500
+
+    A new .form
+
+[33mcommit c835effd9e6d561764f82c335349b737b463434e[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 22 15:33:09 2025 -0500
+
+    update form R_AddService
+
+[33mcommit 8c18a89e512f1cfd25c530c23bcf4a8d5ebefbfe[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 22 15:30:22 2025 -0500
+
+    Update funtions of from and creation of the form R_AddService
+
+[33mcommit 21fc4eb81004e6dfec130ae11c8a760fe499c8bf[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 22 15:06:53 2025 -0500
+
+    The creation of the Manager's R_Fulfillment_StatusAppointment
+
+[33mcommit 643ddc8d3de080a089e1befb6337fc29db8f20ab[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 22 14:04:38 2025 -0500
+
+    improving forms
+
+[33mcommit 0cefde034664c97a11d24df684453a43285c62ea[m
+Author: juanjo380 <juan.bolanos.serna@correounivalle.edu.co>
+Date:   Thu May 22 13:15:39 2025 -0500
+
+    Some bugs were fixed
+
+[33mcommit 76acaf4cac85ddb6d4f963d7b5c2ea5549876a14[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 22 12:53:31 2025 -0500
+
+    Add AccionListener from the forms Menus
+
+[33mcommit bc21dc8ef91e6b0b1c9ba9668eb580063ef3b95a[m
+Author: juanjo380 <juan.bolanos.serna@correounivalle.edu.co>
+Date:   Thu May 22 12:49:01 2025 -0500
+
+    Many forms has been created pt 2 Some actionlisteners has been created too
+
+[33mcommit 8cbaef697f179b00b5d4af5de9e09b616c02377d[m
+Merge: bdfb371 c32c13c
+Author: juanjo380 <juan.bolanos.serna@correounivalle.edu.co>
+Date:   Thu May 22 02:33:14 2025 -0500
+
+    Many forms has been created pt 1
+
+[33mcommit bdfb37165e2770c3d81d93bea750e5df5ff1b596[m
+Author: juanjo380 <juan.bolanos.serna@correounivalle.edu.co>
+Date:   Thu May 22 00:46:33 2025 -0500
+
+    Resolve conflicts
+
+[33mcommit c32c13c232167bc0913ca6f0f24224a717f26321[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Wed May 21 20:54:19 2025 -0500
+
+    Creation of R_AppointmentFulfillment and R_ScheduleAppointment
+
+[33mcommit 987402eff936d16c95dcdda089be0ec88b670b54[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Wed May 21 18:39:38 2025 -0500
+
+    Updating designer of the form R_Menu_Citas
+
+[33mcommit 4f8e6eded9d7f9350c341ca8d32142775f2eabd6[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Wed May 21 18:34:49 2025 -0500
+
+    The Creation of the Recepcionist's R_Menu_Citas.form have been completed
+
+[33mcommit eae474caa386834747bca588676c1c345f9cc124[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Juan David Cifuentes Florez <juan-12_91@hotmail.com>
+Date:   Tue May 20 12:40:36 2025 -0500
+
+    some icons added 2
+
+[33mcommit 0041f337ce3ffc03d1ced2692057e8936164a140[m
+Author: Juan David Cifuentes Florez <juan-12_91@hotmail.com>
+Date:   Mon May 19 22:47:03 2025 -0500
+
+    some icons added
+
+[33mcommit 9546cac0522ef4104c158f75297f7a9d677a9997[m
+Author: Juan David Cifuentes Florez <juan-12_91@hotmail.com>
+Date:   Mon May 19 22:35:35 2025 -0500
+
+    LogIn form created and linked with InitPanel form
+
+[33mcommit ecd64107268e5c6a70fcefb077006f1729529a57[m
+Author: Juan David Cifuentes Florez <juan-12_91@hotmail.com>
+Date:   Sat May 17 21:50:51 2025 -0500
+
+    Main and Init panels forms were added, also an Enum PanelsMap and a logic inside AccessPanel interface, both combine will be the algorithm in charge of reder differents panels across the application life
+
+[33mcommit 9c865e0d47545d05c93abcbd0e8aa8bfada2f3eb[m
+Author: Juan David Cifuentes Florez <juan-12_91@hotmail.com>
+Date:   Fri May 16 10:53:03 2025 -0500
+
+    Improvement to all created classes
+
+[33mcommit a0c79d208d30e3925edb9301e28b7bd5a9d1b55e[m
+Merge: 7412c75 6f2b605
+Author: Juan D <juan-12_91@hotmail.com>
+Date:   Thu May 15 09:04:00 2025 -0500
+
+    appoinment conflic resolve
+
+[33mcommit 7412c75215d47ea9c28f231f96f852026d5dea74[m
+Author: Juan D <juan-12_91@hotmail.com>
+Date:   Thu May 15 09:02:47 2025 -0500
+
+    appointment modification started
+
+[33mcommit 6f2b6051835cf0986380bc11da514f9d90f54a0c[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 15 08:42:26 2025 -0500
+
+    Eliminacion de archivo readme en Carpeta Model
+
+[33mcommit 5a66d0b06c1e06bb3696cf585b8e2a5f0e12b747[m
+Author: Juan D <juan-12_91@hotmail.com>
+Date:   Thu May 15 08:29:15 2025 -0500
+
+    commit after merge
+
+[33mcommit fdfa811af009b5c8c808c20ed8b92fc146d5e86c[m
+Merge: a245dd2 3909121
+Author: Juan D <juan-12_91@hotmail.com>
+Date:   Thu May 15 08:25:05 2025 -0500
+
+    Merge branch 'main' of
+    https://github.com/SantiagoLopezUV/Centro_Medico_Salud_Vital
+
+[33mcommit a245dd28d1cc427fbe0da1cc0b9653960ab6756b[m
+Author: Juan D <juan-12_91@hotmail.com>
+Date:   Thu May 15 08:24:30 2025 -0500
+
+    ConsultationType and Arrangement classes were added
+
+[33mcommit 3909121a257cd79dc222e8c09882a7c101d9b8ab[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 15 08:24:12 2025 -0500
+
+    Creacion de clase Cita
+
+[33mcommit ce040103905ae030e5e31196d2bad3c3985bd3e5[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 15 08:14:50 2025 -0500
+
+    Creacion de clase Servicio Adicional, Setter and Getters
+
+[33mcommit 7dd422f1e0c5e8eab24bdcc97cc3dfb7e5b5d78e[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Thu May 15 08:04:38 2025 -0500
+
+    Creacion de clase Factura, Setter and Getters
+
+[33mcommit 620c49447e65dc43e87e5d8ba3c0db6fcfc0b3f9[m
+Author: Juan David Cifuentes Florez <juan-12_91@hotmail.com>
+Date:   Wed May 14 11:57:17 2025 -0500
+
+    Medic, MedicalSpecility, Patient and Person classes were added
+
+[33mcommit ba47166d86bd273299a2cf474dfe598994e27ee9[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Tue May 13 22:23:14 2025 -0500
+
+    Creacion de Carpetas para MVC y modularidad del Proyecto
+
+[33mcommit 6a411ff9d4fe057062c81fdcd6539cbc9c3cd1f1[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Tue May 13 22:10:33 2025 -0500
+
+    Agregando Imagen Diagrama ER del Proyecto a la carpeta 'Docs'
+
+[33mcommit 948ace9c0ce8e16e835cd05703924f8213ba9e07[m
+Author: SantiagoLopezUV <santiago.lopez.ramirez@correounivalle.edu.co>
+Date:   Tue May 13 21:58:32 2025 -0500
+
+    Creacion Repositorio Proyecto Final Base de Datos
