@@ -10,15 +10,6 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="b13d0" class="javax.swing.JLabel" binding="directiveIcon">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <icon value="resources/puzzle_icon_50x50.png"/>
-          <text value=""/>
-        </properties>
-      </component>
       <component id="f313c" class="javax.swing.JLabel" binding="MedicPercentageTitle">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -90,6 +81,16 @@
           </grid>
         </constraints>
       </vspacer>
+      <component id="b805e" class="javax.swing.JLabel" binding="breadCrumbLbl">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="14" style="1"/>
+          <foreground color="-12303033"/>
+          <text value="User: Director/Estadísticas/Porcentaje de ocupación por médico"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

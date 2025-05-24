@@ -13,6 +13,7 @@ public class D_MenuPanel implements AccessPanel {
     private JLabel directorMenuTitle;
     private JLabel CeoMenuIcon;
     private JButton logOutBttn;
+    private JLabel breadCrumbLbl;
 
     public D_MenuPanel() {
 

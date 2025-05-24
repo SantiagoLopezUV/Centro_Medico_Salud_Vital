@@ -11,8 +11,8 @@ public class D_Statistics_AddServsUsePercentage implements AccessPanel {
     private JScrollPane addServsPercentageScrollPanel;
     private JTable addServsPercentageTable;
     private JLabel addServsPercentageTitle;
-    private JLabel directiveIcon;
     private JButton backBttn;
+    private JLabel breadCrumbLbl;
 
     public D_Statistics_AddServsUsePercentage() {
         this.backBttn.addActionListener(e ->

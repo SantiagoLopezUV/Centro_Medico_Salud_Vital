@@ -8,7 +8,6 @@ import javax.swing.table.DefaultTableModel;
 
 public class D_ArrangementPatientInfoPanel implements AccessPanel {
     private JPanel D_arrangementPatientInfoBG;
-    private JLabel directiveIcon;
     private JLabel arrangementPatientsIcon;
     private JButton searchPatientBttn;
     private JButton backBttn;
@@ -16,6 +15,7 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
     private JTable patientsArrangementTable;
     private JScrollPane patientPerArrangementScrollPanel;
     private JLabel patientNamesLbl;
+    private JLabel breadCrumbLbl;
 
     public D_ArrangementPatientInfoPanel() {
         this.searchPatientField.addFocusListener(new PlaceHoldersAction(this.searchPatientField,

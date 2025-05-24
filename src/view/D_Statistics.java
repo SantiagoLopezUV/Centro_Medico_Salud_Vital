@@ -11,8 +11,8 @@ public class D_Statistics implements AccessPanel {
     private JButton medicOcupationPercentageBttn;
     private JButton backBttn;
     private JLabel StatisticsMenuTitle;
-    private JLabel directiveIcon;
     private JLabel statisticsIcon;
+    private JLabel breadCrumbLbl;
 
 
     public D_Statistics() {

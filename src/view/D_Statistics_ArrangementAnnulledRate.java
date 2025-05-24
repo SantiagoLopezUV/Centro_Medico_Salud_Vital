@@ -8,11 +8,11 @@ import java.awt.*;
 
 public class D_Statistics_ArrangementAnnulledRate implements AccessPanel {
     private JPanel D_Statistics_arrangementAnnulledRateBG;
-    private JLabel directiveIcon;
     private JLabel arrangementAnnulledRateTitle;
     private JScrollPane arrangementAnnulledRateScrollPanel;
     private JTable arrangementAnnulledRateTable;
     private JButton backBttn;
+    private JLabel breadCrumbLbl;
 
     public D_Statistics_ArrangementAnnulledRate() {
         this.backBttn.addActionListener(e ->

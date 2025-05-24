@@ -16,7 +16,7 @@ public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
     private JScrollPane servAddiScrollPanel;
     private JTable servAddiTable;
     private JTable specialtiesTable;
-    private JLabel directiveIcon;
+    private JLabel breadCrumbLbl;
 
     public D_MedicAdditionalServsAndEspecialtiesPanel() {
         initTables();

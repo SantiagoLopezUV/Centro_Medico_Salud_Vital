@@ -8,11 +8,11 @@ import java.awt.*;
 
 public class D_Statistics_MedicOccupationPercentage implements AccessPanel {
     private JPanel D_Statistics_medicOccupationPercentageBG;
-    private JLabel directiveIcon;
     private JLabel MedicPercentageTitle;
     private JButton backBttn;
     private JTable medicOccupationPercentageTable;
     private JScrollPane medicOccupationPercentageScrollPanel;
+    private JLabel breadCrumbLbl;
 
     public D_Statistics_MedicOccupationPercentage() {
         this.backBttn.addActionListener(e ->

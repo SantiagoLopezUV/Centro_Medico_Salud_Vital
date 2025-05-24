@@ -12,7 +12,6 @@ import java.util.Locale;
 public class D_MonthlyAddServIncome implements AccessPanel {
     private JPanel D_monthlyAddServIncomeBG;
     private JLabel monthlyAddServIncomeIcon;
-    private JLabel directiveIcon;
     private JScrollPane monthlyIncomeScrollPanel;
     private JTable monthlyIncomeTable;
     private JButton backBttn;
@@ -20,6 +19,7 @@ public class D_MonthlyAddServIncome implements AccessPanel {
     private JComboBox monthComboBox;
     private JButton searchMonthBttn;
     private JTextField totalIncome;
+    private JLabel breadCrumbLbl;
 
 
     public D_MonthlyAddServIncome() {

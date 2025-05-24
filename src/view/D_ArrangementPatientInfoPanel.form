@@ -3,22 +3,13 @@
   <grid id="27dc6" binding="D_arrangementPatientInfoBG" layout-manager="GridLayoutManager" row-count="7" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="512" height="498"/>
+      <xy x="20" y="20" width="606" height="498"/>
     </constraints>
     <properties>
       <background color="-4791576"/>
     </properties>
     <border type="none"/>
     <children>
-      <component id="74f4a" class="javax.swing.JLabel" binding="directiveIcon">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <icon value="resources/puzzle_icon_50x50.png"/>
-          <text value=""/>
-        </properties>
-      </component>
       <component id="efb27" class="javax.swing.JLabel" binding="arrangementPatientsIcon">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -147,6 +138,16 @@
           <opaque value="true"/>
           <text value=""/>
           <visible value="false"/>
+        </properties>
+      </component>
+      <component id="aa329" class="javax.swing.JLabel" binding="breadCrumbLbl">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="14" style="1"/>
+          <foreground color="-12303033"/>
+          <text value="User: Director/Informe de citas por paciente"/>
         </properties>
       </component>
     </children>
