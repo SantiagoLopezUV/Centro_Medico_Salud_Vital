@@ -25,7 +25,7 @@ public class D_Statistics_ArrangementAnnulledRate implements AccessPanel {
         return this.D_Statistics_arrangementAnnulledRateBG;
     }
 
-    //Se debe modificar para cuando se hagam las respectivas querys
+    //Se debe modificar para cuando se hagan las respectivas querys
     private void initTables(){
 
         //----reemplazar por las listas obtenias por las respectivas consultas
