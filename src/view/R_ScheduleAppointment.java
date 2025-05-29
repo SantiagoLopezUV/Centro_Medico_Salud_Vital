@@ -11,7 +11,7 @@ public class R_ScheduleAppointment implements AccessPanel {
     private JLabel R_ScheduleAppointment_SubTitleRecep;
     private JLabel R_ScheduleAppointmentRecepcionistTitle;
     private JComboBox R_ScheduleAppointment_comboBoxDoctors;
-    private JComboBox R_ScheduleAppointment_comboBoxCalendar;
+    private JComboBox R_ScheduleAppointment_comboBoxDate;
     private JComboBox R_ScheduleAppointment_comboBoxAgreement;
     private JFormattedTextField R_ScheduleAppointment_IdPatientField;
     private JButton R_ScheduleAppointment_ReturnBttn;
@@ -19,9 +19,11 @@ public class R_ScheduleAppointment implements AccessPanel {
     private JLabel R_ScheduleAppointment_lblPatient;
     private JLabel R_ScheduleAppointment_lblAgreement;
     private JButton R_ScheduleAppointment_SheduleBttn;
-    private JLabel R_ScheduleAppointment_lblCalendar;
+    private JLabel R_ScheduleAppointment_lblDate;
     private JLabel R_ScheduleAppointment_lblSpecialty;
     private JComboBox R_ScheduleAppointment_comboBoxSpecialty;
+    private JLabel R_ScheduleAppointment_lblHour;
+    private JComboBox R_ScheduleAppointment_comboBoxHour;
 
     public R_ScheduleAppointment() {
         R_ScheduleAppointment_ReturnBttn.addActionListener(new ActionListener() {

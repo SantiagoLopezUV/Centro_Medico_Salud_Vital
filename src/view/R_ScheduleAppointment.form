@@ -154,7 +154,7 @@
           </grid>
         </constraints>
       </vspacer>
-      <component id="4d775" class="javax.swing.JLabel" binding="R_ScheduleAppointment_lblCalendar">
+      <component id="4d775" class="javax.swing.JLabel" binding="R_ScheduleAppointment_lblDate">
         <constraints>
           <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="180" height="26"/>
@@ -163,10 +163,10 @@
         <properties>
           <font name="Arial Black" size="18" style="1"/>
           <foreground color="-16777216"/>
-          <text value="Calendario"/>
+          <text value="Fecha"/>
         </properties>
       </component>
-      <component id="7047c" class="javax.swing.JComboBox" binding="R_ScheduleAppointment_comboBoxCalendar">
+      <component id="7047c" class="javax.swing.JComboBox" binding="R_ScheduleAppointment_comboBoxDate">
         <constraints>
           <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="180" height="34"/>
@@ -230,6 +230,26 @@
           <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
+      <component id="27115" class="javax.swing.JLabel" binding="R_ScheduleAppointment_lblHour">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="180" height="26"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Arial Black" size="18" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Hora"/>
+        </properties>
+      </component>
+      <component id="b8aa4" class="javax.swing.JComboBox" binding="R_ScheduleAppointment_comboBoxHour">
+        <constraints>
+          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="180" height="34"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
     </children>
   </grid>
 </form>
