@@ -2,6 +2,9 @@ package utils;
 
 import view.*;
 import view.director_templates.*;
+import view.manager_templates.M_DiscountsBenefits;
+import view.manager_templates.M_Menu;
+import view.manager_templates.M_UpdateCosts;
 
 import javax.swing.JPanel;
 
@@ -9,6 +12,11 @@ enum PanelsMap {
 
     WELCOME("Welcome", new InitPanel().getPanel()),
     LOGIN("Login", new LogInPanel().getPanel()),
+
+    //Manager
+    M_MENU("M_Menu", new M_Menu().getPanel()),
+    M_UPDATE_COSTS("M_Update_Costs", new M_UpdateCosts().getPanel()),
+    M_DISCOUNTS_BENEFITS("M_Discounts_Benefits", new M_DiscountsBenefits().getPanel()),
 
     //Director
     D_MENU("Director Menu", new D_MenuPanel().getPanel()),
