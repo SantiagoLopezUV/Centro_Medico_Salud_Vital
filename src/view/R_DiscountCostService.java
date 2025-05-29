@@ -16,10 +16,18 @@ public class R_DiscountCostService implements AccessPanel {
     private JLabel R_DiscountCostService_lblService;
     private JLabel R_DiscountCostService_lblAgreement;
     private JLabel R_DiscountCostService_lblValue;
-    private JButton R_DiscountServiceReturnBttn;
+    private JButton R_DiscountService_ReturnBttn;
+    private JLabel R_DiscountCostService_lblPatient;
+    private JFormattedTextField R_DiscountCostService_IdPatientField;
+    private JLabel R_DiscountCostService_lblStatus;
+    private JFormattedTextField R_DiscountCostService_StatusField;
+    private JLabel R_DiscountCostService_lblDiscount;
+    private JFormattedTextField R_DiscountCostServiceValueDiscountField;
+    private JButton R_DiscountCostService_CalculateBttn;
+    private JLabel R_DiscountCostService_dealIcon;
 
     public R_DiscountCostService() {
-        R_DiscountServiceReturnBttn.addActionListener(new ActionListener() {
+        R_DiscountService_ReturnBttn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AccessPanel.changeContent("R_Menu_Consultation");

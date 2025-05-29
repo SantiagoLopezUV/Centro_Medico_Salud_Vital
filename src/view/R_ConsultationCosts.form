@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.R_ConsultationCosts">
+  <grid id="27dc6" binding="R_ConsultationCostsPanel" layout-manager="GridLayoutManager" row-count="17" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="479" height="497"/>
+    </constraints>
+    <properties>
+      <background color="-4791576"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="dd64a" class="javax.swing.JComboBox" binding="R_ConsultationCosts_comboBoxAgreement">
+        <constraints>
+          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="180" height="34"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="b6bdf" class="javax.swing.JLabel" binding="R_ConsultationCosts_lblAgreement">
+        <constraints>
+          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="180" height="26"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Arial Black" size="18" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Convenio"/>
+        </properties>
+      </component>
+      <component id="c1018" class="javax.swing.JLabel" binding="R_ConsultationCosts_lblPatient">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="195" height="26"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Arial Black" size="18" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Paciente"/>
+        </properties>
+      </component>
+      <component id="8f4d3" class="javax.swing.JFormattedTextField" binding="R_ConsultationCosts_IdPatientField">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="195" height="34"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="true"/>
+          <enabled value="true"/>
+          <focusCycleRoot value="false"/>
+          <focusLostBehavior value="0"/>
+          <focusTraversalPolicyProvider value="false"/>
+          <focusable value="false"/>
+          <font name="Arial"/>
+          <horizontalAlignment value="2"/>
+          <opaque value="true"/>
+          <requestFocusEnabled value="true"/>
+          <selectionEnd value="0"/>
+          <text value=""/>
+          <verifyInputWhenFocusTarget value="true"/>
+        </properties>
+      </component>
+      <component id="440b8" class="javax.swing.JLabel" binding="R_ConsultationCosts_SubTitleRecep">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Arial Black" size="12" style="2"/>
+          <foreground color="-16777216"/>
+          <text value="User:Recepcionista/Consultas/Calcular-Costos "/>
+        </properties>
+      </component>
+      <component id="eb129" class="javax.swing.JLabel" binding="R_ConsultationCostsRecepcionistTitle">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Arial Black" size="36" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Recepcionista"/>
+        </properties>
+      </component>
+      <component id="cf4cd" class="javax.swing.JButton" binding="R_ConsultationCosts_ReturnBttn">
+        <constraints>
+          <grid row="14" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-12741502"/>
+          <font name="Arial Black" size="20" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Regresar"/>
+        </properties>
+      </component>
+      <component id="7a1a7" class="javax.swing.JButton" binding="R_ConsultationCosts_CalculateBttn">
+        <constraints>
+          <grid row="14" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-12741502"/>
+          <font name="Arial Black" size="20" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Calcular"/>
+        </properties>
+      </component>
+      <component id="53686" class="javax.swing.JFormattedTextField" binding="R_ConsultationCosts_FinalValueField">
+        <constraints>
+          <grid row="11" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="3853f" class="javax.swing.JLabel" binding="R_ConsultationCosts_lblFinalValue">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <font name="Arial Black" size="20" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Valor Final"/>
+        </properties>
+      </component>
+      <vspacer id="be989">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="b1ad6">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="e3be3">
+        <constraints>
+          <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="d0a35">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="df620">
+        <constraints>
+          <grid row="7" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="d0c04">
+        <constraints>
+          <grid row="15" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="969e8">
+        <constraints>
+          <grid row="16" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="a2709">
+        <constraints>
+          <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="9346" class="javax.swing.JFormattedTextField" binding="R_ConsultationCosts_StatusField">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="63757" class="javax.swing.JFormattedTextField" binding="R_ConsultationCosts_ValueDiscountField">
+        <constraints>
+          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="a9f54" class="javax.swing.JLabel" binding="R_ConsultationCosts_lblStatus">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <font name="Arial Black" size="20" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Estado"/>
+        </properties>
+      </component>
+      <component id="6b115" class="javax.swing.JLabel" binding="R_ConsultationCosts_lblDiscount">
+        <constraints>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <font name="Arial Black" size="20" style="1"/>
+          <foreground color="-16777216"/>
+          <text value="Descuento"/>
+        </properties>
+      </component>
+      <vspacer id="8c1db">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="2554">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="10c1">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="a4a6c">
+        <constraints>
+          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+    </children>
+  </grid>
+</form>

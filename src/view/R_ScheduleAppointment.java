@@ -20,6 +20,8 @@ public class R_ScheduleAppointment implements AccessPanel {
     private JLabel R_ScheduleAppointment_lblAgreement;
     private JButton R_ScheduleAppointment_SheduleBttn;
     private JLabel R_ScheduleAppointment_lblCalendar;
+    private JLabel R_ScheduleAppointment_lblSpecialty;
+    private JComboBox R_ScheduleAppointment_comboBoxSpecialty;
 
     public R_ScheduleAppointment() {
         R_ScheduleAppointment_ReturnBttn.addActionListener(new ActionListener() {
