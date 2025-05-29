@@ -14,7 +14,6 @@ public class R_Menu_Consultation implements AccessPanel {
     private JLabel R_Menu_Consultation_SubTitleRecep;
     private JLabel R_Menu_ConsultationRecepcionistTitle;
     private JLabel R_Menu_Consultation_MoneyIcon;
-    private JButton R_Menu_Consultation_ConsultationCostsBttn;
 
     public R_Menu_Consultation() {
         R_Menu_Consultation_ReturnBttn.addActionListener(new ActionListener() {
@@ -34,12 +33,6 @@ public class R_Menu_Consultation implements AccessPanel {
         R_Menu_Consultation_DiscountsBenefitsConsultationBttn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {AccessPanel.changeContent("R_DiscountCostService");
-            }
-        });
-
-        R_Menu_Consultation_ConsultationCostsBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {AccessPanel.changeContent("R_ConsultationCosts");
             }
         });
     }

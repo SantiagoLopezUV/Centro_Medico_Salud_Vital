@@ -15,12 +15,15 @@ public class R_CostService implements AccessPanel {
     private JLabel R_CostService_lblValue;
     private JLabel R_CostService_lblService;
     private JButton R_CostService_ReturnBttn;
-    private JLabel R_CostService_MoneyIcon;
     private JLabel R_CostService_lblPatient;
     private JFormattedTextField R_CostService_IdPatientField;
     private JLabel R_CostService_lblAgreement;
     private JComboBox R_CostService_comboBoxAgreement;
     private JButton R_CostService_CalculateBttn;
+    private JLabel R_CostService_lblStatus;
+    private JFormattedTextField R_CostService_StatusField;
+    private JLabel R_CostService_lblDiscount;
+    private JFormattedTextField R_CostService_ValueDiscountField;
 
     public R_CostService() {
         R_CostService_ReturnBttn.addActionListener(new ActionListener() {
