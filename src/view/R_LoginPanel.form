@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.R_LoginPanel">
-  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="8" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="R_LoginPanel" layout-manager="GridLayoutManager" row-count="8" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="551" height="400"/>
+      <xy x="20" y="20" width="697" height="469"/>
     </constraints>
     <properties>
       <background color="-4791576"/>
@@ -24,7 +24,7 @@
           <foreground color="-16777216"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
-          <text value="Centro Médico"/>
+          <text value="Centro Médico Salud Vital"/>
         </properties>
       </component>
       <component id="bde38" class="javax.swing.JButton" binding="R_LoginBttn">
@@ -113,7 +113,7 @@
         </constraints>
         <properties>
           <icon value="resources/docs_icon.png"/>
-          <text value="Label"/>
+          <text value=""/>
         </properties>
       </component>
     </children>
