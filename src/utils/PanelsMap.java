@@ -21,7 +21,7 @@ enum PanelsMap {
     ;
 
 
-    private final String name;
+    private final String name;  
     private final JPanel panel;
 
     PanelsMap(String name, JPanel panel) {
