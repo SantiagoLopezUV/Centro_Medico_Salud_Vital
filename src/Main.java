@@ -17,7 +17,7 @@ public class Main{
                 UIManager.put (key, f);
         }
 
-        AccessPanel.changeContent("SignUp");
+        AccessPanel.changeContent("R_Menu");
 
     }
 // icon credits

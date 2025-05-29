@@ -35,6 +35,12 @@ public class R_Menu implements AccessPanel {
                 AccessPanel.changeContent("Login");
             }
         });
+        R_Menu_InvoiceBttn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AccessPanel.changeContent(("R_Menu_Invoicing"));
+            }
+        });
     }
 
     private void createUIComponents() {
