@@ -12,9 +12,8 @@ abstract class Person {
     protected String address; //dirResidencia
 
     public enum SexType{
-        MALE("Male"),
-        FEMALE("Female"),
-        OTHER("Other");
+        MALE("Masculino"),
+        FEMALE("Femenino");
 
         final String value;
 

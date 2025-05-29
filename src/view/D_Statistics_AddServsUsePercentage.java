@@ -1,6 +1,7 @@
 package view;
 
 import utils.AccessPanel;
+import utils.PlaceHoldersAction;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -13,11 +14,17 @@ public class D_Statistics_AddServsUsePercentage implements AccessPanel {
     private JLabel addServsPercentageTitle;
     private JButton backBttn;
     private JLabel breadCrumbLbl;
+    private JComboBox yearComoBox;
+    private JComboBox monthComboBox;
+    private JButton searchMonthBttn;
+    private JTextField totalTextField;
 
     public D_Statistics_AddServsUsePercentage() {
         this.backBttn.addActionListener(e ->
                 AccessPanel.changeContent("D_statistics"));
         initTables();
+        establishComboBoxesMonthYearValues(monthComboBox, yearComoBox);
+        this.totalTextField.setText("Total uso de servicios");
     }
 
     @Override
@@ -35,18 +42,19 @@ public class D_Statistics_AddServsUsePercentage implements AccessPanel {
                 {"Pruebas de sangre",0.40},
                 {"Ortopedia", 0.0},
                 {"Electrocardiograma", 0.20},
-                {"Fisioterapia", 0.15}
+                {"Fisioterapia", 0.70}
         };
 
         //----
         // table heads
-        String[] columnNames = {"Servicio adicional","% Uso"};
+        String[] columnNames = {"Servicio adicional","% uso vs el total"};
         // adding into to table
         DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
         this.addServsPercentageTable.setModel(tableModel);
 
-        int maxWidth = MAIN_PANEL.getWidth()/2;
-        int maxHeight = MAIN_PANEL.getHeight()/2;
+        int maxWidth = MAIN_PANEL.getWidth()*2/3;
+        int maxHeight = MAIN_PANEL.getHeight()*2/3;
+
 
         this.addServsPercentageScrollPanel.setPreferredSize(new Dimension(maxWidth,
                 maxHeight));

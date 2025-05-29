@@ -5,6 +5,7 @@ import utils.PlaceHoldersAction;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 
 public class D_ArrangementPatientInfoPanel implements AccessPanel {
     private JPanel D_arrangementPatientInfoBG;
@@ -29,7 +30,7 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
         return D_arrangementPatientInfoBG;
     }
 
-    //Se debe modificar para cuando se hagam las respectivas querys
+    //Se debe modificar para cuando se hagan las respectivas querys
     private void initTables(){
 
         //----reemplazar por las listas obtenias por las respectivas consultas
@@ -53,6 +54,13 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
                 columnNames);
         this.patientsArrangementTable.setModel(tableModel);
 
+        int maxPanelWidth = 400;
+        int maxPanelHeight = 500;
+
+        patientPerArrangementScrollPanel.setPreferredSize(new Dimension(maxPanelWidth, maxPanelHeight));
+        patientPerArrangementScrollPanel.setMaximumSize(new Dimension(maxPanelWidth, maxPanelHeight));
+
+        resizeColumnsTable(this.patientsArrangementTable, maxPanelWidth);
 
 
      }

@@ -29,7 +29,7 @@ public class D_MonthlyAddServIncome implements AccessPanel {
             this.totalIncome.setText("Ingreso Total");
         });
         initTables();
-        establishComboBoxesValues();
+        establishComboBoxesMonthYearValues(monthComboBox, yearComoBox);
     }
 
     @Override
@@ -37,16 +37,6 @@ public class D_MonthlyAddServIncome implements AccessPanel {
         return this.D_monthlyAddServIncomeBG;
     }
 
-    private void establishComboBoxesValues(){
-        String[] months = new String[12];
-        for (Month month : Month.values()) {
-            months[month.getValue()-1] = month.getDisplayName(TextStyle.FULL, new Locale("es"));
-        }
-        new InitComboBoxes(this.monthComboBox, months);
-
-        new InitComboBoxes(this.yearComoBox, "2024", "2025");
-
-    }
 
 
     private void initTables(){
@@ -54,11 +44,11 @@ public class D_MonthlyAddServIncome implements AccessPanel {
         //----reemplazar por las listas obtenias por las respectivas consultas
         //----para cada tabla
         Object[][] data= {
-                {"2025-04-11", "Rayos X", "FAC-00125", 85000},
-                {"2025-04-09", "Pruebas de sangre", "FAC-00112", 45000},
-                {"2025-04-30", "Ortopedia", "FAC-00098", 120000},
-                {"2025-04-01", "Electrocardiograma", "FAC-00103", 67000},
-                {"2025-04-25", "Fisioterapia", "FAC-00089", 95000}
+                {"2025-04-11", "Rayos X", "125", 85000},
+                {"2025-04-09", "Pruebas de sangre", "112", 45000},
+                {"2025-04-30", "Ortopedia", "98", 120000},
+                {"2025-04-01", "Electrocardiograma", "103", 67000},
+                {"2025-04-25", "Fisioterapia", "89", 95000}
         };
 
         int income = 0;

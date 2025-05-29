@@ -27,12 +27,12 @@
         </constraints>
         <properties>
           <doubleBuffered value="true"/>
-          <horizontalScrollBarPolicy value="32"/>
-          <verticalScrollBarPolicy value="22"/>
+          <horizontalScrollBarPolicy value="30"/>
+          <verticalScrollBarPolicy value="20"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="59568" class="javax.swing.JTable" binding="patientsArrangementTable">
+          <component id="d0d2" class="javax.swing.JTable" binding="patientsArrangementTable">
             <constraints/>
             <properties>
               <autoResizeMode value="0"/>

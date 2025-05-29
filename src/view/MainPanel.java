@@ -24,8 +24,8 @@ public class MainPanel extends JFrame {
         this.pack();
         this.setResizable(false);
         this.setVisible(true);
-        setSize(600, 430);
-        setMaximumSize(new Dimension(600, 430));
+        setSize(800, 630);
+        setMaximumSize(new Dimension(800, 630));
         //center window
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);

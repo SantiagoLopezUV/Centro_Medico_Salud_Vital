@@ -59,8 +59,8 @@ public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
         assert specialtiesTable != null;
         specialtiesTable.setModel(tableModelSpecialties);
 
-        int maxPanelWidth = 250;
-        int maxPanelHeight = 200;
+        int maxPanelWidth = 350;
+        int maxPanelHeight = 400;
 
         servAddiScrollPanel.setPreferredSize(new Dimension(maxPanelWidth, maxPanelHeight));
         specialtiesScrollPanel.setPreferredSize(new Dimension(maxPanelWidth, maxPanelHeight));

@@ -1,6 +1,6 @@
 CREATE TABLE Registro_Factura_ServAdicionales (
     codServAdi INT,
-    refFactura INT,
+    refFactura BIGINT,
     valorServAdiFac REAL,
     PRIMARY KEY (codServAdi, refFactura),
     FOREIGN KEY (codServAdi) REFERENCES Servicio_Adicional(codServAdi),

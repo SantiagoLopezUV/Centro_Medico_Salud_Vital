@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Invoice {
 
-    private final int invoiceNumber;  //   refFactura
+    private final long invoiceNumber;  //   refFactura
     private final LocalDate date; //  fecha
     private final LocalTime time; //  hora
     private double total;   //  valorTotal
@@ -18,7 +18,7 @@ public class Invoice {
         this.total = total;
     }
 
-    public int getInvoiceNumber() {
+    public long getInvoiceNumber() {
         return invoiceNumber;
     }
 

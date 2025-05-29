@@ -13,11 +13,17 @@ public class D_Statistics_ArrangementAnnulledRate implements AccessPanel {
     private JTable arrangementAnnulledRateTable;
     private JButton backBttn;
     private JLabel breadCrumbLbl;
+    private JComboBox yearComoBox;
+    private JComboBox monthComboBox;
+    private JButton searchMonthBttn;
+    private JTextField totalTextField;
 
     public D_Statistics_ArrangementAnnulledRate() {
         this.backBttn.addActionListener(e ->
                 AccessPanel.changeContent("D_statistics"));
         initTables();
+        establishComboBoxesMonthYearValues(monthComboBox, yearComoBox);
+        this.totalTextField.setText("Total citas anuladas");
     }
 
     @Override
