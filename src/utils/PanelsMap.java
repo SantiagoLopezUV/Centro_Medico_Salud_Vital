@@ -16,8 +16,8 @@ enum PanelsMap {
     R_FULFILLMENT_STATUSAPPOINTMENT("R_Fulfillment_StatusAppointment", new R_Fulfillment_StatusAppointment().getPanel()),
     R_MENU_CONSULTATION("R_Menu_Consultation", new R_Menu_Consultation().getPanel()),
     R_COSTSERVICE("R_CostService",new R_CostService().getPanel()),
-    R_DISCOUNTCOSTSERVICE("R_DiscountCostService",new R_DiscountCostService().getPanel())
-
+    R_DISCOUNTCOSTSERVICE("R_DiscountCostService",new R_DiscountCostService().getPanel()),
+    R_CONSULTATIONCOSTS("R_ConsultationCosts",new R_ConsultationCosts().getPanel())
     ;
 
 

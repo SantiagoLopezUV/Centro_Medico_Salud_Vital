@@ -8,16 +8,22 @@ import java.awt.event.ActionListener;
 
 public class R_CostService implements AccessPanel {
     private JPanel R_CostServicePanel;
-    private JComboBox R_CostServiceCombobox;
-    private JFormattedTextField R_CostServiceFormattedTextfield;
-    private JLabel R_CostServiceTitle;
-    private JLabel R_CostServiceSubtitleRecep;
-    private JLabel R_CostServiceValueLabel;
-    private JLabel R_CostServiceLabel;
-    private JButton R_CostServiceReturnBttn;
+    private JComboBox R_CostService_comboBoxServices;
+    private JFormattedTextField R_CostService_ValueServiceField;
+    private JLabel R_CostServiceRecepcionistTitle;
+    private JLabel R_CostServiceSubTitleRecep;
+    private JLabel R_CostService_lblValue;
+    private JLabel R_CostService_lblService;
+    private JButton R_CostService_ReturnBttn;
+    private JLabel R_CostService_MoneyIcon;
+    private JLabel R_CostService_lblPatient;
+    private JFormattedTextField R_CostService_IdPatientField;
+    private JLabel R_CostService_lblAgreement;
+    private JComboBox R_CostService_comboBoxAgreement;
+    private JButton R_CostService_CalculateBttn;
 
     public R_CostService() {
-        R_CostServiceReturnBttn.addActionListener(new ActionListener() {
+        R_CostService_ReturnBttn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AccessPanel.changeContent("R_Menu_Consultation");

@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class R_AddService implements AccessPanel {
     private JPanel R_AddServicePanel;
     private JButton R_AddService_ReturnBttn;
-    private JButton R_AddService_SheduleBttn;
+    private JButton R_AddService_ScheduleBttn;
     private JComboBox R_AddService_comboBoxServices;
     private JLabel R_AddServiceRecepcionistTitle;
     private JLabel R_AddServiceSubTitleRecep;
