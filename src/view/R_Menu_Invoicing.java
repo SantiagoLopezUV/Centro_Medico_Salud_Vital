@@ -19,13 +19,13 @@ public class R_Menu_Invoicing implements AccessPanel {
         R_Menu_Invoicing_IssueInvoiceBttn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                AccessPanel.changeContent("R_Issue_Invoice");
             }
         });
         R_Menu_Invoicing_PendingPaymentBttn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                AccessPanel.changeContent("R_Pending_Payment");
             }
         });
         R_Menu_Invoicing_ReturnBttn.addActionListener(new ActionListener() {
