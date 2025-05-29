@@ -1,4 +1,4 @@
-package view;
+package view.director_templates;
 
 import utils.AccessPanel;
 

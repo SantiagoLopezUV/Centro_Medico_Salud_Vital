@@ -1,14 +1,10 @@
-package view;
+package view.director_templates;
 
 import utils.AccessPanel;
-import utils.InitComboBoxes;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.time.Month;
-import java.time.format.TextStyle;
-import java.util.Locale;
 
 public class D_Statistics_MedicOccupationPercentage implements AccessPanel {
     private JPanel D_Statistics_medicOccupationPercentageBG;

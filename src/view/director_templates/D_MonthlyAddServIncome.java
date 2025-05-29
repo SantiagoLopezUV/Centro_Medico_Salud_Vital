@@ -1,13 +1,9 @@
-package view;
+package view.director_templates;
 
 import utils.AccessPanel;
-import utils.InitComboBoxes;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.time.Month;
-import java.time.format.TextStyle;
-import java.util.Locale;
 
 public class D_MonthlyAddServIncome implements AccessPanel {
     private JPanel D_monthlyAddServIncomeBG;

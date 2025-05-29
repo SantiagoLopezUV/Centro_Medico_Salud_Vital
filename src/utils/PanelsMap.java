@@ -1,6 +1,7 @@
 package utils;
 
 import view.*;
+import view.director_templates.*;
 
 import javax.swing.JPanel;
 

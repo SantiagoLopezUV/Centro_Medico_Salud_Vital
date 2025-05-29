@@ -1,7 +1,6 @@
-package view;
+package view.director_templates;
 
 import utils.AccessPanel;
-import utils.PlaceHoldersAction;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
