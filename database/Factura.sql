@@ -4,6 +4,7 @@ CREATE TABLE Factura (
     horafactura TIME,
     valorTotal REAL
 );
+
 INSERT INTO Factura (fechaFactura, horafactura, valorTotal) VALUES
 ('2024-10-05', '09:30', 150000.0),
 ('2024-10-15', '10:45', 220000.0),
