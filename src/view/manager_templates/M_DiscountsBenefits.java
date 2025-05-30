@@ -21,12 +21,11 @@ public class M_DiscountsBenefits implements AccessPanel {
     private JLabel M_DiscountsBenefits_SubTitleAdmDiscountsBenefits;
 
     public M_DiscountsBenefits() {
-        M_DiscountsBenefits_ReturnBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("M_Menu");
-            }
-        });
+
+        this.M_DiscountsBenefits_ReturnBttn.addActionListener(e -> AccessPanel.changeContent("M_Menu"));
+
+
+
     }
 
     @Override

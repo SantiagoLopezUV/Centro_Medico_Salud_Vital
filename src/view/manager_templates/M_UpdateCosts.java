@@ -21,12 +21,10 @@ public class M_UpdateCosts implements AccessPanel{
     private JLabel M_UpdateCosts_NotesIcon;
 
     public M_UpdateCosts() {
-        M_UpdateCosts_ReturnBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("M_Menu");
-            }
-        });
+
+        this.M_UpdateCosts_ReturnBttn.addActionListener(e -> AccessPanel.changeContent("M_Menu"));
+
+
     }
 
     @Override

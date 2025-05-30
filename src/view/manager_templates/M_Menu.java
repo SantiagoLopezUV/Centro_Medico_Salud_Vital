@@ -16,24 +16,13 @@ public class M_Menu implements AccessPanel {
     private JLabel M_Menu_SubTitleAdm;
 
     public M_Menu() {
-        M_Menu_LogOutBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("Login");
-            }
-        });
-        M_Menu_DiscountsAndBenefitsBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("M_Discounts_Benefits");
-            }
-        });
-        M_Menu_UpdateCostsBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("M_Update_Costs");
-            }
-        });
+
+        this.M_Menu_LogOutBttn.addActionListener(e -> AccessPanel.changeContent("R_Menu"));
+
+        this.M_Menu_DiscountsAndBenefitsBttn.addActionListener(e -> AccessPanel.changeContent("M_Discounts_Benefits"));
+
+        this.M_Menu_UpdateCostsBttn.addActionListener(e -> AccessPanel.changeContent("M_Update_Costs"));
+
     }
 
     @Override
@@ -41,7 +30,4 @@ public class M_Menu implements AccessPanel {
         return M_MenuPanel;
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }
