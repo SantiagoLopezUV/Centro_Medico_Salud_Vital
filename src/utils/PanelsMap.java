@@ -3,13 +3,13 @@ package utils;
 import view.*;
 import view.director_templates.*;
 import view.manager_templates.*;
+import view.receptionist_templates.*;
 
 import javax.swing.JPanel;
 
 enum PanelsMap {
 
     WELCOME("Welcome", new InitPanel().getPanel()),
-    //LOGINPANEL("Login", new R_LoginPanel().getPanel()),
     LOGIN("Login", new LogInPanel().getPanel()),
     SIGNUP("SignUp", new SignUpPanel().getPanel()),
 

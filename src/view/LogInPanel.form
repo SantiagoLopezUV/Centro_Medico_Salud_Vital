@@ -40,7 +40,7 @@
         <properties>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
-          <icon value="resources/stethoscope_Icon.png"/>
+          <icon value="resources/docs_icon.png"/>
           <text value=""/>
         </properties>
       </component>
@@ -79,7 +79,7 @@
         </constraints>
         <properties>
           <background color="-12741502"/>
-          <text value="Validar"/>
+          <text value="Ingresar"/>
         </properties>
       </component>
       <vspacer id="1a3e5">
