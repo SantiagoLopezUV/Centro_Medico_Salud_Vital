@@ -7,18 +7,18 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class D_Statistics_MedicOccupationPercentage implements AccessPanel {
-    private JPanel D_Statistics_medicOccupationPercentageBG;
-    private JLabel MedicPercentageTitle;
-    private JButton backBttn;
+    private JPanel D_MedicOccupationPercentageBG;
+    private JLabel D_MedicOccupationPercentage_TitleIcon;
+    private JButton D_MedicOccupationPercentage_ReturnBttn;
     private JTable medicOccupationPercentageTable;
-    private JScrollPane medicOccupationPercentageScrollPanel;
-    private JLabel breadCrumbLbl;
+    private JScrollPane D_MedicOccupationPercentage_ScrollPanel;
     private JComboBox yearComoBox;
     private JComboBox monthComboBox;
     private JButton searchMonthBttn;
+    private JLabel D_ServUsePercentage_SubTitleDir;
 
     public D_Statistics_MedicOccupationPercentage() {
-        this.backBttn.addActionListener(e ->
+        this.D_MedicOccupationPercentage_ReturnBttn.addActionListener(e ->
                 AccessPanel.changeContent("D_statistics"));
         initTables();
         establishComboBoxesMonthYearValues(monthComboBox, yearComoBox);
@@ -26,7 +26,7 @@ public class D_Statistics_MedicOccupationPercentage implements AccessPanel {
 
     @Override
     public JPanel getPanel() {
-        return this.D_Statistics_medicOccupationPercentageBG;
+        return this.D_MedicOccupationPercentageBG;
     }
 
 
@@ -53,9 +53,9 @@ public class D_Statistics_MedicOccupationPercentage implements AccessPanel {
         int maxWidth = MAIN_PANEL.getWidth()*2/3;
         int maxHeight = MAIN_PANEL.getHeight()*2/3;
 
-        this.medicOccupationPercentageScrollPanel.setPreferredSize(new Dimension(maxWidth,
+        this.D_MedicOccupationPercentage_ScrollPanel.setPreferredSize(new Dimension(maxWidth,
                 maxHeight));
-        this.medicOccupationPercentageScrollPanel.setMaximumSize(new Dimension(maxWidth,
+        this.D_MedicOccupationPercentage_ScrollPanel.setMaximumSize(new Dimension(maxWidth,
                 maxHeight));
         resizeColumnsTable(medicOccupationPercentageTable, maxWidth);
 

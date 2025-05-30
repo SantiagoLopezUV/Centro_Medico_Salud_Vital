@@ -8,20 +8,20 @@ import java.awt.*;
 
 public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
     private JPanel D_MedicAdiServiAndSpecialtiesBG;
-    private JButton backBttn;
-    private JLabel additionalServlbl;
-    private JLabel specialtiesLbl;
-    private JLabel medicServAdiAndSpeIcon;
+    private JButton D_AdiServiceAndEspecialities_ReturnBttn;
+    private JLabel D_AddServiceEspecialities_lblAdditionalServi;
+    private JLabel D_AddServiceEspecialities_lblSpecialties;
+    private JLabel D_AddServiceEspecialities_TitleIcon;
     private JScrollPane specialtiesScrollPanel;
     private JScrollPane servAddiScrollPanel;
     private JTable servAddiTable;
     private JTable specialtiesTable;
-    private JLabel breadCrumbLbl;
+    private JLabel D_Menu_SubTitleDir;
 
     public D_MedicAdditionalServsAndEspecialtiesPanel() {
         initTables();
 
-        this.backBttn.addActionListener(e ->
+        this.D_AdiServiceAndEspecialities_ReturnBttn.addActionListener(e ->
                 AccessPanel.changeContent("D_menu"));
     }
 

@@ -8,26 +8,26 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class D_ArrangementPatientInfoPanel implements AccessPanel {
-    private JPanel D_arrangementPatientInfoBG;
-    private JLabel arrangementPatientsIcon;
-    private JButton searchPatientBttn;
-    private JButton backBttn;
-    private JTextField searchPatientField;
+    private JPanel D_ArrangementPatientIBG;
+    private JLabel D_ArrangementPatient_TitleIcon;
+    private JButton D_ArrangementPatient_SearchPatientBttn;
+    private JButton D_ArrangementPatient_ReturnBttn;
+    private JTextField D_ArrangementPatient_SearchPatientField;
     private JTable patientsArrangementTable;
     private JScrollPane patientPerArrangementScrollPanel;
-    private JLabel patientNamesLbl;
-    private JLabel breadCrumbLbl;
+    private JLabel D_ArrangementPatient_lblNames;
+    private JLabel D_ArrangementPatient_SubTitleDir;
 
     public D_ArrangementPatientInfoPanel() {
-        this.searchPatientField.addFocusListener(new PlaceHoldersAction(this.searchPatientField,
+        this.D_ArrangementPatient_SearchPatientField.addFocusListener(new PlaceHoldersAction(this.D_ArrangementPatient_SearchPatientField,
                 "Ingrese DNI del paciente"));
-        this.backBttn.addActionListener(e -> AccessPanel.changeContent("D_menu"));
+        this.D_ArrangementPatient_ReturnBttn.addActionListener(e -> AccessPanel.changeContent("D_menu"));
         initTables();
     }
 
     @Override
     public JPanel getPanel() {
-        return D_arrangementPatientInfoBG;
+        return D_ArrangementPatientIBG;
     }
 
     //Se debe modificar para cuando se hagan las respectivas querys
@@ -45,8 +45,8 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
 
         //----
         //table name
-        this.patientNamesLbl.setText("Jhon Doe");
-        this.patientNamesLbl.setVisible(true);
+        this.D_ArrangementPatient_lblNames.setText("Jhon Doe");
+        this.D_ArrangementPatient_lblNames.setVisible(true);
         // table heads
         String[] columnNames = {"Fecha", "Tipo", "Médico", "Estado", "Valor factura", "% convenio"};
         // adding into to table
@@ -65,5 +65,8 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
 
      }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }
 

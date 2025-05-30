@@ -6,24 +6,24 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class D_Statistics_ArrangementAnnulledRate implements AccessPanel {
+public class D_Statistics_ArrangementCancelled implements AccessPanel {
     private JPanel D_Statistics_arrangementAnnulledRateBG;
-    private JLabel arrangementAnnulledRateTitle;
-    private JScrollPane arrangementAnnulledRateScrollPanel;
+    private JLabel D_ArrangementCancelled_TitleIcon;
+    private JScrollPane D_ArrangementCancelled_ScrollPanel;
     private JTable arrangementAnnulledRateTable;
-    private JButton backBttn;
-    private JLabel breadCrumbLbl;
-    private JComboBox yearComoBox;
-    private JComboBox monthComboBox;
-    private JButton searchMonthBttn;
-    private JTextField totalTextField;
+    private JButton D_ArrangementCancelled_ReturnBttn;
+    private JComboBox D_ArrangementCancelled_comboBoxYear;
+    private JComboBox D_ArrangementCancelled_comboBoxMonth;
+    private JButton D_ArrangementCancelled_SearchMonthBttn;
+    private JTextField D_ArrangementCancelled_TotalTextField;
+    private JLabel D_ArrangementCancelled_SubTitleDir;
 
-    public D_Statistics_ArrangementAnnulledRate() {
-        this.backBttn.addActionListener(e ->
+    public D_Statistics_ArrangementCancelled() {
+        this.D_ArrangementCancelled_ReturnBttn.addActionListener(e ->
                 AccessPanel.changeContent("D_statistics"));
         initTables();
-        establishComboBoxesMonthYearValues(monthComboBox, yearComoBox);
-        this.totalTextField.setText("Total citas anuladas");
+        establishComboBoxesMonthYearValues(D_ArrangementCancelled_comboBoxMonth, D_ArrangementCancelled_comboBoxYear);
+        this.D_ArrangementCancelled_TotalTextField.setText("Total citas anuladas");
     }
 
     @Override
@@ -53,9 +53,9 @@ public class D_Statistics_ArrangementAnnulledRate implements AccessPanel {
         int maxWidth = MAIN_PANEL.getWidth()/2;
         int maxHeight = MAIN_PANEL.getHeight()/2;
 
-        this.arrangementAnnulledRateScrollPanel.setPreferredSize(new Dimension(maxWidth,
+        this.D_ArrangementCancelled_ScrollPanel.setPreferredSize(new Dimension(maxWidth,
                 maxHeight));
-        this.arrangementAnnulledRateScrollPanel.setMaximumSize(new Dimension(maxWidth,
+        this.D_ArrangementCancelled_ScrollPanel.setMaximumSize(new Dimension(maxWidth,
                 maxHeight));
         resizeColumnsTable(arrangementAnnulledRateTable, maxWidth);
 

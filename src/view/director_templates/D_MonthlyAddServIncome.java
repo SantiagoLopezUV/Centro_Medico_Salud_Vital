@@ -6,31 +6,31 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class D_MonthlyAddServIncome implements AccessPanel {
-    private JPanel D_monthlyAddServIncomeBG;
-    private JLabel monthlyAddServIncomeIcon;
+    private JPanel D_MonthlyServIncomeBG;
+    private JLabel D_MonthlyServIncome_TitleIcon;
     private JScrollPane monthlyIncomeScrollPanel;
     private JTable monthlyIncomeTable;
-    private JButton backBttn;
-    private JComboBox yearComoBox;
-    private JComboBox monthComboBox;
-    private JButton searchMonthBttn;
-    private JTextField totalIncome;
-    private JLabel breadCrumbLbl;
+    private JButton D_MonthlyServIncome_ReturnBttn;
+    private JComboBox D_MonthlyServIncome_comboBoxYear;
+    private JComboBox D_MonthlyServIncome_comboBoxMonth;
+    private JButton D_MonthlyServIncome_SearchMonthBttn;
+    private JTextField D_MonthlyServIncome_TotalIncomeText;
+    private JLabel D_ArrangementPatient_SubTitleDir;
 
 
     public D_MonthlyAddServIncome() {
-        this.totalIncome.setText("Ingreso Total");
-        this.backBttn.addActionListener(e -> {
+        this.D_MonthlyServIncome_TotalIncomeText.setText("Ingreso Total");
+        this.D_MonthlyServIncome_ReturnBttn.addActionListener(e -> {
             AccessPanel.changeContent("D_menu");
-            this.totalIncome.setText("Ingreso Total");
+            this.D_MonthlyServIncome_TotalIncomeText.setText("Ingreso Total");
         });
         initTables();
-        establishComboBoxesMonthYearValues(monthComboBox, yearComoBox);
+        establishComboBoxesMonthYearValues(D_MonthlyServIncome_comboBoxMonth, D_MonthlyServIncome_comboBoxYear);
     }
 
     @Override
     public JPanel getPanel() {
-        return this.D_monthlyAddServIncomeBG;
+        return this.D_MonthlyServIncomeBG;
     }
 
 
@@ -52,7 +52,7 @@ public class D_MonthlyAddServIncome implements AccessPanel {
         for(int i=0; i<data.length; i++){
             income += Integer.parseInt(data[i][3].toString());
         }
-        this.totalIncome.setText(String.valueOf(income));
+        this.D_MonthlyServIncome_TotalIncomeText.setText(String.valueOf(income));
         //----
         // table heads
         String[] columnNames = {"Fecha", "Servicio", "Ref Factura", "Valor facturado"};

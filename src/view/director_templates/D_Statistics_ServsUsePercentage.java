@@ -6,29 +6,29 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class D_Statistics_AddServsUsePercentage implements AccessPanel {
-    private JPanel D_statistics_AddServsUsePercentageBG;
-    private JScrollPane addServsPercentageScrollPanel;
+public class D_Statistics_ServsUsePercentage implements AccessPanel {
+    private JPanel D_ServUsePercentageBG;
+    private JScrollPane D_ServUsePercentage_ScrollPanel;
     private JTable addServsPercentageTable;
-    private JLabel addServsPercentageTitle;
-    private JButton backBttn;
-    private JLabel breadCrumbLbl;
-    private JComboBox yearComoBox;
-    private JComboBox monthComboBox;
-    private JButton searchMonthBttn;
-    private JTextField totalTextField;
+    private JLabel D_ServUsePercentage_TitleIcon;
+    private JButton D_ServUsePercentage_ReturnBttn;
+    private JComboBox D_ServUsePercentage_comboBoxYear;
+    private JComboBox D_ServUsePercentage_comboBoxMonth;
+    private JButton D_ServUsePercentage_SearchMonthBttn;
+    private JTextField D_ServUsePercentage_TotalTextField;
+    private JLabel D_ServUsePercentage_SubTitleDir;
 
-    public D_Statistics_AddServsUsePercentage() {
-        this.backBttn.addActionListener(e ->
+    public D_Statistics_ServsUsePercentage() {
+        this.D_ServUsePercentage_ReturnBttn.addActionListener(e ->
                 AccessPanel.changeContent("D_statistics"));
         initTables();
-        establishComboBoxesMonthYearValues(monthComboBox, yearComoBox);
-        this.totalTextField.setText("Total uso de servicios");
+        establishComboBoxesMonthYearValues(D_ServUsePercentage_comboBoxMonth, D_ServUsePercentage_comboBoxYear);
+        this.D_ServUsePercentage_TotalTextField.setText("Total uso de servicios");
     }
 
     @Override
     public JPanel getPanel() {
-        return this.D_statistics_AddServsUsePercentageBG;
+        return this.D_ServUsePercentageBG;
     }
 
     //Se debe modificar para cuando se hagam las respectivas querys
@@ -55,9 +55,9 @@ public class D_Statistics_AddServsUsePercentage implements AccessPanel {
         int maxHeight = MAIN_PANEL.getHeight()*2/3;
 
 
-        this.addServsPercentageScrollPanel.setPreferredSize(new Dimension(maxWidth,
+        this.D_ServUsePercentage_ScrollPanel.setPreferredSize(new Dimension(maxWidth,
                 maxHeight));
-        this.addServsPercentageScrollPanel.setMaximumSize(new Dimension(maxWidth,
+        this.D_ServUsePercentage_ScrollPanel.setMaximumSize(new Dimension(maxWidth,
                 maxHeight));
         resizeColumnsTable(addServsPercentageTable, maxWidth);
 
