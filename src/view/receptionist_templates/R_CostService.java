@@ -1,6 +1,7 @@
 package view.receptionist_templates;
 
 import utils.AccessPanel;
+import utils.PlaceHoldersAction;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -26,12 +27,13 @@ public class R_CostService implements AccessPanel {
     private JFormattedTextField R_CostService_ValueDiscountField;
 
     public R_CostService() {
-        R_CostService_ReturnBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_Menu_Consultation");
-            }
-        });
+
+        this.R_CostService_IdPatientField.addFocusListener(new PlaceHoldersAction(
+                this.R_CostService_IdPatientField, "Número de Identificación"));
+
+        this.R_CostService_ReturnBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_Menu_Consultation"));
+
     }
 
     @Override

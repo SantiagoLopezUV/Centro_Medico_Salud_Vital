@@ -18,16 +18,13 @@ public class R_Fulfillment_StatusAppointment implements AccessPanel {
     private JLabel R_Fulfillment_StatusAppointment_ChatIcon;
 
     public R_Fulfillment_StatusAppointment() {
-        R_Fulfillment_StatusAppointment_ConfirmBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_AppointmentFulfillment");
-            }
-        });
-        R_Fulfillment_StatusAppointment_NewAppointmentBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {AccessPanel.changeContent("R_AddService");}
-        });
+
+        this.R_Fulfillment_StatusAppointment_ConfirmBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_AppointmentFulfillment"));
+
+        this.R_Fulfillment_StatusAppointment_NewAppointmentBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_AddService"));
+
     }
 
     @Override

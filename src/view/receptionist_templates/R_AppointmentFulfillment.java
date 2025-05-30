@@ -1,10 +1,12 @@
 package view.receptionist_templates;
 
 import utils.AccessPanel;
+import utils.PlaceHoldersAction;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
 
 public class R_AppointmentFulfillment implements AccessPanel {
     private JPanel R_AppointmentFulfillmentPanel;
@@ -17,18 +19,15 @@ public class R_AppointmentFulfillment implements AccessPanel {
     private JLabel R_AppoinmentFulfillment_IdIcon;
 
     public R_AppointmentFulfillment() {
-        R_AppointmentFulfillment_ReturnBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_Menu_Appointment");
-            }
-        });
-        R_AppointmentFulfillment_RegisterFulfillmentBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_Fulfillment_StatusAppointment");
-            }
-        });
+
+        this.R_AppointmentFulfillment_IdPatientField.addFocusListener(new PlaceHoldersAction(
+                this.R_AppointmentFulfillment_IdPatientField, "Número de Identificación"));
+
+        this.R_AppointmentFulfillment_ReturnBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_Menu_Appointment"));
+
+        this.R_AppointmentFulfillment_RegisterFulfillmentBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_Fulfillment_StatusAppointment"));
     }
 
     @Override

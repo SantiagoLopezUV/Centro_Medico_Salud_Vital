@@ -1,6 +1,7 @@
 package view.receptionist_templates;
 
 import utils.AccessPanel;
+import utils.PlaceHoldersAction;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -27,12 +28,13 @@ public class R_DiscountCostService implements AccessPanel {
     private JLabel R_DiscountCostService_dealIcon;
 
     public R_DiscountCostService() {
-        R_DiscountService_ReturnBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_Menu_Consultation");
-            }
-        });
+
+        this.R_DiscountCostService_IdPatientField.addFocusListener(new PlaceHoldersAction(
+                this.R_DiscountCostService_IdPatientField, "Número de Identificación"));
+
+        this.R_DiscountService_ReturnBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_Menu_Consultation"));
+
     }
 
     @Override

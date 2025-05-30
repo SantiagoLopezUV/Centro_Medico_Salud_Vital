@@ -1,6 +1,7 @@
 package view.receptionist_templates;
 
 import utils.AccessPanel;
+import utils.PlaceHoldersAction;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -26,12 +27,13 @@ public class R_ScheduleAppointment implements AccessPanel {
     private JComboBox R_ScheduleAppointment_comboBoxHour;
 
     public R_ScheduleAppointment() {
-        R_ScheduleAppointment_ReturnBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_Menu_Appointment");
-            }
-        });
+
+        this.R_ScheduleAppointment_IdPatientField.addFocusListener(new PlaceHoldersAction(
+                this.R_ScheduleAppointment_IdPatientField, "Número de Identificación"));
+
+        this.R_ScheduleAppointment_ReturnBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_Menu_Appointment"));
+
     }
 
     @Override

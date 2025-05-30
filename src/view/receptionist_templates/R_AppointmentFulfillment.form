@@ -123,7 +123,7 @@
         </constraints>
         <properties>
           <font name="Arial"/>
-          <text value="Número Identificación"/>
+          <text value=""/>
         </properties>
       </component>
       <vspacer id="7bc02">

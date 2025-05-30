@@ -19,12 +19,12 @@ public class R_AddService implements AccessPanel {
     private JComboBox R_AddService_comboBoxHour;
 
     public R_AddService() {
-        R_AddService_ReturnBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_AppointmentFulfillment");
-            }
-        });
+
+        this.R_AddService_ReturnBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_AppointmentFulfillment"));
+
+        //this.R_AddService_ScheduleBttn.addActionListener(e -> ());
+
     }
 
     @Override

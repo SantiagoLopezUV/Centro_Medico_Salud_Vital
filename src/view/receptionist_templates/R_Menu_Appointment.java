@@ -16,25 +16,16 @@ public class R_Menu_Appointment implements AccessPanel {
     private JLabel R_Menu_Appointment_ScheduleIcon;
 
     public R_Menu_Appointment() {
-        R_Menu_Appointment_ReturnBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_Menu");
-            }
-        });
-        R_Menu_Appointment_ScheduleAppointmentBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_ScheduleAppointment");
-            }
-        });
 
-        R_Menu_Appointment_AppointmentFulfillmentBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_AppointmentFulfillment");
-            }
-        });
+        this.R_Menu_Appointment_ReturnBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_Menu"));
+
+        this.R_Menu_Appointment_ScheduleAppointmentBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_ScheduleAppointment"));
+
+        this.R_Menu_Appointment_AppointmentFulfillmentBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_AppointmentFulfillment"));
+
     }
 
     @Override

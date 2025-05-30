@@ -220,8 +220,8 @@
           <horizontalAlignment value="2"/>
           <opaque value="true"/>
           <requestFocusEnabled value="true"/>
-          <selectionEnd value="21"/>
-          <text value="Número Identificación"/>
+          <selectionEnd value="0"/>
+          <text value=""/>
           <verifyInputWhenFocusTarget value="true"/>
         </properties>
       </component>

@@ -59,8 +59,8 @@
           <horizontalAlignment value="2"/>
           <opaque value="true"/>
           <requestFocusEnabled value="true"/>
-          <selectionEnd value="2"/>
-          <text value="ID"/>
+          <selectionEnd value="0"/>
+          <text value=""/>
           <verifyInputWhenFocusTarget value="true"/>
         </properties>
       </component>
