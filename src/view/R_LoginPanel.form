@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.R_LoginPanel">
+  <grid id="27dc6" binding="R_LoginPanel" layout-manager="GridLayoutManager" row-count="8" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="697" height="469"/>
+    </constraints>
+    <properties>
+      <background color="-4791576"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <hspacer id="5e51a">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="2d19" class="javax.swing.JLabel" binding="R_MedicCenter">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Arial Black" size="36" style="1"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Centro Médico Salud Vital"/>
+        </properties>
+      </component>
+      <component id="bde38" class="javax.swing.JButton" binding="R_LoginBttn">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="259" height="34"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-12741502"/>
+          <text value="Ingresar"/>
+        </properties>
+      </component>
+      <vspacer id="5d3f2">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <preferred-size width="259" height="14"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <component id="3f2f9" class="javax.swing.JTextField" binding="R_NumberIDUserField">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="259" height="34"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-4529432"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <text value="Codigo"/>
+        </properties>
+      </component>
+      <vspacer id="52a06">
+        <constraints>
+          <grid row="2" column="2" row-span="6" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <hspacer id="e5838">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="c6c10">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <preferred-size width="259" height="14"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="4c763">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <preferred-size width="259" height="14"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <component id="b084" class="javax.swing.JTextField" binding="R_PasswordField">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="259" height="34"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-4529432"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <text value="Contraseña"/>
+        </properties>
+      </component>
+      <vspacer id="c8b48">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <preferred-size width="259" height="14"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <hspacer id="41d">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="6ec75" class="javax.swing.JLabel" binding="R_DocsICON">
+        <constraints>
+          <grid row="2" column="3" row-span="4" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <icon value="resources/docs_icon.png"/>
+          <text value=""/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
