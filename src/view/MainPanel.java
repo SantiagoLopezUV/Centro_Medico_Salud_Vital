@@ -20,7 +20,7 @@ public class MainPanel extends JFrame {
         closeBttnInit();
         this.setContentPane(this.mainBG);
         this.setUndecorated(true);
-        this.setTitle("Centro médico Salud Vital");
+        this.setTitle("Centro Médico Salud Vital");
         this.pack();
         this.setResizable(false);
         this.setVisible(true);

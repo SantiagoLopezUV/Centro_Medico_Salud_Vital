@@ -15,7 +15,7 @@ public class LogInPanel implements AccessPanel {
 
     public LogInPanel(){
         this.profileNameField
-                .addFocusListener(new PlaceHoldersAction(profileNameField, "Nombre del perfil"));
+                .addFocusListener(new PlaceHoldersAction(profileNameField, "Usuario"));
         this.passwordField
                 .addFocusListener(new PlaceHoldersAction(passwordField, "Contraseña"));
     }

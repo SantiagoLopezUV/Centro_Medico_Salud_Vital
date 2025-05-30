@@ -12,16 +12,16 @@ public class D_Statistics_MedicOccupationPercentage implements AccessPanel {
     private JButton D_MedicOccupationPercentage_ReturnBttn;
     private JTable medicOccupationPercentageTable;
     private JScrollPane D_MedicOccupationPercentage_ScrollPanel;
-    private JComboBox yearComoBox;
-    private JComboBox monthComboBox;
-    private JButton searchMonthBttn;
-    private JLabel D_ServUsePercentage_SubTitleDir;
+    private JComboBox D_MedicOccupationPercentage_comboBoxYear;
+    private JComboBox D_MedicOccupationPercentage_comboBoxMonth;
+    private JButton D_MedicOccupationPercentage_SearchMonthBttn;
+    private JLabel D_MedicOccupationPercentage_SubTitleDir;
 
     public D_Statistics_MedicOccupationPercentage() {
         this.D_MedicOccupationPercentage_ReturnBttn.addActionListener(e ->
                 AccessPanel.changeContent("D_statistics"));
         initTables();
-        establishComboBoxesMonthYearValues(monthComboBox, yearComoBox);
+        establishComboBoxesMonthYearValues(D_MedicOccupationPercentage_comboBoxMonth, D_MedicOccupationPercentage_comboBoxYear);
     }
 
     @Override
