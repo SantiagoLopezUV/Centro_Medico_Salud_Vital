@@ -1,6 +1,7 @@
 package utils;
 
 import view.*;
+import view.receptionist_templates.*;
 
 import javax.swing.JPanel;
 
