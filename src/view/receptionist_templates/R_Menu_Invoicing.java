@@ -18,7 +18,7 @@ public class R_Menu_Invoicing implements AccessPanel {
     public R_Menu_Invoicing() {
 
         this.R_Menu_Invoicing_IssueInvoiceBttn.addActionListener(e ->
-                AccessPanel.changeContent("R_Issue_Invoice"));
+                AccessPanel.changeContent("R_generateinvoice"));
 
         this.R_Menu_Invoicing_PendingPaymentBttn.addActionListener(e ->
                 AccessPanel.changeContent("R_Pending_Payment"));
