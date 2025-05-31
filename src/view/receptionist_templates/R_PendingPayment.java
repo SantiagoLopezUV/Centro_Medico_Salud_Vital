@@ -17,12 +17,12 @@ public class R_PendingPayment implements AccessPanel {
     private JButton consultarButton;
 
     public R_PendingPayment() {
-        R_PPReturnBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {AccessPanel.changeContent("R_Menu_Invoicing");
 
-            }
-        });
+        this.R_PPReturnBttn.addActionListener(e ->
+                AccessPanel.changeContent("R_Menu_Invoicing"));
+
+//        this.consultarButton.addActionListener();
+
     }
 
     @Override

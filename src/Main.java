@@ -17,7 +17,7 @@ public class Main{
                 UIManager.put (key, f);
         }
 
-        AccessPanel.changeContent("r_Menu");
+        AccessPanel.changeContent("d_menu");
 
     }
 // icon credits

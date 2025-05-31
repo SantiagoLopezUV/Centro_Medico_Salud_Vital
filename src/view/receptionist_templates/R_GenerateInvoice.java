@@ -15,8 +15,12 @@ public class R_GenerateInvoice implements AccessPanel {
     private JButton R_GenerateInvBackBttn;
 
     public R_GenerateInvoice() {
-        R_GenerateInvBackBttn.addActionListener(e ->
+
+        this.R_GenerateInvBackBttn.addActionListener(e ->
                 AccessPanel.changeContent("R_Menu_Invoicing"));
+
+        //this.R_GenerateInvPanel.;
+
     }
 
     @Override
