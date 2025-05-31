@@ -16,12 +16,7 @@ public class R_Menu_Invoicing implements AccessPanel {
     private JLabel R_Menu_Invoicing_GroupICON;
 
     public R_Menu_Invoicing() {
-        R_Menu_Invoicing_IssueInvoiceBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AccessPanel.changeContent("R_Issue_Invoice");
-            }
-        });
+
         R_Menu_Invoicing_PendingPaymentBttn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,6 +27,11 @@ public class R_Menu_Invoicing implements AccessPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AccessPanel.changeContent("R_Menu");
+            }
+        });
+        R_Menu_Invoicing_IssueInvoiceBttn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {AccessPanel.changeContent("R_GenerateInvoice");
             }
         });
     }

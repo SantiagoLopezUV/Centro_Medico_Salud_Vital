@@ -21,6 +21,7 @@ enum PanelsMap {
     R_DISCOUNTCOSTSERVICE("R_DiscountCostService", new R_DiscountCostService().getPanel()),
     R_MENU_INVOICING("R_Menu_Invoicing", new R_Menu_Invoicing().getPanel()),
     R_PENDING_PAYMENT("R_PendingPayment", new R_PendingPayment().getPanel()),
+    R_GENERATEINVOICE("R_GenerateInvoice",new R_GenerateInvoice().getPanel())
     ;
 
 

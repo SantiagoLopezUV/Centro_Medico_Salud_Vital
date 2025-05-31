@@ -6,27 +6,24 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class R_PendingPayment implements AccessPanel {
-    private JPanel R_PendingPaymentPanel;
+public class R_GenerateInvoice implements AccessPanel {
+    private JPanel R_GenerateInvPanel;
     private JLabel R_Menu_Invoicing_SubTitleRecep;
     private JLabel R_Menu_InvoicingRecepcionistTitle;
-    private JLabel R_InvoiceConsultDebtsTitle;
-    private JTextField IDTextField;
     private JTextArea textArea1;
-    private JButton R_PPReturnBttn;
-    private JButton consultarButton;
+    private JButton R_GenerateInvBttn;
+    private JButton R_GenerateInvBackBttn;
 
-    public R_PendingPayment() {
-        R_PPReturnBttn.addActionListener(new ActionListener() {
+    public R_GenerateInvoice() {
+        R_GenerateInvBackBttn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {AccessPanel.changeContent("R_Menu_Invoicing");
-
             }
         });
     }
 
     @Override
     public JPanel getPanel() {
-        return R_PendingPaymentPanel;
+        return R_GenerateInvPanel;
     }
 }
