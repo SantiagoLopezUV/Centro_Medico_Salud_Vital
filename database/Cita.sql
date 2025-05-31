@@ -1,5 +1,6 @@
+
 CREATE TABLE Cita (
-    codCita SERIAL PRIMARY KEY,
+    codCita BIGSERIAL PRIMARY KEY,
     estado VARCHAR(30),
     pacienteId BIGINT,
     fechaCita DATE,
@@ -13,7 +14,7 @@ CREATE TABLE Cita (
     FOREIGN KEY (pacienteId) REFERENCES Paciente(docIdentidad),
     FOREIGN KEY (codTipoCons) REFERENCES Tipo_Consulta(codTipoCons),
     FOREIGN KEY (refFactura) REFERENCES Factura(refFactura),
-    FOREIGN KEY (codConvRegistrado) REFERENCES Convenio(codConvRegistrado),
+    FOREIGN KEY (codConvRegistrado) REFERENCES Convenio(codConvenio),
     FOREIGN KEY (medicoId) REFERENCES Medico(docIdentidad)
 );
 

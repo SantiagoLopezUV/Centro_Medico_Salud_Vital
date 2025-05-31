@@ -2,7 +2,7 @@ CREATE TABLE Persona (
     docIdentidad BIGINT PRIMARY KEY,
     nombres VARCHAR(50),
     apellidos VARCHAR(50),
-    sexo VARCHAR(6),
+    sexo VARCHAR(15),
     telefono VARCHAR(15),
     email VARCHAR(50),
     dirResidencia VARCHAR(100)

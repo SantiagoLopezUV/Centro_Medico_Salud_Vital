@@ -1,5 +1,6 @@
+
 CREATE TABLE Factura (
-    refFactura BIGINT SERIAL PRIMARY KEY,
+    refFactura BIGSERIAL PRIMARY KEY,
     fechaFactura DATE,
     horafactura TIME,
     valorTotal REAL
