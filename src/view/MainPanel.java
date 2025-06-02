@@ -1,5 +1,7 @@
 package view;
 
+import utils.db.ConnectionSource;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -41,7 +43,10 @@ public class MainPanel extends JFrame {
 
     private void closeBttnInit(){
         this.titleBarCloseBttn.setText("x");
-        this.titleBarCloseBttn.addActionListener(e -> System.exit(0));
+        this.titleBarCloseBttn.addActionListener(e -> {
+            ConnectionSource.closeConnPool();
+            System.exit(0);
+        });
         this.titleBarCloseBttn.setContentAreaFilled(false);
         this.titleBarCloseBttn.setBorderPainted(false);
         this.titleBarCloseBttn.setFocusPainted(false);

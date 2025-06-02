@@ -1,10 +1,12 @@
 package view.director_templates;
 
+import dao.DirectorDao;
 import utils.AccessPanel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
     private JPanel D_MedicAdiServiAndSpecialtiesBG;
@@ -17,12 +19,24 @@ public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
     private JTable servAddiTable;
     private JTable specialtiesTable;
     private JLabel D_Menu_SubTitleDir;
+    private JButton exeQuery;
 
     public D_MedicAdditionalServsAndEspecialtiesPanel() {
-        initTables();
+        int maxPanelWidth = 350;
+        int maxPanelHeight = 400;
 
-        this.D_AdiServiceAndEspecialities_ReturnBttn.addActionListener(e ->
-                AccessPanel.changeContent("D_menu"));
+        servAddiScrollPanel.setPreferredSize(new Dimension(maxPanelWidth, maxPanelHeight));
+        specialtiesScrollPanel.setPreferredSize(new Dimension(maxPanelWidth, maxPanelHeight));
+        servAddiScrollPanel.setMaximumSize(new Dimension(maxPanelWidth, maxPanelHeight));
+        specialtiesScrollPanel.setMaximumSize(new Dimension(maxPanelWidth, maxPanelHeight));
+
+        this.exeQuery.addActionListener(e ->
+                initTables());
+
+        this.D_AdiServiceAndEspecialities_ReturnBttn.addActionListener(e ->{
+                    destroyTablesData();
+                    AccessPanel.changeContent("D_menu");
+                });
     }
 
     @Override
@@ -30,23 +44,22 @@ public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
         return D_MedicAdiServiAndSpecialtiesBG;
     }
 
-    //Se debe modificar para cuando se hagam las respectivas querys
     private void initTables(){
+        DirectorDao directorDao = new DirectorDao();
 
-        //----reemplazar por las listas obtenias por las respectivas consultas
-        //----para cada tabla
-        Object[][] dataServAdd= {
-                {0, "Rayos X", 50_000.},
-                {1, "Examen de sangre", 40_000.},
-                {2, "Conteo de defensas", 40_000.}
-        };
-
-        Object[][] dataSpe = {
-                { 22, "Oncología"},
-                { 24, "Pediatría"},
-                { 20, "Ortopedia"}
-        };
-        //----
+        Object[][] dataServAdd= null;
+        Object[][] dataSpe = null;
+        try {
+            dataServAdd = directorDao.getAdditionalServs();
+            dataSpe = directorDao.getMedicSpecilities();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Un error se ha presentado al tratar de consultar la base de datos," +
+                            "contacta al administrador de la misma",
+                    "Error al consultar la base de datos",
+                    JOptionPane.ERROR_MESSAGE);
+        }
 
         // tables heads
         String[] columnNamesServAdds = {"Código", "Nombre", "Valor"};
@@ -59,19 +72,15 @@ public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
         assert specialtiesTable != null;
         specialtiesTable.setModel(tableModelSpecialties);
 
-        int maxPanelWidth = 350;
-        int maxPanelHeight = 400;
-
-        servAddiScrollPanel.setPreferredSize(new Dimension(maxPanelWidth, maxPanelHeight));
-        specialtiesScrollPanel.setPreferredSize(new Dimension(maxPanelWidth, maxPanelHeight));
-        servAddiScrollPanel.setMaximumSize(new Dimension(maxPanelWidth, maxPanelHeight));
-        specialtiesScrollPanel.setMaximumSize(new Dimension(maxPanelWidth, maxPanelHeight));
-
-        resizeColumnsTable(this.servAddiTable, maxPanelWidth);
-        resizeColumnsTable(this.specialtiesTable, maxPanelWidth);
 
 
+        resizeColumnsTable(this.servAddiTable, this.servAddiScrollPanel.getWidth());
+        resizeColumnsTable(this.specialtiesTable, this.specialtiesScrollPanel.getWidth());
+    }
 
+    private void destroyTablesData(){
+        this.servAddiTable.setModel(new DefaultTableModel());
+        this.specialtiesTable.setModel(new DefaultTableModel());
     }
 
 }
