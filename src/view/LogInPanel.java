@@ -2,13 +2,17 @@ package view;
 
 import utils.AccessPanel;
 import utils.PlaceHoldersAction;
+import utils.security.AuthenticationService;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class LogInPanel implements AccessPanel {
     private JPanel LogInBG;
     private JTextField profileNameField;
-    private JTextField passwordField;
+    private JPasswordField passwordField;
     private JButton authCredentialsBttn;
     private JLabel LogInTitle;
     private JLabel stethoscopeIcon;
@@ -18,6 +22,37 @@ public class LogInPanel implements AccessPanel {
                 .addFocusListener(new PlaceHoldersAction(profileNameField, "Usuario"));
         this.passwordField
                 .addFocusListener(new PlaceHoldersAction(passwordField, "Contraseña"));
+        this.authCredentialsBttn.addActionListener(e -> authAction());
+    }
+
+    private void authAction(){
+        try{
+            AuthenticationService authenticationService = new AuthenticationService();
+            String rol = authenticationService.authenticate(profileNameField.getText(), passwordField.getText());
+            this.profileNameField.setText("Usuario");
+            this.passwordField.setText("Contraseña");
+            switch(rol){
+                case "receptionist" -> AccessPanel.changeContent("r_menu");
+                case "manager" -> AccessPanel.changeContent("m_menu");
+                case "director" -> AccessPanel.changeContent("d_menu");
+                default ->  JOptionPane.showMessageDialog(null,
+                        "Usuario o contraseña invalidos, intente nuevamente",
+                        "Error al autenticar",
+                        JOptionPane.ERROR_MESSAGE);
+
+            }
+
+        } catch (SQLException | NullPointerException e ) {
+            JOptionPane.showMessageDialog(null,
+                    "Algo ha ido mal! verifica que los campos hayan sido rellenados",
+                    "Error al autenticar",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    private void initAuthFields(){
+
     }
 
     @Override

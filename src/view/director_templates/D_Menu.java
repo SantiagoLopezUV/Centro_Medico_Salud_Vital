@@ -33,7 +33,7 @@ public class D_Menu implements AccessPanel {
         this.D_Menu_StatisticsBttn
                 .addActionListener(e ->
                         AccessPanel.changeContent("D_STATISTICS"));
-        this.D_Menu_LogOutBttn.addActionListener(e -> AccessPanel.changeContent("M_Menu"));
+        this.D_Menu_LogOutBttn.addActionListener(e -> AccessPanel.changeContent("Login"));
     }
 
 

@@ -17,7 +17,7 @@ public class M_Menu implements AccessPanel {
 
     public M_Menu() {
 
-        this.M_Menu_LogOutBttn.addActionListener(e -> AccessPanel.changeContent("R_Menu"));
+        this.M_Menu_LogOutBttn.addActionListener(e -> AccessPanel.changeContent("Login"));
 
         this.M_Menu_DiscountsAndBenefitsBttn.addActionListener(e -> AccessPanel.changeContent("M_Discounts_Benefits"));
 

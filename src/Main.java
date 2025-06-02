@@ -1,8 +1,13 @@
 import utils.AccessPanel;
+import utils.db.ConnectionSource;
+import utils.security.HashGen;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import java.awt.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Enumeration;
 
 public class Main{
@@ -16,13 +21,11 @@ public class Main{
             if (value instanceof javax.swing.plaf.FontUIResource)
                 UIManager.put (key, f);
         }
-
-        AccessPanel.changeContent("d_menu");
-
+        AccessPanel.changeContent("welcome");
     }
 // icon credits
     //Designed by macrovector / Freepik
-    //Designed by macrovector_official / Freepik"
+    //Designed by macrovector_official / Freepik
 
 
 }
