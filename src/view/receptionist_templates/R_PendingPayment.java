@@ -10,10 +10,11 @@ public class R_PendingPayment implements AccessPanel {
     private JLabel R_PendingPayment_SubTitleRecep;
     private JLabel R_PendingPaymentRecepcionistTitle;
     private JTextField R_PendingPayment_IDPatientField;
-    private JTextArea R_PendingPaymenttextArea1;
+    private JTextArea R_PendingPayment_TextArea1;
     private JButton R_PendingPayment_ReturnBttn;
     private JLabel R_PendingPayment_lblPatient;
     private JButton R_PendingPayment_SearchBttn;
+    private JLabel R_PendingPayment_lblNames;
 
     public R_PendingPayment() {
 
