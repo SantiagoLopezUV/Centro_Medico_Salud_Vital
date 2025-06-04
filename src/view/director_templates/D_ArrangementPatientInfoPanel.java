@@ -20,7 +20,7 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
 
     public D_ArrangementPatientInfoPanel() {
         this.D_ArrangementPatient_SearchPatientField.addFocusListener(new PlaceHoldersAction(this.D_ArrangementPatient_SearchPatientField,
-                "Ingrese DNI del paciente"));
+                "Ingrese DNI del Paciente"));
         this.D_ArrangementPatient_ReturnBttn.addActionListener(e -> AccessPanel.changeContent("D_menu"));
         initTables();
     }
@@ -65,8 +65,5 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
 
      }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }
 
