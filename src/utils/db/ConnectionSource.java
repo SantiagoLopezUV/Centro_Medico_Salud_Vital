@@ -8,9 +8,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionSource {
+/*
+    //DataBase Remote
     private static final String DB_URL = System.getenv("DB_URL");
     private static final String USER = System.getenv("DB_USER");
     private static final String PASS = System.getenv("DB_PASSWORD");
+*/
+
+    // Create DB LOCAL
+    private static final String DB_URL = "jdbc:postgresql://localhost:5432/CentroMedicoSaludVitalTest";
+    private static final String USER = "postgres";
+    private static final String PASS = "postgres16";
 
     private static HikariDataSource ds;
 
