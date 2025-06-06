@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AuthenticationService {
-   // private final Connection conn = ConnectionSource.instance().createConnection();
 
     public AuthenticationService() throws SQLException {
     }

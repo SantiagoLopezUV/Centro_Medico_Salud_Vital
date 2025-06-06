@@ -4,7 +4,6 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionSource {
@@ -35,26 +34,5 @@ public class ConnectionSource {
             ds.close();
         }
     }
-
-
-/*    private static final ConnectionSource instance = new ConnectionSource();
-
-    public static ConnectionSource instance() {
-        return instance;
-    }
-
-    public Connection createConnection() throws SQLException {
-        return DriverManager.getConnection(DB_URL, USER, PASS);
-    }
-
-    private ConnectionSource() {
-
-        try {
-            DriverManager.registerDriver(new org.postgresql.Driver());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-    }*/
 
 }

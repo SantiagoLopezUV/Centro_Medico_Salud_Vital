@@ -1,11 +1,14 @@
 package view.director_templates;
 
+import dao.DirectorDao;
 import utils.AccessPanel;
+import utils.KeyListenerParaInt;
 import utils.PlaceHoldersAction;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class D_ArrangementPatientInfoPanel implements AccessPanel {
     private JPanel D_ArrangementPatientIBG;
@@ -20,9 +23,13 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
 
     public D_ArrangementPatientInfoPanel() {
         this.D_ArrangementPatient_SearchPatientField.addFocusListener(new PlaceHoldersAction(this.D_ArrangementPatient_SearchPatientField,
-                "Ingrese DNI del Paciente"));
-        this.D_ArrangementPatient_ReturnBttn.addActionListener(e -> AccessPanel.changeContent("D_menu"));
-        initTables();
+                "Ingrese DNI del paciente"));
+        this.D_ArrangementPatient_SearchPatientField.addKeyListener(new KeyListenerParaInt(this.D_ArrangementPatient_SearchPatientField));
+        this.D_ArrangementPatient_SearchPatientBttn.addActionListener(e -> initTables());
+        this.D_ArrangementPatient_ReturnBttn.addActionListener(e -> {
+            destroyData();
+            AccessPanel.changeContent("D_menu");
+        });
     }
 
     @Override
@@ -30,22 +37,39 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
         return D_ArrangementPatientIBG;
     }
 
-    //Se debe modificar para cuando se hagan las respectivas querys
     private void initTables(){
+        DirectorDao directorDao = new DirectorDao();
 
-        //----reemplazar por las listas obtenias por las respectivas consultas
-        //----para cada tabla
-        Object[][] data= {
-                {"2025-05-10", "general", "Camila Ríos", "Pagado", 120000, 0.10},
-                {"2025-04-28", "urgencias", "Juan Martínez", "En curso", 5600000, 0.40},
-                {"2025-03-15", "odontología", "Laura Gómez", "Anulado", 350000, 0.0},
-                {"2025-05-05", "especializada", "Andrés Pérez", "Pendiente por pago", 220000, 0.20},
-                {"2025-02-20", "general", "Silvia Torres", "Pagado", 150000, 0.15}
-        };
+        Object[][] data= null;
+        String pFullName = null;
 
-        //----
-        //table name
-        this.D_ArrangementPatient_lblNames.setText("Jhon Doe");
+        try {
+            long id = Long.parseLong(this.D_ArrangementPatient_SearchPatientField.getText());
+            pFullName = directorDao.getPatientFullName(id);
+            if(pFullName == null) throw new NoSuchFieldError();
+            data = directorDao.getArrgmtsPerPatient(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Un error se ha presentado al tratar de consultar la base de datos," +
+                            "contacta al administrador de la misma",
+                    "Error al consultar la base de datos",
+                    JOptionPane.ERROR_MESSAGE);
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Solo se admite números, intenta nuevamente",
+                    "Error al consultar la base de datos",
+                    JOptionPane.ERROR_MESSAGE);
+        }catch (NoSuchFieldError e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "El paciente no existe en la base de datos",
+                    "Error al consultar la base de datos",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+        this.D_ArrangementPatient_lblNames.setText(pFullName);
         this.D_ArrangementPatient_lblNames.setVisible(true);
         // table heads
         String[] columnNames = {"Fecha", "Tipo", "Médico", "Estado", "Valor factura", "% convenio"};
@@ -64,6 +88,11 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
 
 
      }
-
+    private void destroyData(){
+        this.D_ArrangementPatient_SearchPatientField.setText("Ingrese DNI del paciente");
+        this.D_ArrangementPatient_lblNames.setText("");
+        this.D_ArrangementPatient_lblNames.setVisible(false);
+        this.patientsArrangementTable.setModel(new DefaultTableModel());
+    }
 }
 

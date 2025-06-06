@@ -52,6 +52,7 @@ public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
         try {
             dataServAdd = directorDao.getAdditionalServs();
             dataSpe = directorDao.getMedicSpecilities();
+
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,
@@ -60,7 +61,7 @@ public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
                     "Error al consultar la base de datos",
                     JOptionPane.ERROR_MESSAGE);
         }
-
+        directorDao = null;
         // tables heads
         String[] columnNamesServAdds = {"Código", "Nombre", "Valor"};
         String[] columnNamesSpecialties = {"Código", "Nombre"};
@@ -76,6 +77,8 @@ public class D_MedicAdditionalServsAndEspecialtiesPanel implements AccessPanel {
 
         resizeColumnsTable(this.servAddiTable, this.servAddiScrollPanel.getWidth());
         resizeColumnsTable(this.specialtiesTable, this.specialtiesScrollPanel.getWidth());
+
+
     }
 
     private void destroyTablesData(){
