@@ -1,6 +1,7 @@
 package view.manager_templates;
 
 import utils.AccessPanel;
+import utils.KeyListenerParaDouble;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -24,8 +25,11 @@ public class M_DiscountsBenefits implements AccessPanel {
 
         this.M_DiscountsBenefits_ReturnBttn.addActionListener(e -> AccessPanel.changeContent("M_Menu"));
 
+        this.M_DiscountsBenefits_CostDiscountField.addKeyListener(
+                new KeyListenerParaDouble(this.M_DiscountsBenefits_CostDiscountField));
 
-
+        this.M_DiscountsBenefits_NewCostDiscountField.addKeyListener(
+                new KeyListenerParaDouble(this.M_DiscountsBenefits_NewCostDiscountField));
     }
 
     @Override
