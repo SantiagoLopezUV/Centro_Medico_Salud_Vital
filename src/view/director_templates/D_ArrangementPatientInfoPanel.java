@@ -46,7 +46,7 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
         try {
             long id = Long.parseLong(this.D_ArrangementPatient_SearchPatientField.getText());
             pFullName = directorDao.getPatientFullName(id);
-            if(pFullName == null) throw new NoSuchFieldError();
+            if(pFullName == null) throw new NoSuchFieldException();
             data = directorDao.getArrgmtsPerPatient(id);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
                     "Solo se admite números, intenta nuevamente",
                     "Error al consultar la base de datos",
                     JOptionPane.ERROR_MESSAGE);
-        }catch (NoSuchFieldError e){
+        }catch (NoSuchFieldException e){
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,
                     "El paciente no existe en la base de datos",
