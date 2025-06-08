@@ -53,4 +53,9 @@ public class ConsultationType {
     public int hashCode() {
         return Objects.hashCode(idConsultationType);
     }
+
+    @Override
+    public String toString() {
+        return consultationTypeName;
+    }
 }

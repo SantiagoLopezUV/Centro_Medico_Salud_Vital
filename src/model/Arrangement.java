@@ -58,4 +58,9 @@ public class Arrangement {
     public int hashCode() {
         return Objects.hash(ArrangementCode, corpName);
     }
+
+    @Override
+    public String toString() {
+        return corpName;
+    }
 }
