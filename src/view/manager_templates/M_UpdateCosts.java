@@ -77,7 +77,7 @@ public class M_UpdateCosts implements AccessPanel{
 
                     if (Double.compare(cost, newCost) == 0) {
                         JOptionPane.showMessageDialog(this.M_UpdateCostsPanel,
-                                "Los valores ya estan actualizados");
+                                "Los Valores ya Estan Actualizados");
                     }
 
                     int confirm = JOptionPane.showConfirmDialog(this.M_UpdateCostsPanel,

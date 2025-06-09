@@ -46,8 +46,9 @@ public class ManagerDao {
                         int ArrangementCode = rs.getInt("codConvenio");
                         String corpName = rs.getString("nomEmpresa");
                         float percentage = rs.getFloat("porcentaje");
+                        boolean available = rs.getBoolean("vigente");
                         listAgreement.add(new Arrangement(
-                                ArrangementCode, corpName, percentage, true));
+                                ArrangementCode, corpName, percentage, available));
                     }
                 }
             }
@@ -61,16 +62,18 @@ public class ManagerDao {
             try(PreparedStatement ps = con.prepareStatement(UPDATE_PRICE_CONSULTATION)){
                 ps.setDouble(1, newPrice);
                 ps.setInt(2, idTypeCons);
+                ps.executeUpdate();
                 return true;
             }
         }
     }
 
-    public static boolean updatePercentageArrangement(int idArrangement, float newPrice) throws SQLException {
+    public static boolean updatePercentageArrangement(int idArrangement, float newPercent) throws SQLException {
         try(Connection con = ConnectionSource.getConnection();){
             try(PreparedStatement ps = con.prepareStatement(UPDATE_PERCENT_AGREEMENT)){
-                ps.setDouble(1, newPrice);
+                ps.setFloat(1, newPercent);
                 ps.setInt(2, idArrangement);
+                ps.executeUpdate();
                 return true;
             }
         }
