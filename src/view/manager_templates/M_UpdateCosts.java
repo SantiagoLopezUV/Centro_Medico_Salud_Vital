@@ -6,6 +6,7 @@ import utils.AccessPanel;
 import utils.KeyListenerParaDouble;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -37,12 +38,13 @@ public class M_UpdateCosts implements AccessPanel{
 
         //  Try Catch para for each que envia los nombres al comboBox
         try{
-            List<ConsultationType> TypeConsultations = ManagerDao.getTypeConsultations();
-            for (ConsultationType TypeConsultation : TypeConsultations) {
+            List<ConsultationType> listTypeConsultations = ManagerDao.getTypeConsultations();
+            for (ConsultationType TypeConsultation : listTypeConsultations) {
                 this.M_UpdateCosts_comboBoxService.addItem(TypeConsultation);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(this.M_UpdateCostsPanel, "Error al Cargar Información");
+            //throw new RuntimeException(e);
         }
 
         //  Consiguración de ComboBox para garantizar selección de algo
@@ -69,12 +71,66 @@ public class M_UpdateCosts implements AccessPanel{
         this.M_UpdateCosts_SaveBttn.addActionListener(e -> {
             ConsultationType selectedConsultationType = (ConsultationType) this.M_UpdateCosts_comboBoxService.getSelectedItem();
             if (selectedConsultationType != null) {
-                JOptionPane.showConfirmDialog(this.M_UpdateCostsPanel, "¿Seguro Quieres Actualizar?");
-            }else {
-                JOptionPane.showMessageDialog(this.M_UpdateCostsPanel, "Selecciona lo que deseas Actualizar");
+                try{
+                    double cost = Double.parseDouble(M_UpdateCosts_CostField.getText());
+                    double newCost = Double.parseDouble(M_UpdateCosts_NewCostField.getText());
+
+                    if (Double.compare(cost, newCost) == 0) {
+                        JOptionPane.showMessageDialog(this.M_UpdateCostsPanel,
+                                "Los valores ya estan actualizados");
+                    }
+
+                    int confirm = JOptionPane.showConfirmDialog(this.M_UpdateCostsPanel,
+                            "¿Seguro Quieres Actualizar?");
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        int idConsul = selectedConsultationType.getIdConsultationType();
+                        double newPrice = Double.parseDouble((this.M_UpdateCosts_NewCostField.getText()));
+
+                        boolean flag = ManagerDao.updatePriceTypeConsultations(idConsul, newPrice);
+
+                        if (flag) {
+                            JOptionPane.showMessageDialog(this.M_UpdateCostsPanel,
+                                    "¡Actualización Exitosa!");
+
+                            this.M_UpdateCosts_comboBoxService.removeAllItems();
+                            List<ConsultationType> newListTypeConsultations = ManagerDao.getTypeConsultations();
+                            for (ConsultationType TypeConsultation : newListTypeConsultations) {
+                                this.M_UpdateCosts_comboBoxService.addItem(TypeConsultation);
+                            }
+
+                            this.M_UpdateCosts_comboBoxService.setSelectedIndex(-1);
+                            this.M_UpdateCosts_CostField.setText("");
+                            this.M_UpdateCosts_NewCostField.setText("");
+                        } else {
+                            JOptionPane.showMessageDialog(this.M_UpdateCostsPanel,
+                                    "No se Actualizó. No existe la Consulta ó Valor ya estaba Actualizado");
+                        }
+                    } else if (confirm == JOptionPane.NO_OPTION) {
+                        JOptionPane.showMessageDialog(this.M_UpdateCostsPanel,
+                                "No se pudo Actualizar");
+                        this.M_UpdateCosts_NewCostField.setText(String.valueOf(cost));
+                    } else {
+                        JOptionPane.showMessageDialog(this.M_UpdateCostsPanel,
+                                "Acción Cancelada");
+                        this.M_UpdateCosts_comboBoxService.setSelectedIndex(-1);
+                        this.M_UpdateCosts_CostField.setText("");
+                        this.M_UpdateCosts_NewCostField.setText("");
+                    }
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this.M_UpdateCostsPanel,
+                        "Elige el tipo de consulta para actualizar");
             }
         });
+
+
     }
+
+/*
+                    */
+
 
     @Override
     public JPanel getPanel() {

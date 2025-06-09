@@ -4,6 +4,7 @@ import model.Arrangement;
 import model.ConsultationType;
 import utils.db.ConnectionSource;
 
+import javax.sound.midi.Soundbank;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,14 +57,13 @@ public class ManagerDao {
     }
 
 
-
-    /*public Object getAgreement() throws SQLException {
+    public static boolean updatePriceTypeConsultations(int idTypeCons, double newPrice) throws SQLException {
         try(Connection con = ConnectionSource.getConnection();){
-            try(Statement statement = con.prepareStatement(GET_AGREEMENT)){
-                try(ResultSet rs = statement.executeQuery(GET_AGREEMENT)){
-
-                }
+            try(PreparedStatement ps = con.prepareStatement(UPDATE_PRICE_CONSULTATION)){
+                ps.setDouble(1, newPrice);
+                ps.setInt(2, idTypeCons);
+                return true;
             }
         }
-    }*/
+    }
 }

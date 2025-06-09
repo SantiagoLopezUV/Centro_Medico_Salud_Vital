@@ -37,14 +37,15 @@ public class M_DiscountsBenefits implements AccessPanel {
         this.M_DiscountsBenefits_NewCostDiscountField.addKeyListener(
                 new KeyListenerParaDouble(this.M_DiscountsBenefits_NewCostDiscountField));
 
-        //  Try Catch para for each que envia los nombres al comboBox
+        //  Try Catch para for each que envia los nombres capturados por el DAO al comboBox
         try {
             List<Arrangement> Agreements = ManagerDao.getAgreement();
             for (Arrangement iArrangement : Agreements) {
                 this.M_DiscountsBenefits_comboBoxAgreement.addItem(iArrangement);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(this.M_DiscountsBenefitsPanel, "Error al Cargar Información");
+
         }
 
         //  Consiguración de ComboBox para garantizar selección de algo
