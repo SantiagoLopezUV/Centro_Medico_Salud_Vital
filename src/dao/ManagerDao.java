@@ -4,7 +4,6 @@ import model.Arrangement;
 import model.ConsultationType;
 import utils.db.ConnectionSource;
 
-import javax.sound.midi.Soundbank;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ public class ManagerDao {
     private static final String GET_AGREEMENT = "SELECT * FROM Convenio";
 
     private static final String UPDATE_PRICE_CONSULTATION = "UPDATE Tipo_Consulta SET costoConsulta = ? WHERE codTipoCons = ?";
-    private static final String UPDATE_PRICE_AGREEMENT = "UPDATE Convenio SET porcentaje = ? WHERE codConvenio = ?";
+    private static final String UPDATE_PERCENT_AGREEMENT = "UPDATE Convenio SET porcentaje = ? WHERE codConvenio = ?";
 
     public static List<ConsultationType> getTypeConsultations() throws SQLException {
         List<ConsultationType> listTypeConsultations = new ArrayList<>();
@@ -66,4 +65,16 @@ public class ManagerDao {
             }
         }
     }
+
+    public static boolean updatePercentageArrangement(int idArrangement, float newPrice) throws SQLException {
+        try(Connection con = ConnectionSource.getConnection();){
+            try(PreparedStatement ps = con.prepareStatement(UPDATE_PERCENT_AGREEMENT)){
+                ps.setDouble(1, newPrice);
+                ps.setInt(2, idArrangement);
+                return true;
+            }
+        }
+    }
+
+
 }
