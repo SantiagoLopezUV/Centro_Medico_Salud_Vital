@@ -104,7 +104,7 @@ public class M_DiscountsBenefits implements AccessPanel {
                                 this.M_DiscountsBenefits_NewCostDiscountField.setText("");
                             }else{
                                 JOptionPane.showMessageDialog(this.M_DiscountsBenefitsPanel,
-                                        "No se Actualizó. No Existe el Convenio ó Valor ya Estaba Actualizado");
+                                        "No se Actualizó. No Existe el Convenio ó El Valor ya Estaba Actualizado");
                             }
                         } else if (confirm == JOptionPane.NO_OPTION) {
                             JOptionPane.showMessageDialog(this.M_DiscountsBenefitsPanel,
@@ -126,7 +126,8 @@ public class M_DiscountsBenefits implements AccessPanel {
                     throw new RuntimeException(ex);
                 }
             }else {
-                JOptionPane.showMessageDialog(this.M_DiscountsBenefitsPanel, "Selecciona lo que Deseas Actualizar");
+                JOptionPane.showMessageDialog(this.M_DiscountsBenefitsPanel,
+                        "Selecciona el Convenio que Deseas Actualizar");
             }
         });
     }
