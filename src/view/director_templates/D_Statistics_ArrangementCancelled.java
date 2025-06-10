@@ -1,10 +1,13 @@
 package view.director_templates;
 
+import dao.DirectorDao;
 import utils.AccessPanel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.sql.SQLException;
+import java.util.Objects;
 
 public class D_Statistics_ArrangementCancelled implements AccessPanel {
     private JPanel D_Statistics_arrangementAnnulledRateBG;
@@ -19,11 +22,13 @@ public class D_Statistics_ArrangementCancelled implements AccessPanel {
     private JLabel D_ArrangementCancelled_SubTitleDir;
 
     public D_Statistics_ArrangementCancelled() {
-        this.D_ArrangementCancelled_ReturnBttn.addActionListener(e ->
-                AccessPanel.changeContent("D_statistics"));
-        initTables();
-        establishComboBoxesMonthYearValues(D_ArrangementCancelled_comboBoxMonth, D_ArrangementCancelled_comboBoxYear);
         this.D_ArrangementCancelled_TotalTextField.setText("Total citas anuladas");
+        this.D_ArrangementCancelled_ReturnBttn.addActionListener(e -> {
+                AccessPanel.changeContent("D_statistics");
+                destroyData();
+        });
+        this.D_ArrangementCancelled_SearchMonthBttn.addActionListener(e -> initTables());
+        establishComboBoxesMonthYearValues(D_ArrangementCancelled_comboBoxMonth, D_ArrangementCancelled_comboBoxYear);
     }
 
     @Override
@@ -31,35 +36,63 @@ public class D_Statistics_ArrangementCancelled implements AccessPanel {
         return this.D_Statistics_arrangementAnnulledRateBG;
     }
 
-    //Se debe modificar para cuando se hagan las respectivas querys
     private void initTables(){
 
-        //----reemplazar por las listas obtenias por las respectivas consultas
-        //----para cada tabla
-        Object[][] data= {
-                {"general", 0.10},
-                {"urgencias",0.40},
-                {"odontología", 0.05},
-                {"especializada", 0.20}
-        };
+        DirectorDao directorDao = new DirectorDao();
+        Object[][] data =null;
+        String year;
+        int month;
+        int totalMonthlyArrangementCount = 0;
 
-        //----
-        // table heads
-        String[] columnNames = {"Tipo de consulta","% de cancelación"};
+        try {
+
+            if(Objects.requireNonNull(this.D_ArrangementCancelled_comboBoxYear.getSelectedItem()).toString().isBlank()
+                    || Objects.requireNonNull(this.D_ArrangementCancelled_comboBoxMonth.getSelectedItem()).toString().isBlank())
+                throw new NoSuchFieldException();
+
+            year = this.D_ArrangementCancelled_comboBoxYear.getSelectedItem().toString();
+            month = this.D_ArrangementCancelled_comboBoxMonth.getSelectedIndex();
+
+            totalMonthlyArrangementCount = directorDao.getArrangementCount(year, month);
+            data = directorDao.getCancelledArrgRates(year, month);
+
+
+            for(int i=0; i<data.length; i++){
+                double percentage = (double) data[i][1]/totalMonthlyArrangementCount;
+                data[i][1] = percentage * 100;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Un error se ha presentado al tratar de consultar la base de datos," +
+                            "contacta al administrador de la misma",
+                    "Error al consultar la base de datos",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (NoSuchFieldException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Verifica que los campos año y mes estén correctos",
+                    "Error al consultar la base de datos",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+        this.D_ArrangementCancelled_TotalTextField.setText(Double.toString(totalMonthlyArrangementCount));
+
+        String[] columnNames = {"Tipo de consulta","%"};
         // adding into to table
         DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
         this.arrangementAnnulledRateTable.setModel(tableModel);
-
-        int maxWidth = MAIN_PANEL.getWidth()/2;
-        int maxHeight = MAIN_PANEL.getHeight()/2;
-
-        this.D_ArrangementCancelled_ScrollPanel.setPreferredSize(new Dimension(maxWidth,
-                maxHeight));
-        this.D_ArrangementCancelled_ScrollPanel.setMaximumSize(new Dimension(maxWidth,
-                maxHeight));
-        resizeColumnsTable(arrangementAnnulledRateTable, maxWidth);
-
-
+        
+        resizeColumnsTable(arrangementAnnulledRateTable, this.D_ArrangementCancelled_ScrollPanel.getWidth() /*maxWidth*/);
 
     }
+
+    private void destroyData() {
+        this.D_ArrangementCancelled_TotalTextField.setText("Total citas anuladas");
+        this.D_ArrangementCancelled_comboBoxYear.setSelectedIndex(0);
+        this.D_ArrangementCancelled_comboBoxYear.setSelectedIndex(0);
+        this.arrangementAnnulledRateTable.setModel(new DefaultTableModel());
+    }
+
 }

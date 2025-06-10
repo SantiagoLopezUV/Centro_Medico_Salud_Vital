@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class D_MonthlyAddServIncome implements AccessPanel {
     private JPanel D_MonthlyServIncomeBG;
@@ -23,12 +24,9 @@ public class D_MonthlyAddServIncome implements AccessPanel {
 
     public D_MonthlyAddServIncome() {
         this.D_MonthlyServIncome_TotalIncomeText.setText("Ingreso Total");
-        this.D_MonthlyServIncome_TotalIncomeText.setText("0");
         this.D_MonthlyServIncome_ReturnBttn.addActionListener(e -> {
             AccessPanel.changeContent("D_menu");
             destroyData();
-            this.D_MonthlyServIncome_TotalIncomeText.setText("Ingreso Total");
-
         });
         this.D_MonthlyServIncome_SearchBttn.addActionListener(e -> initTables());
         establishComboBoxesMonthYearValues(D_MonthlyServIncome_comboBoxMonth, D_MonthlyServIncome_comboBoxYear);
@@ -44,15 +42,15 @@ public class D_MonthlyAddServIncome implements AccessPanel {
     private void initTables(){
         DirectorDao directorDao = new DirectorDao();
         Object[][] data =null;
-        String year = null;
+        String year;
         int month;
         double income = 0;
 
 
         try {
 
-            if(this.D_MonthlyServIncome_comboBoxYear.getSelectedItem().toString().isBlank()
-            || this.D_MonthlyServIncome_comboBoxMonth.getSelectedItem().toString().isBlank())
+            if(Objects.requireNonNull(this.D_MonthlyServIncome_comboBoxYear.getSelectedItem()).toString().isBlank()
+            || Objects.requireNonNull(this.D_MonthlyServIncome_comboBoxMonth.getSelectedItem()).toString().isBlank())
                 throw new NoSuchFieldException();
 
             year = this.D_MonthlyServIncome_comboBoxYear.getSelectedItem().toString();
@@ -94,7 +92,7 @@ public class D_MonthlyAddServIncome implements AccessPanel {
 
 
     private void destroyData() {
-        this.D_MonthlyServIncome_TotalIncomeText.setText("0");
+        this.D_MonthlyServIncome_TotalIncomeText.setText("Ingreso Total");
         this.D_MonthlyServIncome_comboBoxYear.setSelectedIndex(0);
         this.D_MonthlyServIncome_comboBoxMonth.setSelectedIndex(0);
         this.monthlyIncomeTable.setModel(new DefaultTableModel());
