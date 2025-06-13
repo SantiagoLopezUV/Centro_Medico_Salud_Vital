@@ -6,7 +6,6 @@ import utils.AccessPanel;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class D_MonthlyAddServIncome implements AccessPanel {
@@ -81,9 +80,9 @@ public class D_MonthlyAddServIncome implements AccessPanel {
 
 
         this.D_MonthlyServIncome_TotalIncomeText.setText(String.valueOf(income));
-        // table heads
+
         String[] columnNames = {"Fecha", "Servicio", "Ref Factura", "Valor facturado"};
-        // adding into to table
+
         DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
         this.monthlyIncomeTable.setModel(tableModel);
         resizeColumnsTable(this.monthlyIncomeTable, MAIN_PANEL.getWidth()*2/3);

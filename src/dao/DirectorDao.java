@@ -1,5 +1,6 @@
 package dao;
 
+import utils.MathUtils;
 import utils.db.ConnectionSource;
 
 import java.sql.*;
@@ -22,6 +23,8 @@ public class DirectorDao {
             " WHERE extract(YEAR FROM fechacita) = ?" +
             " AND extract(MONTH FROM fechacita) = ?" +
             " group by estado";
+
+    private static final String GET_MEDIC_OCCUPATION_RATE = "SELECT * FROM porcentaje_ocupacion_medicos(?, ?) ";
 
 
     private Object[][] buildBlankTable(ResultSet rs, int minusColumns) throws SQLException {
@@ -100,21 +103,21 @@ public class DirectorDao {
                 statement.setInt(1, Integer.parseInt(year));
                 statement.setInt(2, month+1);
                 try(ResultSet rs = statement.executeQuery()) {
-                    Object[][] AddServInfo = buildBlankTable(rs, 1);
+                    Object[][] servsIncome = buildBlankTable(rs, 1);
                     while (rs.next()) {
-                        AddServInfo[rs.getRow() - 1] = new Object[]{
+                        servsIncome[rs.getRow() - 1] = new Object[]{
                                 rs.getDate(1),
                                 rs.getString(2),
                                 rs.getLong(3),
                                 rs.getDouble(4)};
                     }
-                    return AddServInfo;
+                    return servsIncome;
                 }
             }
         }
     }
 
-    public Object[][] getCancelledArrgRates(String year, int month) throws SQLException {
+    public Object[][] getCancelledArrgRates(String year, int month, int totalMonthlyArrangementCount) throws SQLException {
         try(Connection conn = ConnectionSource.getConnection()) {
             try (PreparedStatement statement = conn.prepareStatement(GET_ARRANGEMENT_COUNT_BY_GROUP,
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -122,17 +125,44 @@ public class DirectorDao {
                 statement.setInt(1, Integer.parseInt(year));
                 statement.setInt(2, month+1);
                 try(ResultSet rs = statement.executeQuery()) {
-                    Object[][] AddServInfo = buildBlankTable(rs, 1);
+                    Object[][] arrRates = buildBlankTable(rs, 1);
                     while (rs.next()) {
-                        AddServInfo[rs.getRow() - 1] = new Object[]{
+                        arrRates[rs.getRow() - 1] = new Object[]{
                                 rs.getString(1),
-                                rs.getDouble(2)};
+                                MathUtils.roundDPercentageFixed(rs.getDouble(2),
+                                    totalMonthlyArrangementCount,
+                                    2)
+                        };
                     }
-                    return AddServInfo;
+                    return arrRates;
                 }
             }
         }
 
+    }
+
+    public Object[][] getMedicOcupationRate(String year, int month) throws SQLException {
+
+        try(Connection conn = ConnectionSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(GET_MEDIC_OCCUPATION_RATE,
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY)) {
+                statement.setInt(1, Integer.parseInt(year));
+                statement.setInt(2, month+1);
+                try(ResultSet rs = statement.executeQuery()) {
+                    Object[][] occupationRates = buildBlankTable(rs, 0);
+                    System.out.println(occupationRates[1].length);
+                    while (rs.next()) {
+                        occupationRates[rs.getRow() - 1] = new Object[]{
+                                rs.getLong(1),
+                                rs.getString(2),
+                                rs.getString(3),
+                                rs.getDouble(4)};
+                    }
+                    return occupationRates;
+                }
+            }
+        }
     }
 
     public int getArrangementCount(String year, int month) throws SQLException {
@@ -163,7 +193,5 @@ public class DirectorDao {
         }
         return "";
     }
-
-
 
 }

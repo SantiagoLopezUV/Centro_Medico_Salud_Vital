@@ -1,10 +1,13 @@
 package view.director_templates;
 
+import dao.DirectorDao;
 import utils.AccessPanel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.sql.SQLException;
+import java.util.Objects;
 
 public class D_Statistics_MedicOccupationPercentage implements AccessPanel {
     private JPanel D_MedicOccupationPercentageBG;
@@ -18,9 +21,11 @@ public class D_Statistics_MedicOccupationPercentage implements AccessPanel {
     private JLabel D_MedicOccupationPercentage_SubTitleDir;
 
     public D_Statistics_MedicOccupationPercentage() {
-        this.D_MedicOccupationPercentage_ReturnBttn.addActionListener(e ->
-                AccessPanel.changeContent("D_statistics"));
-        initTables();
+        this.D_MedicOccupationPercentage_ReturnBttn.addActionListener(e -> {
+            AccessPanel.changeContent("D_statistics");
+            destroyData();
+        });
+        this.D_MedicOccupationPercentage_SearchMonthBttn.addActionListener(e -> initTables());
         establishComboBoxesMonthYearValues(D_MedicOccupationPercentage_comboBoxMonth, D_MedicOccupationPercentage_comboBoxYear);
     }
 
@@ -29,37 +34,57 @@ public class D_Statistics_MedicOccupationPercentage implements AccessPanel {
         return this.D_MedicOccupationPercentageBG;
     }
 
-
-    //Se debe modificar para cuando se hagam las respectivas querys
     private void initTables(){
+        DirectorDao directorDao = new DirectorDao();
+        Object[][] data =null;
+        String year;
+        int month;
 
-        //----reemplazar por las listas obtenias por las respectivas consultas
-        //----para cada tabla
-        Object[][] data= {
-                {123411234, "Camila Ríos", 0.10},
-                {12333567, "Juan Martínez",0.40},
-                {3455666, "Laura Gómez", 0.0},
-                {2342555, "Andrés Pérez", 0.20},
-                {23425555, "Silvia Torres", 0.15}
-        };
+        try {
 
-        //----
+            if(Objects.requireNonNull(this.D_MedicOccupationPercentage_comboBoxYear.getSelectedItem()).toString().isBlank()
+                    || Objects.requireNonNull(this.D_MedicOccupationPercentage_comboBoxMonth.getSelectedItem()).toString().isBlank())
+                throw new NoSuchFieldException();
+
+            year = this.D_MedicOccupationPercentage_comboBoxYear.getSelectedItem().toString();
+            month = this.D_MedicOccupationPercentage_comboBoxMonth.getSelectedIndex();
+
+            //Cada médico tiene proyectado trabajar de lunes a viernes 40h, cada cita tiene un tiempo establecido
+            //de 15min, por lo que en una semana haría 160 citas, para un total de 640 citas mensuales proyetadas
+
+            data = directorDao.getMedicOcupationRate(year, month);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Un error se ha presentado al tratar de consultar la base de datos," +
+                            "contacta al administrador de la misma",
+                    "Error al consultar la base de datos",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (NoSuchFieldException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Verifica que los campos año y mes estén correctos",
+                    "Error al consultar la base de datos",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
         // table heads
-        String[] columnNames = {"Doc Identidad", "Médico","% ocupación"};
+        String[] columnNames = {"Doc Identidad", "Apellidos", "Nombres","% ocupación"};
         // adding into to table
         DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
         this.medicOccupationPercentageTable.setModel(tableModel);
 
-        int maxWidth = MAIN_PANEL.getWidth()*2/3;
-        int maxHeight = MAIN_PANEL.getHeight()*2/3;
-
-        this.D_MedicOccupationPercentage_ScrollPanel.setPreferredSize(new Dimension(maxWidth,
-                maxHeight));
-        this.D_MedicOccupationPercentage_ScrollPanel.setMaximumSize(new Dimension(maxWidth,
-                maxHeight));
-        resizeColumnsTable(medicOccupationPercentageTable, maxWidth);
-
-
+        resizeColumnsTable(medicOccupationPercentageTable, this.D_MedicOccupationPercentage_ScrollPanel.getWidth());
 
     }
+
+
+    private void destroyData() {
+        this.D_MedicOccupationPercentage_comboBoxYear.setSelectedIndex(0);
+        this.D_MedicOccupationPercentage_comboBoxMonth.setSelectedIndex(0);
+        this.medicOccupationPercentageTable.setModel(new DefaultTableModel());
+    }
+
 }

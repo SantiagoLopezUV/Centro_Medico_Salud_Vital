@@ -54,13 +54,8 @@ public class D_Statistics_ArrangementCancelled implements AccessPanel {
             month = this.D_ArrangementCancelled_comboBoxMonth.getSelectedIndex();
 
             totalMonthlyArrangementCount = directorDao.getArrangementCount(year, month);
-            data = directorDao.getCancelledArrgRates(year, month);
+            data = directorDao.getCancelledArrgRates(year, month, totalMonthlyArrangementCount);
 
-
-            for(int i=0; i<data.length; i++){
-                double percentage = (double) data[i][1]/totalMonthlyArrangementCount;
-                data[i][1] = percentage * 100;
-            }
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,10 +75,9 @@ public class D_Statistics_ArrangementCancelled implements AccessPanel {
         this.D_ArrangementCancelled_TotalTextField.setText(Double.toString(totalMonthlyArrangementCount));
 
         String[] columnNames = {"Tipo de consulta","%"};
-        // adding into to table
         DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
         this.arrangementAnnulledRateTable.setModel(tableModel);
-        
+
         resizeColumnsTable(arrangementAnnulledRateTable, this.D_ArrangementCancelled_ScrollPanel.getWidth() /*maxWidth*/);
 
     }
