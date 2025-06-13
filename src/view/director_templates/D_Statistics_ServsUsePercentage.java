@@ -29,7 +29,7 @@ public class D_Statistics_ServsUsePercentage implements AccessPanel {
         });
         this.D_ServUsePercentage_SearchMonthBttn.addActionListener(e -> initTables());
         establishComboBoxesMonthYearValues(D_ServUsePercentage_comboBoxMonth, D_ServUsePercentage_comboBoxYear);
-        this.D_ServUsePercentage_TotalTextField.setText("Total uso de servicios");
+        this.D_ServUsePercentage_TotalTextField.setText("Total conteo servicios");
     }
 
     @Override
@@ -43,26 +43,25 @@ public class D_Statistics_ServsUsePercentage implements AccessPanel {
         Object[][] data =null;
         String year;
         int month;
-        double income = 0;
+        int totalServs = 0;
 
 
         try {
 
-            if(Objects.requireNonNull(this.D_MonthlyServIncome_comboBoxYear.getSelectedItem()).toString().isBlank()
-                    || Objects.requireNonNull(this.D_MonthlyServIncome_comboBoxMonth.getSelectedItem()).toString().isBlank())
+            if(Objects.requireNonNull(this.D_ServUsePercentage_comboBoxYear.getSelectedItem()).toString().isBlank()
+                    || Objects.requireNonNull(this.D_ServUsePercentage_comboBoxMonth.getSelectedItem()).toString().isBlank())
                 throw new NoSuchFieldException();
 
-            year = this.D_MonthlyServIncome_comboBoxYear.getSelectedItem().toString();
-            month = this.D_MonthlyServIncome_comboBoxMonth.getSelectedIndex();
+            year = this.D_ServUsePercentage_comboBoxYear.getSelectedItem().toString();
+            month = this.D_ServUsePercentage_comboBoxMonth.getSelectedIndex();
+
+            totalServs = directorDao.getSumOfAdditionalServsPerMonth(year, month);
+
+            data = directorDao.getMonthlyAdditionalServsCounts(year, month, totalServs);
 
 
-            data = directorDao.getMonthlyAdditionalServsIncome(year, month);
 
 
-
-            for(int i=0; i<data.length; i++){
-                income = income + (double) data[i][3];
-            }
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,
@@ -78,10 +77,12 @@ public class D_Statistics_ServsUsePercentage implements AccessPanel {
                     JOptionPane.ERROR_MESSAGE);
         }
         // table heads
-        String[] columnNames = {"Servicio adicional","% uso vs el total"};
+        String[] columnNames = {"Servicio adicional", "Conteo", "% uso vs el total"};
         // adding into to table
         DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
         this.addServsPercentageTable.setModel(tableModel);
+
+        this.D_ServUsePercentage_TotalTextField.setText(String.valueOf(totalServs));
 
         int maxWidth = MAIN_PANEL.getWidth()*2/3;
         int maxHeight = MAIN_PANEL.getHeight()*2/3;
@@ -95,7 +96,7 @@ public class D_Statistics_ServsUsePercentage implements AccessPanel {
     }
 
     private void destroyData() {
-        this.D_ServUsePercentage_TotalTextField.setText("Total uso de servicios");
+        this.D_ServUsePercentage_TotalTextField.setText("Total conteo servicios");
         this.D_ServUsePercentage_comboBoxMonth.setSelectedIndex(0);
         this.D_ServUsePercentage_comboBoxYear.setSelectedIndex(0);
         this.addServsPercentageTable.setModel(new DefaultTableModel());

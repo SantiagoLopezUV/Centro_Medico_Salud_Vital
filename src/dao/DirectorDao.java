@@ -25,10 +25,21 @@ public class DirectorDao {
             " group by estado";
 
     private static final String GET_MEDIC_OCCUPATION_RATE = "SELECT * FROM porcentaje_ocupacion_medicos(?, ?) ";
+    private static final String GET_MONTHLY_TOTAL_ADDSERVS_SUM = "SELECT count(*) FROM registro_factura_servadicionales rfs" +
+            " INNER JOIN factura f ON f.reffactura = rfs.reffactura" +
+            " WHERE extract(YEAR FROM fechafactura) = ?" +
+            "        AND extract(MONTH FROM fechafactura) = ?; ";
+    private static final String GET_ADDSERVS_COUNT_PER_MONTH = "SELECT a.nomservadi, COUNT(f.*) FROM registro_factura_servadicionales rfs" +
+            " INNER JOIN factura f ON f.reffactura = rfs.reffactura" +
+            "   AND extract(YEAR FROM f.fechafactura) = ?" +
+            "   AND extract(MONTH FROM f.fechafactura) = ?" +
+            " RIGHT JOIN servicio_adicional a ON a.codservadi = rfs.codservadi" +
+            " GROUP BY a.nomservadi" +
+            " ORDER BY COUNT(f.*) DESC; ";
 
 
     private Object[][] buildBlankTable(ResultSet rs, int minusColumns) throws SQLException {
-        int columns = rs.getMetaData().getColumnCount() - minusColumns;
+        int columns = rs.getMetaData().getColumnCount() - (minusColumns);
         rs.last();
         int rows = rs.getRow();
         rs.beforeFirst();
@@ -165,11 +176,39 @@ public class DirectorDao {
         }
     }
 
-    public int getArrangementCount(String year, int month) throws SQLException {
+    public Object[][] getMonthlyAdditionalServsCounts(String year, int month, int totalServs) throws SQLException {
         try(Connection conn = ConnectionSource.getConnection()) {
-            try (PreparedStatement statement = conn.prepareStatement( GET_MONTHLY_ARRANGEMENT_COUNT,
+            try (PreparedStatement statement = conn.prepareStatement(GET_ADDSERVS_COUNT_PER_MONTH,
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY)) {
+                statement.setInt(1, Integer.parseInt(year));
+                statement.setInt(2, month+1);
+                try(ResultSet rs = statement.executeQuery()) {
+                    Object[][] additionalServsCounts = buildBlankTable(rs, -1);
+                    System.out.println(additionalServsCounts[1].length);
+                    while (rs.next()) {
+                        additionalServsCounts[rs.getRow() - 1] = new Object[]{
+                                rs.getString(1),
+                                rs.getInt(2),
+                                MathUtils.roundDPercentageFixed(rs.getInt(2), totalServs, 2)};
+                    }
+                    return additionalServsCounts;
+                }
+            }
+        }
+    }
+
+    public int getSumOfAdditionalServsPerMonth(String year, int month) throws SQLException {
+        return PrepareQueryWithMonthYearCondition(year, month, GET_MONTHLY_TOTAL_ADDSERVS_SUM);
+    }
+
+    public int getArrangementCount(String year, int month) throws SQLException {
+        return PrepareQueryWithMonthYearCondition(year, month, GET_MONTHLY_ARRANGEMENT_COUNT);
+    }
+
+    private int PrepareQueryWithMonthYearCondition(String year, int month, String getMonthlyArrangementCount) throws SQLException {
+        try(Connection conn = ConnectionSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(getMonthlyArrangementCount)) {
                 statement.setInt(1, Integer.parseInt(year));
                 statement.setInt(2, month+1);
                 try(ResultSet rs = statement.executeQuery()){
@@ -193,5 +232,6 @@ public class DirectorDao {
         }
         return "";
     }
+
 
 }
