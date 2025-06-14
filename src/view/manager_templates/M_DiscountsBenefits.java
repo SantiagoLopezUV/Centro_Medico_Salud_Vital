@@ -74,14 +74,17 @@ public class M_DiscountsBenefits implements AccessPanel {
         this.M_DiscountsBenefits_SaveBttn.addActionListener(e -> {
             Arrangement selectedArrangement = (Arrangement) this.M_DiscountsBenefits_comboBoxAgreement.getSelectedItem();
             if (selectedArrangement != null) {
-                try{
+                try {
                     float percent = Float.parseFloat(M_DiscountsBenefits_CostDiscountField.getText());
                     float newPercent = Float.parseFloat(M_DiscountsBenefits_NewCostDiscountField.getText());
+                    if (newPercent > 0.5 || newPercent < 0)
+                        throw new ArithmeticException("descuento no válido");
 
                     if (Float.compare(percent, newPercent) == 0) {
                         JOptionPane.showMessageDialog(this.M_DiscountsBenefitsPanel,
                                 "Los Valores ya Estan Actualizados");
-                    }else {
+                    } else {
+
                         int confirm = JOptionPane.showConfirmDialog(this.M_DiscountsBenefitsPanel,
                                 "¿Seguro Quieres Actualizar?");
                         if (confirm == JOptionPane.YES_OPTION) {
@@ -102,7 +105,7 @@ public class M_DiscountsBenefits implements AccessPanel {
                                 this.M_DiscountsBenefits_comboBoxAgreement.setSelectedIndex(-1);
                                 this.M_DiscountsBenefits_CostDiscountField.setText("");
                                 this.M_DiscountsBenefits_NewCostDiscountField.setText("");
-                            }else{
+                            } else {
                                 JOptionPane.showMessageDialog(this.M_DiscountsBenefitsPanel,
                                         "No se Actualizó. No Existe el Convenio ó El Valor ya Estaba Actualizado");
                             }
@@ -118,9 +121,10 @@ public class M_DiscountsBenefits implements AccessPanel {
                             this.M_DiscountsBenefits_NewCostDiscountField.setText("");
                         }
                     }
-                } catch (NumberFormatException ex) {
-                    throw new RuntimeException(ex);
-                } catch (HeadlessException ex) {
+                } catch (ArithmeticException ex){
+                    JOptionPane.showMessageDialog(this.M_DiscountsBenefitsPanel,
+                            "El valor debe ser entre 0 y 0.5, contactar a soporte para aplicar un valor más alto");
+                } catch (NumberFormatException | HeadlessException ex) {
                     throw new RuntimeException(ex);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);

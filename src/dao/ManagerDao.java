@@ -10,16 +10,16 @@ import java.util.List;
 
 public class ManagerDao {
 
-    private static final String GET_TYPES_CONSULTATIONS = "SELECT * FROM Tipo_Consulta";
-    private static final String GET_AGREEMENT = "SELECT * FROM Convenio";
+    private static final String GET_TYPES_CONSULTATIONS = "SELECT * FROM Tipo_Consulta ORDER BY nomtipocons;";
+    private static final String GET_AGREEMENT = "SELECT * FROM Convenio ORDER BY nomempresa;";
 
-    private static final String UPDATE_PRICE_CONSULTATION = "UPDATE Tipo_Consulta SET costoConsulta = ? WHERE codTipoCons = ?";
-    private static final String UPDATE_PERCENT_AGREEMENT = "UPDATE Convenio SET porcentaje = ? WHERE codConvenio = ?";
+    private static final String UPDATE_PRICE_CONSULTATION = "UPDATE Tipo_Consulta SET costoConsulta = ? WHERE codTipoCons = ? ";
+    private static final String UPDATE_PERCENT_AGREEMENT = "UPDATE Convenio SET porcentaje = ? WHERE codConvenio = ? ";
 
     public static List<ConsultationType> getTypeConsultations() throws SQLException {
         List<ConsultationType> listTypeConsultations = new ArrayList<>();
 
-        try(Connection con = ConnectionSource.getConnection();){
+        try(Connection con = ConnectionSource.getConnection()){
             try(PreparedStatement ps = con.prepareStatement(GET_TYPES_CONSULTATIONS)){
                 try(ResultSet rs = ps.executeQuery()){
                     while(rs.next()){

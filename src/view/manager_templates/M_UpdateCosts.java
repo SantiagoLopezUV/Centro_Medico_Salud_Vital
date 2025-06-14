@@ -44,7 +44,6 @@ public class M_UpdateCosts implements AccessPanel{
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this.M_UpdateCostsPanel, "Error al Cargar Información");
-            //throw new RuntimeException(e);
         }
 
         //  Consiguración de ComboBox para garantizar selección de algo
