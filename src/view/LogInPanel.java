@@ -5,8 +5,6 @@ import utils.PlaceHoldersAction;
 import utils.security.AuthenticationService;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class LogInPanel implements AccessPanel {
@@ -44,14 +42,11 @@ public class LogInPanel implements AccessPanel {
 
         } catch (SQLException | NullPointerException e ) {
             JOptionPane.showMessageDialog(null,
-                    "Algo ha ido mal! verifica que los campos hayan sido rellenados",
+                    "Algo ha ido mal! verifica que los campos hayan sido rellenados correctamente solo se aceptan" +
+                            "letras, espacios y numeros",
                     "Error al autenticar",
                     JOptionPane.ERROR_MESSAGE);
         }
-
-    }
-
-    private void initAuthFields(){
 
     }
 
