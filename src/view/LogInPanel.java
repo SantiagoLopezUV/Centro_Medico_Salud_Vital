@@ -5,6 +5,7 @@ import utils.PlaceHoldersAction;
 import utils.security.AuthenticationService;
 
 import javax.swing.*;
+import java.awt.event.*;
 import java.sql.SQLException;
 
 public class LogInPanel implements AccessPanel {
@@ -21,6 +22,19 @@ public class LogInPanel implements AccessPanel {
         this.passwordField
                 .addFocusListener(new PlaceHoldersAction(passwordField, "Contraseña"));
         this.authCredentialsBttn.addActionListener(e -> authAction());
+
+
+        Action enterAction = new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                authAction();
+            }
+        };
+        InputMap inputMap = LogInBG.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        ActionMap actionMap = LogInBG.getActionMap();
+        inputMap.put(KeyStroke.getKeyStroke("ENTER"), "EnterCap");
+        actionMap.put("EnterCap", enterAction);
     }
 
     private void authAction(){

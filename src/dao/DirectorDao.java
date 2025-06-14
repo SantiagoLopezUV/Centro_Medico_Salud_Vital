@@ -162,7 +162,6 @@ public class DirectorDao {
                 statement.setInt(2, month+1);
                 try(ResultSet rs = statement.executeQuery()) {
                     Object[][] occupationRates = buildBlankTable(rs, 0);
-                    System.out.println(occupationRates[1].length);
                     while (rs.next()) {
                         occupationRates[rs.getRow() - 1] = new Object[]{
                                 rs.getLong(1),
@@ -185,7 +184,6 @@ public class DirectorDao {
                 statement.setInt(2, month+1);
                 try(ResultSet rs = statement.executeQuery()) {
                     Object[][] additionalServsCounts = buildBlankTable(rs, -1);
-                    System.out.println(additionalServsCounts[1].length);
                     while (rs.next()) {
                         additionalServsCounts[rs.getRow() - 1] = new Object[]{
                                 rs.getString(1),
