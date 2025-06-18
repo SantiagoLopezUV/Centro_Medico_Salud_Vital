@@ -53,9 +53,8 @@ public interface AccessPanel {
         for (Month month : Month.values()) {
             months[month.getValue() - 1] = month.getDisplayName(TextStyle.FULL, new Locale("es"));
         }
-        new InitComboBoxes(monthComboBox, months);
-
-        new InitComboBoxes(yearComboBox, "2024", "2025");
+        InitComboBoxes.InitComboBoxes(monthComboBox, months);
+        InitComboBoxes.InitComboBoxes(yearComboBox, "2024", "2025");
     }
 
 

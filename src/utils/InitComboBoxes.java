@@ -1,16 +1,26 @@
 package utils;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
-public class InitComboBoxes {
-    private final JComboBox box;
+public class InitComboBoxes <E>{
 
-    public InitComboBoxes(JComboBox box, String... boxData) {
-        this.box = box;
+    public static void InitComboBoxes(JComboBox box, String... boxData) {
 
         try {
             for (String entry : boxData) {
-                    this.box.addItem(entry);
+                    box.addItem(entry);
+            }
+        } catch (NullPointerException e) {
+            System.out.println(e.getCause() + " at InitComboBoxes");
+        }
+
+    }
+
+    public void InitComboBoxesWithArrayList(JComboBox box, ArrayList<E> boxData) {
+        try {
+            for (E entry : boxData) {
+                box.addItem(entry);
             }
         } catch (NullPointerException e) {
             System.out.println(e.getCause() + " at InitComboBoxes");

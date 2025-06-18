@@ -8,4 +8,5 @@ public class MathUtils {
         return (double) percentage/100;
     }
 
+
 }

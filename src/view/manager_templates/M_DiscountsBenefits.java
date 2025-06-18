@@ -50,7 +50,7 @@ public class M_DiscountsBenefits implements AccessPanel {
 
         }
 
-        //  Consiguración de ComboBox para garantizar selección de algo
+        //  Configuración de ComboBox para garantizar selección de algo
         this.M_DiscountsBenefits_comboBoxAgreement.setSelectedIndex(-1);
 
         // Botón para retornar al menu anterior utilizando AccesPanel
