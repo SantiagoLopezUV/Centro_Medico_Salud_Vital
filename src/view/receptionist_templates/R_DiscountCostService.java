@@ -37,7 +37,7 @@ public class R_DiscountCostService implements AccessPanel {
         this.R_DiscountCostService_IdPatientField.addFocusListener(new PlaceHoldersAction(
                 this.R_DiscountCostService_IdPatientField, placeHolderPatientId));
         this.R_DiscountCostService_IdPatientField.addKeyListener(
-                new KeyListenerParaInt(this.R_DiscountCostService_IdPatientField));
+                new KeyListenerParaInt());
 
         this.R_DiscountService_ReturnBttn.addActionListener(e -> {
                     AccessPanel.changeContent("R_Menu_Consultation");
@@ -70,7 +70,7 @@ public class R_DiscountCostService implements AccessPanel {
             arrangement = receptionistDao.getArrangementForPatient(Long.parseLong(this.R_DiscountCostService_IdPatientField.getText()));
 
             this.R_DiscountCostService_StatusField.setText(
-                    (arrangement.isValid()) ? "Valido" : "InValido"
+                    (arrangement.isValid()) ? "Valido" : "No válido"
             );
             this.R_DiscountCostServiceValueDiscountField.setText(
                     Math.round(arrangement.getPercentage() * 100) + "%"
@@ -80,8 +80,9 @@ public class R_DiscountCostService implements AccessPanel {
             ConsultationType ct = (ConsultationType) Objects.requireNonNull(this.R_DiscountCostService_comboBoxService.getSelectedItem());
 
             this.R_DiscountCostService_ValueField.setText(
-                    "$" + Math.round((1 - arrangement.getPercentage())
-                            * ct.getConsultationPrice())
+                    "$" + ((arrangement.isValid()) ?
+                            Math.round((1 - arrangement.getPercentage()) * ct.getConsultationPrice())
+                            : ct.getConsultationPrice())
             );
 
 

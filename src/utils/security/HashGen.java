@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class HashGen {
 
     public static boolean checkForInvalidChars(String str) {
-        Pattern pattern = Pattern.compile("[^a-zA-z0-1 ]+");
+        Pattern pattern = Pattern.compile("[^a-zA-z0-9 ]+");
         Matcher matcher = pattern.matcher(str);
         return matcher.matches();
     }

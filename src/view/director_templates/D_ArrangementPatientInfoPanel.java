@@ -24,7 +24,7 @@ public class D_ArrangementPatientInfoPanel implements AccessPanel {
     public D_ArrangementPatientInfoPanel() {
         this.D_ArrangementPatient_SearchPatientField.addFocusListener(new PlaceHoldersAction(this.D_ArrangementPatient_SearchPatientField,
                 "Ingrese DNI del paciente"));
-        this.D_ArrangementPatient_SearchPatientField.addKeyListener(new KeyListenerParaInt(this.D_ArrangementPatient_SearchPatientField));
+        this.D_ArrangementPatient_SearchPatientField.addKeyListener(new KeyListenerParaInt());
         this.D_ArrangementPatient_SearchPatientBttn.addActionListener(e -> initTables());
         this.D_ArrangementPatient_ReturnBttn.addActionListener(e -> {
             destroyData();

@@ -5,8 +5,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class PlaceHoldersAction implements FocusListener {
-    private final JTextField inField;
-    private final String placeholderMsg;
+    protected final JTextField inField;
+    protected final String placeholderMsg;
 
     public PlaceHoldersAction(JTextField inField, String placeholderMsg) {
         this.inField = inField;

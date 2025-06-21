@@ -1,5 +1,7 @@
 package model;
 
+import utils.SexType;
+
 public class Patient extends Person{
     private Arrangement arrangement;
     public Patient(long id,

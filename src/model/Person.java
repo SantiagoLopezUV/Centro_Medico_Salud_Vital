@@ -1,5 +1,7 @@
 package model;
 
+import utils.SexType;
+
 import java.util.Objects;
 
 abstract class Person {
@@ -11,19 +13,6 @@ abstract class Person {
     protected String email; //email
     protected String address; //dirResidencia
 
-    public enum SexType{
-        MALE("Masculino"),
-        FEMALE("Femenino");
-
-        final String value;
-
-        SexType(String value) {
-            this.value = value;
-        }
-        public String getValue() {
-            return value;
-        }
-    }
 
     protected Person (Long id,
                      String firstMiddleName,

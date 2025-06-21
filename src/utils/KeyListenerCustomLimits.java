@@ -3,8 +3,17 @@ package utils;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Formatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class KeyListenerParaInt implements KeyListener {
+public class KeyListenerCustomLimits implements KeyListener {
+    private final Pattern regexPattern;
+
+    public KeyListenerCustomLimits(String regex) {
+        this.regexPattern = Pattern.compile(regex);
+    }
+
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -25,9 +34,7 @@ public class KeyListenerParaInt implements KeyListener {
     }
 
     private boolean validarCaracter(char c) {
-        if (Character.isDigit(c)) {
-            return true;
-        }
-        return false;
+        Matcher matcher = regexPattern.matcher(String.valueOf(c));
+        return matcher.matches();
     }
 }

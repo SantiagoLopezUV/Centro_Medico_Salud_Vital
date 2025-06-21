@@ -4,7 +4,13 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyListenerParaInt implements KeyListener {
+public class KeyListenerForLetters implements KeyListener {
+    private JTextField textField;
+
+    public KeyListenerForLetters(JTextField textField) {
+        this.textField = textField;
+    }
+
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -25,7 +31,9 @@ public class KeyListenerParaInt implements KeyListener {
     }
 
     private boolean validarCaracter(char c) {
-        if (Character.isDigit(c)) {
+        if (Character.isLetter((int) c)) {
+            return true;
+        } else if (c == ' ' && !this.textField.getText().endsWith(" ") && !this.textField.getText().isEmpty()) {
             return true;
         }
         return false;

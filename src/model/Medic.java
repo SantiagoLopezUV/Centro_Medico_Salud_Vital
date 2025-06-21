@@ -1,5 +1,7 @@
 package model;
 
+import utils.SexType;
+
 public class Medic extends Person{
 
     private Long professionalNumCard; //tajetaProfesional
