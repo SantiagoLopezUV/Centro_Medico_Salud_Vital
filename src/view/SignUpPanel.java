@@ -157,6 +157,14 @@ public class SignUpPanel implements AccessPanel {
                     JOptionPane.ERROR_MESSAGE);
             destroyData();
             return false;
+        }catch (NumberFormatException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Verifica que el documento de identidad sea válido",
+                    "Error al consultar la base de datos",
+                    JOptionPane.ERROR_MESSAGE);
+            destroyData();
+            return false;
         }
 
     }

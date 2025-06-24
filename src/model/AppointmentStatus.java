@@ -5,6 +5,7 @@ public enum AppointmentStatus {
     PAID("Pagada"), // PAGADA
     IN_PROGRESS("En curso"), //EN CURSO
     PAYMENT_REQUIRED("Pendiente por pago"), //PENDIENTE POR PAGO
+    SCHEDULED("Agendada"), //AGENDADA
     ;
 
 

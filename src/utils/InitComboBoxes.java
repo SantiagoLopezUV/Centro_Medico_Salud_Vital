@@ -1,7 +1,7 @@
 package utils;
 
 import javax.swing.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class InitComboBoxes <E>{
 
@@ -17,7 +17,7 @@ public class InitComboBoxes <E>{
 
     }
 
-    public void InitComboBoxesWithArrayList(JComboBox box, ArrayList<E> boxData) {
+    public void InitComboBoxesWithArrayList(JComboBox box, List<E> boxData) {
         try {
             for (E entry : boxData) {
                 box.addItem(entry);
@@ -27,6 +27,4 @@ public class InitComboBoxes <E>{
         }
 
     }
-
-
 }

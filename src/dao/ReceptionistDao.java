@@ -1,8 +1,6 @@
 package dao;
 
-import model.Arrangement;
-import model.ConsultationType;
-import model.Patient;
+import model.*;
 import utils.db.ConnectionSource;
 
 import java.sql.*;
@@ -18,7 +16,16 @@ public class ReceptionistDao {
     private static final String INSERT_NEW_PATIENT = "INSERT INTO persona(" +
             "docidentidad, nombres, apellidos, sexo, telefono, email, dirresidencia)" +
             " VALUES (?, ?, ?, ?, ?, ?, ?);";
-
+    private static final String GET_ALL_AESPECIALITIES = "SELECT * FROM especialidad ORDER BY titulo;";
+    private static final String GET_MEDIC_BY_SPECIALITY = "SELECT m.docidentidad, p.nombres, p.apellidos " +
+            " FROM medico m LEFT JOIN persona p ON p.docidentidad = m.docidentidad" +
+            " WHERE m.codespecialidad = ? ORDER BY p.apellidos;";
+    private static final String GET_AVAILABLE_HOURS_BY_MEDIC_AND_DATE = "SELECT  obtener_horarios_disponibles_citas(?, ?);";
+    private static final String INSERT_CITA = "INSERT INTO cita(" +
+            "estado, pacienteid, fechacita, horacita, " +
+            "codtipocons, costoconsreg, reffactura, codconvregistrado, " +
+            "convtasaaplicada, medicoid)" +
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
     public ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
         ArrayList<ConsultationType> consultationTypes = new ArrayList<>();
@@ -104,6 +111,61 @@ public class ReceptionistDao {
             }catch (SQLException e) {
                 conn.rollback();
                 throw e;
+            }
+        }
+    }
+
+
+    public ArrayList<MedicalSpeciality> getSpecialities() throws SQLException {
+        ArrayList<MedicalSpeciality> specialities = new ArrayList<>();
+        try(Connection conn = ConnectionSource.getConnection()) {
+            try (Statement statement = conn.createStatement()) {
+                try(ResultSet rs = statement.executeQuery(GET_ALL_AESPECIALITIES)) {
+                    while (rs.next()) {
+                        MedicalSpeciality especiality = new MedicalSpeciality(
+                                rs.getInt(1),
+                                rs.getString(2)
+                        );
+                        specialities.add(especiality);
+                    }
+                    return specialities;
+                }
+            }
+        }
+    }
+
+    public ArrayList<MedicBasicInfo> getMedicsBySpeciality(int specialtyCode) throws SQLException {
+        ArrayList<MedicBasicInfo> medics = new ArrayList<>();
+        try(Connection conn = ConnectionSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(GET_MEDIC_BY_SPECIALITY)) {
+                statement.setInt(1, specialtyCode);
+                try(ResultSet rs = statement.executeQuery()) {
+                    while (rs.next()) {
+                         MedicBasicInfo medic = new MedicBasicInfo(
+                                 rs.getLong(1),
+                                 rs.getString(2),
+                                 rs.getString(3)
+                         );
+                         medics.add(medic);
+                    }
+                    return medics;
+                }
+            }
+        }
+    }
+
+    public Time[] getAvailableHoursPerMedicAndDate(long id, Date date) throws SQLException {
+        try(Connection conn = ConnectionSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(GET_AVAILABLE_HOURS_BY_MEDIC_AND_DATE)) {
+                statement.setLong(1, id);
+                statement.setDate(2, date);
+                try(ResultSet rs = statement.executeQuery()) {
+                    if (rs.next()) {
+                        Array hoursArray = rs.getArray(1);
+                        return (Time[]) hoursArray.getArray();
+                    }
+                    return null;
+                }
             }
         }
     }

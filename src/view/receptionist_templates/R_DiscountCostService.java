@@ -48,6 +48,8 @@ public class R_DiscountCostService implements AccessPanel {
             InitComboBoxes<ConsultationType> iCombo = new InitComboBoxes<>();
             iCombo.InitComboBoxesWithArrayList(this.R_DiscountCostService_comboBoxService, receptionistDao.getConsultationTypes());
 
+
+
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,

@@ -41,4 +41,9 @@ public class MedicalSpeciality {
     public int hashCode() {
         return Objects.hashCode(specialtyCode);
     }
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
 }
