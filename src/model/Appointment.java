@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
@@ -11,8 +13,8 @@ public class Appointment {
     private AppointmentStatus status; //estado
     private final Long patientId; //pacienteId
     private final Long medicId; //medicoId
-    private LocalDate appointmentDate; //fechaCita
-    private LocalTime appointmentTime; //horaCita
+    private Date appointmentDate; //fechaCita
+    private Time appointmentTime; //horaCita
     private final int consultationId; //codTipoCons
     private final double consultationRegisteredPrice; //costoConsReg
     private int invoiceNumber; //refFactura
@@ -23,8 +25,8 @@ public class Appointment {
                        AppointmentStatus status,
                        Long patientId,
                        Long medicId,
-                       LocalDate appointmentDate,
-                       LocalTime appointmentTime,
+                       Date appointmentDate,
+                       Time appointmentTime,
                        int consultationId,
                        double consultationRegisteredPrice,
                        int arrangementCode,
@@ -36,9 +38,9 @@ public class Appointment {
                 || medicId == null
                 || medicId < 99999
                 || appointmentDate == null
-                || appointmentDate.isBefore(LocalDate.now())
+                || appointmentDate.toLocalDate().isBefore(LocalDate.now())
                 || appointmentTime == null
-                || appointmentTime.isBefore(LocalTime.now())
+                || appointmentTime.toLocalTime().isBefore(LocalTime.now())
                 || consultationId < 0
                 || consultationRegisteredPrice < 0
                 || arrangementCode < 0
@@ -75,11 +77,11 @@ public class Appointment {
         return medicId;
     }
 
-    public LocalDate getAppointmentDate() {
+    public Date getAppointmentDate() {
         return appointmentDate;
     }
 
-    public LocalTime getAppointmentTime() {
+    public Time getAppointmentTime() {
         return appointmentTime;
     }
 
@@ -107,11 +109,11 @@ public class Appointment {
         this.status = status;
     }
 
-    public void setAppointmentDate(LocalDate appointmentDate) {
+    public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
 
-    public void setAppointmentTime(LocalTime appointmentTime) {
+    public void setAppointmentTime(Time appointmentTime) {
         this.appointmentTime = appointmentTime;
     }
 

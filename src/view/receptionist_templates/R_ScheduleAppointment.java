@@ -52,6 +52,10 @@ public class R_ScheduleAppointment implements AccessPanel {
     private MedicalSpeciality odontology_medicalSpeciality;
     private final InitComboBoxes<MedicalSpeciality> iComboForSpecialities = new InitComboBoxes<>();
     private final InitComboBoxes<MedicBasicInfo> medicsBySpeciality = new InitComboBoxes<>();
+    private Date appointmentDate;
+    private Arrangement arrangement;
+
+
     public R_ScheduleAppointment() {
 
         this.R_ScheduleAppointment_IdPatientField.addFocusListener(new PlaceHoldersAction(
@@ -135,7 +139,33 @@ public class R_ScheduleAppointment implements AccessPanel {
 
     private void checkEnteredInfoForSchedule() {
 
+        try{
+            MedicBasicInfo medic = (MedicBasicInfo) this.R_ScheduleAppointment_comboBoxDoctors.getSelectedItem();
+            Time time = (Time) this.R_ScheduleAppointment_comboBoxHour.getSelectedItem();
+            ConsultationType consultationType= (ConsultationType) this.R_ScheduleAppointment_comboBoxConsultationTypes.getSelectedItem();
 
+            Appointment appointment = new Appointment(
+                    0,
+                    AppointmentStatus.SCHEDULED,
+                    this.idVerified,
+                    medic.Id(),
+                    appointmentDate,
+                    time,
+                    consultationType.getIdConsultationType(),
+                    consultationType.getConsultationPrice(),
+                    arrangement.getArrangementCode(),
+                    arrangement.getPercentage()
+            );
+
+            if(receptionistDao.insertNewAppointment(appointment))
+                JOptionPane.showMessageDialog(null,
+                        "La cita fue registrada en la base de datos",
+                        "Exito al registrar cita",
+                        JOptionPane.INFORMATION_MESSAGE);;
+            this.R_ScheduleAppointment_ReturnBttn.doClick();
+        }catch (SQLException es){
+            launchErrorFetchingDBPopUp(es);
+        }
 
     }
 
@@ -157,12 +187,12 @@ public class R_ScheduleAppointment implements AccessPanel {
             int day = Integer.parseInt(R_ScheduleAppointment_comboBoxDay.getSelectedItem().toString());
 
             MedicBasicInfo medicSelected = (MedicBasicInfo) R_ScheduleAppointment_comboBoxDoctors.getSelectedItem();
-            Date date = Date.valueOf(LocalDate.of(year, month, day));
+            appointmentDate = Date.valueOf(LocalDate.of(year, month, day));
 
             try {
                 Time[] availableHours = receptionistDao.getAvailableHoursPerMedicAndDate(
                         medicSelected.Id(),
-                        date
+                        appointmentDate
                 );
                 InitComboBoxes<Time> comboBoxHours = new InitComboBoxes<>();
                 comboBoxHours.InitComboBoxesWithArrayList(R_ScheduleAppointment_comboBoxHour,
@@ -201,7 +231,7 @@ public class R_ScheduleAppointment implements AccessPanel {
             String patientId = this.R_ScheduleAppointment_IdPatientField.getText();
             if(patientId.isBlank()) return;
             long idPatient = Long.parseLong(patientId);
-            Arrangement arrangement = receptionistDao.getArrangementForPatient(idPatient);
+            arrangement = receptionistDao.getArrangementForPatient(idPatient);
             if(arrangement == null){
                 int confirm = JOptionPane.showConfirmDialog(this.R_ScheduleAppointmentPanel,
                         "No se encuentra al paciente en la base de datos\n¿Deseas registrarlo?");
@@ -239,9 +269,6 @@ public class R_ScheduleAppointment implements AccessPanel {
                 R_ScheduleAppointment_comboBoxDay.setEnabled(true);
                 startComboBoxForAvailableDays();
                 R_ScheduleAppointment_comboBoxHour.setEnabled(true);
-
-///continuar agregando la logica para cuando existe el paciente
-                ///// URGENCIAAA
             }
 
 

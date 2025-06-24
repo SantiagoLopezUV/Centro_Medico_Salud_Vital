@@ -21,11 +21,11 @@ public class ReceptionistDao {
             " FROM medico m LEFT JOIN persona p ON p.docidentidad = m.docidentidad" +
             " WHERE m.codespecialidad = ? ORDER BY p.apellidos;";
     private static final String GET_AVAILABLE_HOURS_BY_MEDIC_AND_DATE = "SELECT  obtener_horarios_disponibles_citas(?, ?);";
-    private static final String INSERT_CITA = "INSERT INTO cita(" +
+    private static final String INSERT_APPOINTMENT = "INSERT INTO cita(" +
             "estado, pacienteid, fechacita, horacita, " +
-            "codtipocons, costoconsreg, reffactura, codconvregistrado, " +
+            "codtipocons, costoconsreg, codconvregistrado, " +
             "convtasaaplicada, medicoid)" +
-            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
     public ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
         ArrayList<ConsultationType> consultationTypes = new ArrayList<>();
@@ -169,4 +169,31 @@ public class ReceptionistDao {
             }
         }
     }
+
+    public boolean insertNewAppointment(Appointment newAppointment) throws SQLException {
+        try(Connection conn = ConnectionSource.getConnection()) {
+            conn.setAutoCommit(false);
+            try (PreparedStatement statement = conn.prepareStatement(INSERT_APPOINTMENT)) {
+                statement.setString(1, newAppointment.getStatus().getValue());
+                statement.setLong(2, newAppointment.getPatientId());
+                statement.setDate(3, newAppointment.getAppointmentDate());
+                statement.setTime(4, newAppointment.getAppointmentTime());
+                statement.setInt(5, newAppointment.getConsultationId());
+                statement.setDouble(6, newAppointment.getConsultationRegisteredPrice());
+                statement.setInt(7, newAppointment.getArrangementCode());
+                statement.setDouble(8, newAppointment.getArrangementDiscountApplied());
+                statement.setLong(9, newAppointment.getMedicId());
+                int rowAffected = statement.executeUpdate();
+                conn.commit();
+                if(rowAffected == 0){
+                    throw new SQLException("No rows affected");
+                }
+                return true;
+            }catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+        }
+    }
+
 }
