@@ -43,7 +43,7 @@ enum PanelsMap {
     R_FULFILLMENT_STATUSAPPOINTMENT("R_Fulfillment_StatusAppointment", new R_Fulfillment_StatusAppointment().getPanel()),
     R_MENU_CONSULTATION("R_Menu_Consultation", new R_Menu_Consultation().getPanel()),
     R_COSTSERVICE("R_CostService", new R_CostService().getPanel()),
-    R_DISCOUNTCOSTSERVICE("R_DiscountCostService", new R_DiscountCostService().getPanel()),
+    R_DISCOUNTCOSTSERVICE("R_DiscountConsultation", new R_DiscountConsultation().getPanel()),
     R_MENU_INVOICING("R_Menu_Invoicing", new R_Menu_Invoicing().getPanel()),
     R_PENDING_PAYMENT("R_PendingPayment", new R_PendingPayment().getPanel()),
     R_GENERATEINVOICE("R_GenerateInvoice",new R_GenerateInvoice().getPanel())

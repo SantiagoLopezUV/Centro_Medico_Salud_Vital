@@ -104,7 +104,7 @@
           <background color="-12741502"/>
           <font name="Arial Black" size="20" style="1"/>
           <foreground color="-16777216"/>
-          <text value="Consultar Beneficios y Descuentos"/>
+          <text value="Descuento Por Tipo De Consulta"/>
         </properties>
       </component>
       <hspacer id="e5191">
