@@ -3,10 +3,15 @@ package dao;
 import model.*;
 import utils.db.ConnectionSource;
 
+import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class ReceptionistDao {
+
+
+    public record infoDebts(String status, double value){}
+
 
     private static final String GET_CONSULT_TYPES = "SELECT * FROM tipo_consulta ORDER BY nomtipocons;";
     private static final String GET_ARRANGEMENT_BY_PATIENT_ID = "SELECT c.* FROM convenio c, paciente p" +
@@ -28,6 +33,8 @@ public class ReceptionistDao {
             " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
     private static final String OUTSTANDING_DEBTS_EXIST_FOR_PATIENT_ID = "select * from cita where pacienteid = ? AND estado = 'Pendiente por pago';";
+
+    private static final String GET_STATUS_FOR_PATIENT_ID = "SELECT pacienteid, estado, costoconsreg FROM cita WHERE pacienteid = ?;";
 
     public ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
         ArrayList<ConsultationType> consultationTypes = new ArrayList<>();
@@ -211,6 +218,23 @@ public class ReceptionistDao {
                 }
             }
         }
+    }
+
+    public static infoDebts consultsDebts(long patientId) throws SQLException {
+        try(Connection con = ConnectionSource.getConnection();) {
+            try (PreparedStatement ps = con.prepareStatement(GET_STATUS_FOR_PATIENT_ID)){
+                ps.setLong(1, patientId);
+                try(ResultSet rs = ps.executeQuery()) {
+                    if(rs.next()){
+                        String Status = rs.getString("estado");
+                        double costConsult= rs.getDouble("costoconsreg");
+                        infoDebts debtInformation = new infoDebts(Status, costConsult);
+                        return debtInformation;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
 }
