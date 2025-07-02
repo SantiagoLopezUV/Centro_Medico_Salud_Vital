@@ -18,7 +18,7 @@
           <background color="-12741502"/>
           <font name="Arial Black" size="20" style="1"/>
           <foreground color="-16777216"/>
-          <text value="Consultar Servicios"/>
+          <text value="Tipos de Consultas"/>
         </properties>
       </component>
       <component id="b52b3" class="javax.swing.JButton" binding="R_Menu_Consultation_ReturnBttn">
