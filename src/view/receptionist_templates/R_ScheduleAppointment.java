@@ -228,10 +228,8 @@ public class R_ScheduleAppointment implements AccessPanel {
 
     private void checkPatientId(){
         try {
-            String patientId = this.R_ScheduleAppointment_IdPatientField.getText();
-            if(patientId.isBlank()) return;
-            long idPatient = Long.parseLong(patientId);
-            arrangement = receptionistDao.getArrangementForPatient(idPatient);
+            if(idVerified == null) return;
+            arrangement = receptionistDao.getArrangementForPatient(idVerified);
             if(arrangement == null){
                 int confirm = JOptionPane.showConfirmDialog(this.R_ScheduleAppointmentPanel,
                         "No se encuentra al paciente en la base de datos\n¿Deseas registrarlo?");
@@ -240,6 +238,11 @@ public class R_ScheduleAppointment implements AccessPanel {
                 }
                 destroyData();
             }else {
+
+                if (receptionistDao.verifyForOutstandingDebts(idVerified)){
+                   throw new NoSuchFieldException("Tiene deuda por pagar");
+                }
+
                 this.R_ScheduleAppointment_TextfieldAgreement.setText(
                         ((arrangement.isValid()) ? arrangement.toString() : "No válido")
                 );
@@ -282,6 +285,12 @@ public class R_ScheduleAppointment implements AccessPanel {
             destroyData();
         } catch (SQLException e) {
             launchErrorFetchingDBPopUp(e);
+        } catch (NoSuchFieldException e) {
+            JOptionPane.showMessageDialog(null,
+                    "No es posible generar la cita, el paciente tiente deudas pendientes",
+                    "Tiene deudas pentiente",
+                    JOptionPane.ERROR_MESSAGE);
+            this.R_ScheduleAppointment_ReturnBttn.doClick();
         }
 
     }

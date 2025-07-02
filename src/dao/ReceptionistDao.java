@@ -27,6 +27,8 @@ public class ReceptionistDao {
             "convtasaaplicada, medicoid)" +
             " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
+    private static final String OUTSTANDING_DEBTS_EXIST_FOR_PATIENT_ID = "select * from cita where pacienteid = ? AND estado = 'Pendiente por pago';";
+
     public ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
         ArrayList<ConsultationType> consultationTypes = new ArrayList<>();
         try(Connection conn = ConnectionSource.getConnection()) {
@@ -192,6 +194,21 @@ public class ReceptionistDao {
             }catch (SQLException e) {
                 conn.rollback();
                 throw e;
+            }
+        }
+    }
+
+    public boolean verifyForOutstandingDebts(long patientId) throws SQLException {
+        try(Connection conn = ConnectionSource.getConnection()) {
+            conn.setAutoCommit(false);
+            try (PreparedStatement statement = conn.prepareStatement(
+                    OUTSTANDING_DEBTS_EXIST_FOR_PATIENT_ID)
+            ) {
+                statement.setLong(1, patientId);
+                conn.commit();
+                try(ResultSet rs = statement.executeQuery()) {
+                    return rs.next();
+                }
             }
         }
     }
