@@ -9,6 +9,10 @@ import java.util.List;
 
 public class ReceptionistDao {
 
+
+    public record infoDebts(String status, double value){}
+
+
     private static final String GET_CONSULT_TYPES = "SELECT * FROM tipo_consulta ORDER BY nomtipocons;";
     private static final String GET_ARRANGEMENT_BY_PATIENT_ID = "SELECT c.* FROM convenio c, paciente p" +
             " WHERE p.docidentidad = ?" +
@@ -49,7 +53,15 @@ public class ReceptionistDao {
     private static final String GET_INVOICE_BY_ID = "SELECT * FROM factura WHERE reffactura = ?;";
     private static final String VERIFY_REG_ADDSERV_INVOICE = "SELECT * FROM registro_factura_servadicionales WHERE codservadi = ? AND reffactura = ?";
 
-    public ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
+    private static final String GET_APPOINTMENT_STATUS = "SELECT pacienteid, estado FROM Cita WHERE pacienteid = ?;";
+
+    private static final String GET_PENDING_PAYMENT_FOR_PATIENT_ID = "SELECT pacienteid, estado, costoconsreg FROM Cita WHERE pacienteid = ? AND estado = 'Pendiente por pago';";
+    private static final String UPDATE_STATUS_APPOINTMENT = "UPDATE Cita SET estado = ? WHERE pacienteId = ?;";
+    private static final String GET_NAME_FOR_PATIENT_ID = "SELECT nombres, apellidos FROM Persona WHERE docidentidad = ?;";
+    //private static final String GET_INVOICE = "SELECT fechaFactura, horaFactura, valorTotal FROM Factura WHERE refFactura = ?;";
+
+
+    public static ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
         ArrayList<ConsultationType> consultationTypes = new ArrayList<>();
         try(Connection conn = ConnectionSource.getConnection()) {
             try (Statement statement = conn.createStatement()) {
@@ -125,6 +137,7 @@ public class ReceptionistDao {
                 statement.setString(6, newPatient.getEmail());
                 statement.setString(7, newPatient.getAddress());
                 int rowAffected = statement.executeUpdate();
+
                 if(rowAffected == 0){
                     throw new SQLException("No rows affected");
                 }
@@ -393,4 +406,57 @@ public class ReceptionistDao {
         }
     }
 
+    public static infoDebts consultsDebts(long patientId) throws SQLException {
+        try(Connection con = ConnectionSource.getConnection();) {
+            try (PreparedStatement ps = con.prepareStatement(GET_PENDING_PAYMENT_FOR_PATIENT_ID)){
+                ps.setLong(1, patientId);
+                try(ResultSet rs = ps.executeQuery()) {
+                    if(rs.next()){
+                        String Status = rs.getString("estado");
+                        double costConsult= rs.getDouble("costoconsreg");
+                        infoDebts debtInformation = new infoDebts(Status, costConsult);
+                        return debtInformation;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public static boolean pendingDebts(long patientId) throws SQLException {
+        try(Connection con = ConnectionSource.getConnection();) {
+            try (PreparedStatement ps = con.prepareStatement(GET_PENDING_PAYMENT_FOR_PATIENT_ID)){
+                ps.setLong(1, patientId);
+                try(ResultSet rs = ps.executeQuery()) {
+                    return rs.next();
+                }
+            }
+        }
+    }
+
+    public static boolean updateStatusAppointment(int idPatient, String newStatus) throws SQLException {
+        try(Connection con = ConnectionSource.getConnection()) {
+            try(PreparedStatement ps = con.prepareStatement(UPDATE_STATUS_APPOINTMENT)) {
+                ps.setString(1, newStatus);
+                ps.setLong(2, idPatient);
+                int rowAffected = ps.executeUpdate();
+                System.out.println(rowAffected);
+                return true;
+            }
+        }
+    }
+
+    public static String getNamePatient(long idPatient) throws SQLException {
+        try(Connection con = ConnectionSource.getConnection()) {
+            try (PreparedStatement ps = con.prepareStatement(GET_NAME_FOR_PATIENT_ID)) {
+                ps.setLong(1, idPatient);
+                try(ResultSet rs = ps.executeQuery()) {
+                    if(rs.next()){
+                        return rs.getString("nombre") + rs.getString("apellido");
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }
