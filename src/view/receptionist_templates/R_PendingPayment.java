@@ -44,27 +44,17 @@ public class R_PendingPayment implements AccessPanel {
             try {
                 ReceptionistDao.infoDebts infoDebtPatient = ReceptionistDao.consultsDebts(idPatient);
 
-                if(infoDebtPatient == null) {
-                    JOptionPane.showMessageDialog(null, "No se encontró el ID");
+                if (infoDebtPatient != null) {
+                    this.R_PendingPayment_valuePendingField.setText(String.valueOf(infoDebtPatient.value()));
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "No Tiene Deudas Por Pagar");
                     this.R_PendingPayment_valuePendingField.setText("");
+                    this.R_PendingPayment_IDPatientField.setText("");
+                    this.R_PendingPayment_IDPatientField.addFocusListener(new PlaceHoldersAction(
+                            this.R_PendingPayment_IDPatientField, "Ingrese DNI del Paciente"));
                 }
-                switch (infoDebtPatient.status()) {
-                    case "Pagada" -> {
-                        JOptionPane.showMessageDialog(null, "No Tiene Deudas Por Pagar");
-                        R_PendingPayment_valuePendingField.setText("");
-                        R_PendingPayment_IDPatientField.setText("");
-                    }
-                    case "Pendiente por pago" ->
-                        R_PendingPayment_valuePendingField.setText(String.valueOf(infoDebtPatient.value()));
-                    default -> {
-                        System.out.println(infoDebtPatient.status());
-                        JOptionPane.showMessageDialog(null,
-                                "Estado actual de la cita: " + infoDebtPatient.status());
-                        R_PendingPayment_valuePendingField.setText("");
-                    }
-                }
-            }
-            catch (SQLException ex) {
+            } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
         });
