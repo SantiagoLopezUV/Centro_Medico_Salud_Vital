@@ -56,10 +56,13 @@ public class ReceptionistDao {
     private static final String GET_APPOINTMENT_STATUS = "SELECT pacienteid, estado FROM Cita WHERE pacienteid = ?;";
 
     private static final String GET_PENDING_PAYMENT_FOR_PATIENT_ID = "SELECT pacienteid, estado, costoconsreg FROM Cita WHERE pacienteid = ? AND estado = 'Pendiente por pago';";
-    private static final String UPDATE_STATUS_APPOINTMENT = "UPDATE Cita SET estado = ? WHERE pacienteId = ?;";
+    private static final String UPDATE_STATUS_APPOINTMENT_FOR_IN_COURSE_ = "UPDATE Cita SET estado = "
+            + AppointmentStatus.PAYMENT_REQUIRED.getValue()
+            + " WHERE pacienteId = ? AND codcita = ?;";
+    private static final String UPDATE_STATUS_APPOINTMENT_FOR_PENDING_PAYMENT= "UPDATE Cita SET estado = "
+            + AppointmentStatus.PAID.getValue()
+            + " WHERE pacienteId = ? AND estado = " + AppointmentStatus.PAYMENT_REQUIRED.getValue() + ";";
     private static final String GET_NAME_FOR_PATIENT_ID = "SELECT nombres, apellidos FROM Persona WHERE docidentidad = ?;";
-    //private static final String GET_INVOICE = "SELECT fechaFactura, horaFactura, valorTotal FROM Factura WHERE refFactura = ?;";
-
 
     public static ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
         ArrayList<ConsultationType> consultationTypes = new ArrayList<>();
@@ -434,11 +437,32 @@ public class ReceptionistDao {
         }
     }
 
-    public static boolean updateStatusAppointment(int idPatient, String newStatus) throws SQLException {
+    public static boolean updateStatusAppointmentForPendingPayment(int idPatient) throws SQLException {
         try(Connection con = ConnectionSource.getConnection()) {
-            try(PreparedStatement ps = con.prepareStatement(UPDATE_STATUS_APPOINTMENT)) {
-                ps.setString(1, newStatus);
-                ps.setLong(2, idPatient);
+            try(PreparedStatement ps = con.prepareStatement(UPDATE_STATUS_APPOINTMENT_FOR_PENDING_PAYMENT)) {
+                ps.setLong(1, idPatient);
+                int rowAffected = ps.executeUpdate();
+                System.out.println(rowAffected);
+                return true;
+            }
+        }
+    }
+
+    public static boolean updateStatusAppointmentForInProgress(int idPatient) throws SQLException {
+        Long appointmentID;
+        try(Connection con = ConnectionSource.getConnection()) {
+            try(PreparedStatement ps = con.prepareStatement("SELECT * FROM cita WHERE pacienteid = ? AND estado = 'En curso'")) {
+                ps.setLong(1, idPatient);
+                try(ResultSet rs = ps.executeQuery()) {
+                    appointmentID = rs.getLong(1);
+                }
+
+            }
+        }
+
+        try(Connection con = ConnectionSource.getConnection()) {
+            try(PreparedStatement ps = con.prepareStatement(UPDATE_STATUS_APPOINTMENT_FOR_IN_COURSE_)) {
+                ps.setLong(1, idPatient);
                 int rowAffected = ps.executeUpdate();
                 System.out.println(rowAffected);
                 return true;

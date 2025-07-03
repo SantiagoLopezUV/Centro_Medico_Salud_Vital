@@ -20,6 +20,7 @@ public class R_GenerateInvoice implements AccessPanel {
     private JTextField R_GenerateInv_IDPatientField;
     private JLabel R_GenerateInv_lblPatient;
 
+
     public R_GenerateInvoice() {
 
         this.R_GenerateInvBackBttn.addActionListener(e ->
@@ -33,10 +34,13 @@ public class R_GenerateInvoice implements AccessPanel {
             try{
                 String namePatient = ReceptionistDao.getNamePatient(PatientID);
                 if(namePatient.isBlank()){
-
+                    throw new SQLException();
+                } else{
+                    int idPatient = Integer.parseInt(R_GenerateInv_IDPatientField.getText());
+                    ReceptionistDao.updateStatusAppointmentForPendingPayment(idPatient);
                 }
             } catch (SQLException ex) {
-                throw new RuntimeException(ex);
+                launchErrorFetchingDBPopUp(ex);
             }
 
         });
@@ -48,23 +52,22 @@ public class R_GenerateInvoice implements AccessPanel {
                 int confirm = JOptionPane.showConfirmDialog(this.R_GenerateInvPanel,
                         "¿Seguro Quieres Pagar?");
                 if (confirm == JOptionPane.YES_OPTION) {
-                    String newStatus = "Pagada";
-                    flag = ReceptionistDao.updateStatusAppointment(idPatient, newStatus);
+                    String newStatus = AppointmentStatus.PAID.getValue();
+                    flag = ReceptionistDao.updateStatusAppointmentForPendingPayment(idPatient);
                     if (flag) {
                         JOptionPane.showMessageDialog(this.R_GenerateInvPanel,
                                 "¡Pago Exitoso!");
-                        this.R_GenerateInv_IDPatientField.addFocusListener(new PlaceHoldersAction(
-                                this.R_GenerateInv_IDPatientField, "Ingrese DNI del Paciente"));
+                        destroyData();
                         // Limpiamos todos los campos de la factura
                     } else JOptionPane.showMessageDialog(this.R_GenerateInvPanel, "¡No se Realizo el Pago!");
                 } else {
                     String newStatus = "Pendiente por pago";
                     try {
-                        ReceptionistDao.updateStatusAppointment(idPatient, newStatus);
+                        ReceptionistDao.updateStatusAppointmentForPendingPayment(idPatient);
                         JOptionPane.showMessageDialog(this.R_GenerateInvPanel,
                                 "¡Pendiente por Pagar!");
                     } catch (SQLException ex) {
-                        throw new RuntimeException(ex);
+                        launchErrorFetchingDBPopUp(ex);
                     } catch (HeadlessException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -74,6 +77,22 @@ public class R_GenerateInvoice implements AccessPanel {
             }
         });
     }
+
+
+    private void launchErrorFetchingDBPopUp(SQLException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null,
+                "Un error se ha presentado al tratar de consultar la base de datos," +
+                        "contacta al administrador de la misma",
+                "Error al consultar la base de datos",
+                JOptionPane.ERROR_MESSAGE);
+        destroyData();
+    }
+
+    private void destroyData() {
+        this.R_GenerateInv_IDPatientField.setText("Ingrese DNI del Paciente");
+    }
+
 
     @Override
     public JPanel getPanel() {
