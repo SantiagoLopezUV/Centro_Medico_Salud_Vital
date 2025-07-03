@@ -3,7 +3,6 @@ package dao;
 import model.*;
 import utils.db.ConnectionSource;
 
-import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -34,11 +33,11 @@ public class ReceptionistDao {
 
     private static final String OUTSTANDING_DEBTS_EXIST_FOR_PATIENT_ID = "select * from cita where pacienteid = ? AND estado = 'Pendiente por pago';";
 
-    private static final String GET_STATUS_FOR_PATIENT_ID = "SELECT pacienteid, estado, costoconsreg FROM cita WHERE pacienteid = ? AND estado = 'Pendiente por pago';";
+    private static final String GET_PENDING_PAYMENT_FOR_PATIENT_ID = "SELECT pacienteid, estado, costoconsreg FROM cita WHERE pacienteid = ? AND estado = 'Pendiente por pago';";
 
 
 
-    public ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
+    public static ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
         ArrayList<ConsultationType> consultationTypes = new ArrayList<>();
         try(Connection conn = ConnectionSource.getConnection()) {
             try (Statement statement = conn.createStatement()) {
@@ -224,7 +223,7 @@ public class ReceptionistDao {
 
     public static infoDebts consultsDebts(long patientId) throws SQLException {
         try(Connection con = ConnectionSource.getConnection();) {
-            try (PreparedStatement ps = con.prepareStatement(GET_STATUS_FOR_PATIENT_ID)){
+            try (PreparedStatement ps = con.prepareStatement(GET_PENDING_PAYMENT_FOR_PATIENT_ID)){
                 ps.setLong(1, patientId);
                 try(ResultSet rs = ps.executeQuery()) {
                     if(rs.next()){
@@ -241,7 +240,7 @@ public class ReceptionistDao {
 
     public static boolean pendingDebts(long patientId) throws SQLException {
         try(Connection con = ConnectionSource.getConnection();) {
-            try (PreparedStatement ps = con.prepareStatement(GET_STATUS_FOR_PATIENT_ID)){
+            try (PreparedStatement ps = con.prepareStatement(GET_PENDING_PAYMENT_FOR_PATIENT_ID)){
                 ps.setLong(1, patientId);
                 try(ResultSet rs = ps.executeQuery()) {
                     return rs.next();
