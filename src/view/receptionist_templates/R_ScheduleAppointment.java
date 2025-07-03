@@ -44,7 +44,7 @@ public class R_ScheduleAppointment implements AccessPanel {
     private JLabel R_ScheduleAppointment_lblMonthYear;
     private JComboBox R_ScheduleAppointment_comboBoxMonthYear;
 
-    private static final String patientIdTextFieldPlaceHolderMsg = "Ingrese # de ID y presione enter";
+    private static final String PATIENT_ID_TEXTFIELD_PLACEHOLDER_MSG = "Ingrese # de ID y presione enter";
     private Long idVerified;
     private final ReceptionistDao receptionistDao = new ReceptionistDao();
     private  ArrayList<MedicalSpeciality> medicalSpecialities;
@@ -59,7 +59,7 @@ public class R_ScheduleAppointment implements AccessPanel {
     public R_ScheduleAppointment() {
 
         this.R_ScheduleAppointment_IdPatientField.addFocusListener(new PlaceHoldersAction(
-                this.R_ScheduleAppointment_IdPatientField, patientIdTextFieldPlaceHolderMsg){
+                this.R_ScheduleAppointment_IdPatientField, PATIENT_ID_TEXTFIELD_PLACEHOLDER_MSG){
             @Override
             public void focusLost(FocusEvent e) {
                 try {
@@ -356,7 +356,7 @@ public class R_ScheduleAppointment implements AccessPanel {
     }
 
     private void destroyData(){
-        this.R_ScheduleAppointment_IdPatientField.setText( patientIdTextFieldPlaceHolderMsg);
+        this.R_ScheduleAppointment_IdPatientField.setText(PATIENT_ID_TEXTFIELD_PLACEHOLDER_MSG);
         this.R_ScheduleAppointment_comboBoxHour.setEnabled(false);
         this.R_ScheduleAppointment_comboBoxSpecialty.setEnabled(false);
         this.R_ScheduleAppointment_comboBoxDoctors.setEnabled(false);

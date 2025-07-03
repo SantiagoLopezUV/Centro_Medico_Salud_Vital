@@ -9,7 +9,7 @@ import java.util.Objects;
 //  Clase de la entidad 'Cita'
 public class Appointment {
 
-    private final int IdAppointment; //codCita
+    private final long IdAppointment; //codCita
     private AppointmentStatus status; //estado
     private final Long patientId; //pacienteId
     private final Long medicId; //medicoId
@@ -17,11 +17,11 @@ public class Appointment {
     private Time appointmentTime; //horaCita
     private final int consultationId; //codTipoCons
     private final double consultationRegisteredPrice; //costoConsReg
-    private int invoiceNumber; //refFactura
+    private Long invoiceNumber; //refFactura
     private final int arrangementCode; //codConvenio
     private final double arrangementDiscountApplied; //porcentajeAplicado
 
-    public Appointment(int idAppointment,
+    public Appointment(long idAppointment,
                        AppointmentStatus status,
                        Long patientId,
                        Long medicId,
@@ -40,7 +40,6 @@ public class Appointment {
                 || appointmentDate == null
                 || appointmentDate.toLocalDate().isBefore(LocalDate.now())
                 || appointmentTime == null
-                || appointmentTime.toLocalTime().isBefore(LocalTime.now())
                 || consultationId < 0
                 || consultationRegisteredPrice < 0
                 || arrangementCode < 0
@@ -61,7 +60,7 @@ public class Appointment {
         this.arrangementDiscountApplied = arrangementDiscountApplied;
     }
 
-    public int getIdAppointment() {
+    public long getIdAppointment() {
         return IdAppointment;
     }
 
@@ -93,7 +92,7 @@ public class Appointment {
         return consultationRegisteredPrice;
     }
 
-    public int getInvoiceNumber() {
+    public long getInvoiceNumber() {
         return invoiceNumber;
     }
 
@@ -117,7 +116,7 @@ public class Appointment {
         this.appointmentTime = appointmentTime;
     }
 
-    public void setInvoiceNumber(int invoiceNumber) {
+    public void setInvoiceNumber(Long invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
     }
 

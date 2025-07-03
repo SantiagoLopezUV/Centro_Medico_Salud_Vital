@@ -5,6 +5,7 @@ import utils.db.ConnectionSource;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ReceptionistDao {
 
@@ -27,7 +28,26 @@ public class ReceptionistDao {
             "convtasaaplicada, medicoid)" +
             " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
+    private static final String GET_PATIENT_BY_ID = "SELECT * FROM paciente WHERE docidentidad = ?;";
+
     private static final String OUTSTANDING_DEBTS_EXIST_FOR_PATIENT_ID = "select * from cita where pacienteid = ? AND estado = 'Pendiente por pago';";
+    private static final String GET_SCHEDULED_APPOINTMENT = "select * from cita" +
+                                                                " WHERE pacienteid = ?" +
+                                                                " AND estado = 'Agendada'" +
+                                                                " AND fechacita = CURRENT_DATE" +
+                                                                " AND CURRENT_TIME between horacita - INTERVAL '1 hour' AND horacita;";
+
+    private static final String UPDATE_APPOINTMENT_STATUS_TO_IN_COURSE = "UPDATE cita SET estado = ? WHERE codcita = ?";
+
+    private static final String GET_STATUS_OF_IN_COURSE_APPOINTMENT = "select estado from cita WHERE codcita = ?;";
+    private static final String GET_INVOICE_NUMBER_OF_IN_COURSE_APPOINTMENT = "select reffactura from cita WHERE codcita = ?;";
+
+    private static final String GET_ADDITIONAL_SERVICES = "SELECT * FROM servicio_adicional";
+    private static final String INSERT_REG_INVOICE_ADDITIONAL_SERVICE = "INSERT INTO registro_factura_servadicionales(" +
+            "codservadi, reffactura, valorservadifac)" +
+            "VALUES (?, ?, ?);";
+    private static final String GET_INVOICE_BY_ID = "SELECT * FROM factura WHERE reffactura = ?;";
+    private static final String VERIFY_REG_ADDSERV_INVOICE = "SELECT * FROM registro_factura_servadicionales WHERE codservadi = ? AND reffactura = ?";
 
     public ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
         ArrayList<ConsultationType> consultationTypes = new ArrayList<>();
@@ -105,10 +125,10 @@ public class ReceptionistDao {
                 statement.setString(6, newPatient.getEmail());
                 statement.setString(7, newPatient.getAddress());
                 int rowAffected = statement.executeUpdate();
-                conn.commit();
                 if(rowAffected == 0){
                     throw new SQLException("No rows affected");
                 }
+                conn.commit();
                 return true;
             }catch (SQLException e) {
                 conn.rollback();
@@ -206,6 +226,166 @@ public class ReceptionistDao {
             ) {
                 statement.setLong(1, patientId);
                 conn.commit();
+                try(ResultSet rs = statement.executeQuery()) {
+                    return rs.next();
+                }
+            }
+        }
+    }
+
+    public boolean patientExist(long patientDoc) throws SQLException {
+        try(Connection conn = ConnectionSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(GET_PATIENT_BY_ID)) {
+                statement.setLong(1, patientDoc);
+                try(ResultSet rs = statement.executeQuery()) {
+                    return rs.next();
+                }
+            }
+        }
+    }
+
+    public Appointment getScheduledAppointment(long patientDoc) throws SQLException {
+        Appointment appointment = null;
+        try(Connection conn = ConnectionSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(GET_SCHEDULED_APPOINTMENT)) {
+                statement.setLong(1, patientDoc);
+                try(ResultSet rs = statement.executeQuery()) {
+                    if (rs.next()){
+                        long appointmentId = rs.getLong(1);
+                        AppointmentStatus status = getScheduledAppointmentUpdateStatusSucceded(appointmentId);
+                        long patientId = rs.getLong(3);
+                        Date appointmentDate = rs.getDate(4);
+                        Time appointmentTime = rs.getTime(5);
+                        int consultationId = rs.getInt(6);
+                        double consultationRegisteredPrice = rs.getDouble(7);
+                        Long invoiceId = getInvoiceId(appointmentId);
+                        int arrangementCode = rs.getInt(9);
+                        double arrangementDiscountApplied = rs.getDouble(10);
+                        long medicId = rs.getLong(11);
+                        appointment = new Appointment(appointmentId,
+                                status,
+                                patientId,
+                                medicId,
+                                appointmentDate,
+                                appointmentTime,
+                                consultationId,
+                                consultationRegisteredPrice,
+                                arrangementCode,
+                                arrangementDiscountApplied);
+                        appointment.setInvoiceNumber(invoiceId);
+
+                    }
+                }
+            }
+        }
+        return appointment;
+    }
+
+    private AppointmentStatus getScheduledAppointmentUpdateStatusSucceded(long appointmentId) throws SQLException {
+        try(Connection conn = ConnectionSource.getConnection()) {
+            conn.setAutoCommit(false);
+            try (PreparedStatement statement = conn.prepareStatement(UPDATE_APPOINTMENT_STATUS_TO_IN_COURSE)) {
+                statement.setString(1, AppointmentStatus.IN_PROGRESS.getValue());
+                statement.setLong(2, appointmentId);
+                int rowAffected = statement.executeUpdate();
+
+                if(rowAffected == 0){
+                    throw new SQLException("No rows affected");
+                }
+                conn.commit();
+                return getAppointmentStatusByItsID(appointmentId);
+            }catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+
+        }
+    }
+
+    private AppointmentStatus getAppointmentStatusByItsID(long appointmentId) throws SQLException {
+        try (Connection conn = ConnectionSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(GET_STATUS_OF_IN_COURSE_APPOINTMENT)) {
+                statement.setLong(1, appointmentId);
+                try (ResultSet rs = statement.executeQuery()) {
+                    if (rs.next()) return AppointmentStatus.valueOf(rs.getString(1));
+                }
+            }
+        }
+        return null;
+    }
+
+    private Long getInvoiceId(long appointmentId) throws SQLException {
+        try (Connection conn = ConnectionSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(GET_INVOICE_NUMBER_OF_IN_COURSE_APPOINTMENT)) {
+                statement.setLong(1, appointmentId);
+                try (ResultSet rs = statement.executeQuery()) {
+                    if (rs.next())  return rs.getLong(1);
+                }
+            }
+        }
+        return null;
+    }
+
+    public List<AdditionalService> getAdditionalServs() throws SQLException {
+        List<AdditionalService> additionalServices = null;
+        try(Connection conn = ConnectionSource.getConnection()) {
+            try (Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY)) {
+                try(ResultSet rs = statement.executeQuery(GET_ADDITIONAL_SERVICES)) {
+                    while (rs.next()) {
+                        additionalServices.add(new AdditionalService(rs.getInt(1),
+                                rs.getString(2),
+                                rs.getDouble(3)));
+                    }
+                    return additionalServices;
+                }
+            }
+        }
+    }
+
+    public boolean insertNewRegInvoice_AddServ (int codAddServ, long invoiceId, double addServCost) throws SQLException {
+        try(Connection conn = ConnectionSource.getConnection()) {
+            conn.setAutoCommit(false);
+            try (PreparedStatement statement = conn.prepareStatement(
+                    INSERT_REG_INVOICE_ADDITIONAL_SERVICE)
+            ) {
+                statement.setInt(1, codAddServ);
+                statement.setLong(2, invoiceId);
+                statement.setDouble(3, addServCost);
+
+                int rowAffected = statement.executeUpdate();
+                if(rowAffected == 0){
+                    throw new SQLException("No rows affected");
+                }
+                conn.commit();
+                return true;
+            }catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+        }
+    }
+
+    public Invoice getInvoiceById(long invoiceNumber) throws SQLException {
+        try (Connection conn = ConnectionSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(GET_INVOICE_BY_ID)) {
+                statement.setLong(1, invoiceNumber);
+                try (ResultSet rs = statement.executeQuery()) {
+                    if (rs.next()) return new Invoice(rs.getLong(1),
+                            rs.getDate(2),
+                            rs.getTime(3),
+                            rs.getDouble(4));
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean verifyIfAddServAsAlreadyInInvoice(int codAddServ, long invoiceId) throws SQLException {
+        try(Connection conn = ConnectionSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(VERIFY_REG_ADDSERV_INVOICE)) {
+                statement.setInt(1, codAddServ);
+                statement.setLong(2, invoiceId);
                 try(ResultSet rs = statement.executeQuery()) {
                     return rs.next();
                 }
