@@ -33,8 +33,12 @@ public class ReceptionistDao {
 
     private static final String OUTSTANDING_DEBTS_EXIST_FOR_PATIENT_ID = "select * from cita where pacienteid = ? AND estado = 'Pendiente por pago';";
 
-    private static final String GET_PENDING_PAYMENT_FOR_PATIENT_ID = "SELECT pacienteid, estado, costoconsreg FROM cita WHERE pacienteid = ? AND estado = 'Pendiente por pago';";
+    private static final String GET_APPOINTMENT_STATUS = "SELECT pacienteid, estado FROM Cita WHERE pacienteid = ?;";
 
+    private static final String GET_PENDING_PAYMENT_FOR_PATIENT_ID = "SELECT pacienteid, estado, costoconsreg FROM Cita WHERE pacienteid = ? AND estado = 'Pendiente por pago';";
+    private static final String UPDATE_STATUS_APPOINTMENT = "UPDATE Cita SET estado = ? WHERE pacienteId = ?;";
+    private static final String GET_NAME_FOR_PATIENT_ID = "SELECT nombres, apellidos FROM Persona WHERE docidentidad = ?;";
+    //private static final String GET_INVOICE = "SELECT fechaFactura, horaFactura, valorTotal FROM Factura WHERE refFactura = ?;";
 
 
     public static ArrayList<ConsultationType> getConsultationTypes() throws SQLException {
@@ -249,4 +253,29 @@ public class ReceptionistDao {
         }
     }
 
+    public static boolean updateStatusAppointment(int idPatient, String newStatus) throws SQLException {
+        try(Connection con = ConnectionSource.getConnection()) {
+            try(PreparedStatement ps = con.prepareStatement(UPDATE_STATUS_APPOINTMENT)) {
+                ps.setString(1, newStatus);
+                ps.setLong(2, idPatient);
+                int rowAffected = ps.executeUpdate();
+                System.out.println(rowAffected);
+                return true;
+            }
+        }
+    }
+
+    public static String getNamePatient(long idPatient) throws SQLException {
+        try(Connection con = ConnectionSource.getConnection()) {
+            try (PreparedStatement ps = con.prepareStatement(GET_NAME_FOR_PATIENT_ID)) {
+                ps.setLong(1, idPatient);
+                try(ResultSet rs = ps.executeQuery()) {
+                    if(rs.next()){
+                        return rs.getString("nombre") + rs.getString("apellido");
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }
